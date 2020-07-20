@@ -1,89 +1,109 @@
 package com.m5fin.modelo.beans;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="ACCIDENTES")
 public class Accidentes {
-	private int idAccidente;
-	private String fechaAccidente;
-	private String horaAccidente;
-	private String sucesoAccidente;
-	private String lugarAccidente;
-	private int clienteIdAcciedente;
+	@Id
+	@GeneratedValue
+	@Column(name="idaccidente")
+	private int idaccidente;
 	
-	public Accidentes(int idAccidente, String fechaAccidente, String horaAccidente, String sucesoAccidente,
-			String lugarAccidente, int clienteIdAcciedente) {
-		this.idAccidente = idAccidente;
-		this.fechaAccidente = fechaAccidente;
-		this.horaAccidente = horaAccidente;
-		this.sucesoAccidente = sucesoAccidente;
-		this.lugarAccidente = lugarAccidente;
-		this.clienteIdAcciedente = clienteIdAcciedente;
-	}
+	@Column(name="fechaaccidente")
+	private String fechaaccidente;
+	
+	@Column(name="horaaccidente")
+	private String horaaccidente;
+	
+	@Column(name="sucesoaccidente")
+	private String sucesoaccidente;
+	
+	@Column(name="lugarAaccidente")
+	private String lugarAaccidente;
+	
+	@Column(name="clienteadacciedente")
+	private int clienteadacciedente;
 
-	public Accidentes(String fechaAccidente, String horaAccidente, String sucesoAccidente,
-			String lugarAccidente, int clienteIdAcciedente) {
-		this.fechaAccidente = fechaAccidente;
-		this.horaAccidente = horaAccidente;
-		this.sucesoAccidente = sucesoAccidente;
-		this.lugarAccidente = lugarAccidente;
-		this.clienteIdAcciedente = clienteIdAcciedente;
+	public Accidentes(int idaccidente, String fechaaccidente, String horaaccidente, String sucesoaccidente,
+			String lugarAaccidente, int clienteadacciedente) {
+		this.idaccidente = idaccidente;
+		this.fechaaccidente = fechaaccidente;
+		this.horaaccidente = horaaccidente;
+		this.sucesoaccidente = sucesoaccidente;
+		this.lugarAaccidente = lugarAaccidente;
+		this.clienteadacciedente = clienteadacciedente;
 	}
 	
-	public Accidentes() {
-		
-	}
-	public int getIdAccidente() {
-		return idAccidente;
-	}
-
-	public void setIdAccidente(int idAccidente) {
-		this.idAccidente = idAccidente;
+	public Accidentes(String fechaaccidente, String horaaccidente, String sucesoaccidente,
+			String lugarAaccidente, int clienteadacciedente) {
+		this.fechaaccidente = fechaaccidente;
+		this.horaaccidente = horaaccidente;
+		this.sucesoaccidente = sucesoaccidente;
+		this.lugarAaccidente = lugarAaccidente;
+		this.clienteadacciedente = clienteadacciedente;
 	}
 
-	public String getFechaAccidente() {
-		return fechaAccidente;
+	public int getIdaccidente() {
+		return idaccidente;
 	}
 
-	public void setFechaAccidente(String fechaAccidente) {
-		this.fechaAccidente = fechaAccidente;
+	public void setIdaccidente(int idaccidente) {
+		this.idaccidente = idaccidente;
 	}
 
-	public String getHoraAccidente() {
-		return horaAccidente;
+	public String getFechaaccidente() {
+		return fechaaccidente;
 	}
 
-	public void setHoraAccidente(String horaAccidente) {
-		this.horaAccidente = horaAccidente;
+	public void setFechaaccidente(String fechaaccidente) {
+		this.fechaaccidente = fechaaccidente;
 	}
 
-	public String getSucesoAccidente() {
-		return sucesoAccidente;
+	public String getHoraaccidente() {
+		return horaaccidente;
 	}
 
-	public void setSucesoAccidente(String sucesoAccidente) {
-		this.sucesoAccidente = sucesoAccidente;
+	public void setHoraaccidente(String horaaccidente) {
+		this.horaaccidente = horaaccidente;
 	}
 
-	public String getLugarAccidente() {
-		return lugarAccidente;
+	public String getSucesoaccidente() {
+		return sucesoaccidente;
 	}
 
-	public void setLugarAccidente(String lugarAccidente) {
-		this.lugarAccidente = lugarAccidente;
+	public void setSucesoaccidente(String sucesoaccidente) {
+		this.sucesoaccidente = sucesoaccidente;
 	}
 
-	public int getClienteIdAcciedente() {
-		return clienteIdAcciedente;
+	public String getLugarAaccidente() {
+		return lugarAaccidente;
 	}
 
-	public void setClienteIdAcciedente(int clienteIdAcciedente) {
-		this.clienteIdAcciedente = clienteIdAcciedente;
+	public void setLugarAaccidente(String lugarAaccidente) {
+		this.lugarAaccidente = lugarAaccidente;
+	}
+
+	public int getClienteadacciedente() {
+		return clienteadacciedente;
+	}
+
+	public void setClienteadacciedente(int clienteadacciedente) {
+		this.clienteadacciedente = clienteadacciedente;
 	}
 
 	@Override
 	public String toString() {
-		return "Accidentes [idAccidente=" + idAccidente + ", fechaAccidente=" + fechaAccidente + ", horaAccidente="
-				+ horaAccidente + ", sucesoAccidente=" + sucesoAccidente + ", lugarAccidente=" + lugarAccidente
-				+ ", clienteIdAcciedente=" + clienteIdAcciedente + "]";
+		return "Accidentes [idaccidente=" + idaccidente + ", fechaaccidente=" + fechaaccidente + ", horaaccidente="
+				+ horaaccidente + ", sucesoaccidente=" + sucesoaccidente + ", lugarAaccidente=" + lugarAaccidente
+				+ ", clienteadacciedente=" + clienteadacciedente + "]";
 	}
+	
+	
 	
 
 }
