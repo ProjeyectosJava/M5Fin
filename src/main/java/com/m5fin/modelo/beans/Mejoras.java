@@ -1,90 +1,93 @@
 package com.m5fin.modelo.beans;
 
+@Entity
+@Table(name="MEJORAS")
 public class Mejoras {
-	private int idMejora;
-	private String fechaMejora;
-	private String motivoMejora;
-	private String actividadesMejora;
-	private String estadoMejora;
-	private int idClienteMejora;
+	@Id
+	@GeneratedValue
+	@Column(name = "idmejora")
+	private int idmejora;
 	
-	public Mejoras(int idMejora, String fechaMejora, String motivoMejora, String actividadesMejora, String estadoMejora,
-			int idClienteMejora) {
-		this.idMejora = idMejora;
-		this.fechaMejora = fechaMejora;
-		this.motivoMejora = motivoMejora;
-		this.actividadesMejora = actividadesMejora;
-		this.estadoMejora = estadoMejora;
-		this.idClienteMejora = idClienteMejora;
-	}
-
-	public Mejoras(String fechaMejora, String motivoMejora, String actividadesMejora, String estadoMejora,
-			int idClienteMejora) {
-		this.fechaMejora = fechaMejora;
-		this.motivoMejora = motivoMejora;
-		this.actividadesMejora = actividadesMejora;
-		this.estadoMejora = estadoMejora;
-		this.idClienteMejora = idClienteMejora;
-	}
-
-	public Mejoras() {
-		
-	}
+	@Column(name = "fechamejora")
+	private String fechamejora;
 	
-	public int getIdMejora() {
-		return idMejora;
+	@Column(name = "motivomejora")
+	private String motivomejora;
+	
+	@Column(name = "actividadesmejora")
+	private String actividadesmejora;
+	
+	@Column(name = "estadomejora")
+	private String estadomejora;
+	
+	@Column(name = "idClientemejora")
+	private int idClientemejora;
+
+	public Mejoras(int idmejora, String fechamejora, String motivomejora, String actividadesmejora, String estadomejora,
+			int idClientemejora) {
+		this.idmejora = idmejora;
+		this.fechamejora = fechamejora;
+		this.motivomejora = motivomejora;
+		this.actividadesmejora = actividadesmejora;
+		this.estadomejora = estadomejora;
+		this.idClientemejora = idClientemejora;
 	}
 
-	public void setIdMejora(int idMejora) {
-		this.idMejora = idMejora;
+	public int getIdmejora() {
+		return idmejora;
 	}
 
-	public String getFechaMejora() {
-		return fechaMejora;
+	public void setIdmejora(int idmejora) {
+		this.idmejora = idmejora;
 	}
 
-	public void setFechaMejora(String fechaMejora) {
-		this.fechaMejora = fechaMejora;
+	public String getFechamejora() {
+		return fechamejora;
 	}
 
-	public String getMotivoMejora() {
-		return motivoMejora;
+	public void setFechamejora(String fechamejora) {
+		this.fechamejora = fechamejora;
 	}
 
-	public void setMotivoMejora(String motivoMejora) {
-		this.motivoMejora = motivoMejora;
+	public String getMotivomejora() {
+		return motivomejora;
 	}
 
-	public String getActividadesMejora() {
-		return actividadesMejora;
+	public void setMotivomejora(String motivomejora) {
+		this.motivomejora = motivomejora;
 	}
 
-	public void setActividadesMejora(String actividadesMejora) {
-		this.actividadesMejora = actividadesMejora;
+	public String getActividadesmejora() {
+		return actividadesmejora;
 	}
 
-	public String getEstadoMejora() {
-		return estadoMejora;
+	public void setActividadesmejora(String actividadesmejora) {
+		this.actividadesmejora = actividadesmejora;
 	}
 
-	public void setEstadoMejora(String estadoMejora) {
-		this.estadoMejora = estadoMejora;
+	public String getEstadomejora() {
+		return estadomejora;
 	}
 
-	public int getIdClienteMejora() {
-		return idClienteMejora;
+	public void setEstadomejora(String estadomejora) {
+		this.estadomejora = estadomejora;
 	}
 
-	public void setIdClienteMejora(int idClienteMejora) {
-		this.idClienteMejora = idClienteMejora;
+	public int getIdClientemejora() {
+		return idClientemejora;
+	}
+
+	public void setIdClientemejora(int idClientemejora) {
+		this.idClientemejora = idClientemejora;
 	}
 
 	@Override
 	public String toString() {
-		return "Mejoras [idMejora=" + idMejora + ", fechaMejora=" + fechaMejora + ", motivoMejora=" + motivoMejora
-				+ ", actividadesMejora=" + actividadesMejora + ", estadoMejora=" + estadoMejora + ", idClienteMejora="
-				+ idClienteMejora + "]";
+		return "Mejoras [idmejora=" + idmejora + ", fechamejora=" + fechamejora + ", motivomejora=" + motivomejora
+				+ ", actividadesmejora=" + actividadesmejora + ", estadomejora=" + estadomejora + ", idClientemejora="
+				+ idClientemejora + "]";
 	}
-		
+	
+	
 
 }
