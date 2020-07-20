@@ -15,7 +15,7 @@
 		<h3><c:out value="${ccmensaje}"></c:out></h3>
 	</c:if>
 	
-	<!--<c:if test="${ccmensaje == null}">-->
+	<c:if test="${ccmensaje == null}">
 		<form:form method="post" action="guardar">
 		<table>
 			<tr>
@@ -65,7 +65,7 @@
 			</tr>
 		</table>
 		</form:form>
-	<!--</c:if>-->
+	<</c:if>
 
 </body>
 </html>
