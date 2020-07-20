@@ -1,82 +1,97 @@
 package com.m5fin.modelo.beans;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table (name="CAPACITACIONES")
 public class Capacitaciones {
-	private int idCapacitacion;
-	private String fechaCapacitacion;
-	private String horaCapacitacion;
-	private int numAsistCapacitacion;
-	private int idVisitaCapacitacion;
+	
+	@Id
+	@GeneratedValue
+	
+	@Column(name="idcapacitacion")
+	private int idcapacitacion;
+	
+	@Column(name="fechacapacitacion")
+	private String fechacapacitacion;
+	
+	@Column(name="horacapacitacion")
+	private String horacapacitacion;
+	
+	@Column(name="numasistcapacitacion")
+	private int numasistcapacitacion;
+	
+	@Column(name="idvisitacapacitacion")
+	private int idvisitacapacitacion;
 	
 	public Capacitaciones() {
-		
+
 	}
 	
-	public Capacitaciones(String fechaCapacitacion, String horaCapacitacion,
-			int numAsistCapacitacion, int idVisitaCapacitacion) {
-		this.fechaCapacitacion = fechaCapacitacion;
-		this.horaCapacitacion = horaCapacitacion;
-		this.numAsistCapacitacion = numAsistCapacitacion;
-		this.idVisitaCapacitacion = idVisitaCapacitacion;
-	}
-	
-	public Capacitaciones(int idCapacitacion, String fechaCapacitacion, String horaCapacitacion,
-			int numAsistCapacitacion, int idVisitaCapacitacion) {
-		this.idCapacitacion = idCapacitacion;
-		this.fechaCapacitacion = fechaCapacitacion;
-		this.horaCapacitacion = horaCapacitacion;
-		this.numAsistCapacitacion = numAsistCapacitacion;
-		this.idVisitaCapacitacion = idVisitaCapacitacion;
-	}
-	
-	
-	
-
-	public int getIdCapacitacion() {
-		return idCapacitacion;
+	public Capacitaciones(int idcapacitacion, String fechacapacitacion, String horacapacitacion,
+			int numasistcapacitacion, int idvisitacapacitacion) {
+		super();
+		this.idcapacitacion = idcapacitacion;
+		this.fechacapacitacion = fechacapacitacion;
+		this.horacapacitacion = horacapacitacion;
+		this.numasistcapacitacion = numasistcapacitacion;
+		this.idvisitacapacitacion = idvisitacapacitacion;
 	}
 
-	public void setIdCapacitacion(int idCapacitacion) {
-		this.idCapacitacion = idCapacitacion;
+
+
+	public int getIdcapacitacion() {
+		return idcapacitacion;
 	}
 
-	public String getFechaCapacitacion() {
-		return fechaCapacitacion;
+	public void setIdcapacitacion(int idcapacitacion) {
+		this.idcapacitacion = idcapacitacion;
 	}
 
-	public void setFechaCapacitacion(String fechaCapacitacion) {
-		this.fechaCapacitacion = fechaCapacitacion;
+	public String getFechacapacitacion() {
+		return fechacapacitacion;
 	}
 
-	public String getHoraCapacitacion() {
-		return horaCapacitacion;
+	public void setFechacapacitacion(String fechacapacitacion) {
+		this.fechacapacitacion = fechacapacitacion;
 	}
 
-	public void setHoraCapacitacion(String horaCapacitacion) {
-		this.horaCapacitacion = horaCapacitacion;
+	public String getHoracapacitacion() {
+		return horacapacitacion;
 	}
 
-	public int getNumAsistCapacitacion() {
-		return numAsistCapacitacion;
+	public void setHoracapacitacion(String horacapacitacion) {
+		this.horacapacitacion = horacapacitacion;
 	}
 
-	public void setNumAsistCapacitacion(int numAsistCapacitacion) {
-		this.numAsistCapacitacion = numAsistCapacitacion;
+	public int getNumasistcapacitacion() {
+		return numasistcapacitacion;
 	}
 
-	public int getIdVisitaCapacitacion() {
-		return idVisitaCapacitacion;
+	public void setNumasistcapacitacion(int numasistcapacitacion) {
+		this.numasistcapacitacion = numasistcapacitacion;
 	}
 
-	public void setIdVisitaCapacitacion(int idVisitaCapacitacion) {
-		this.idVisitaCapacitacion = idVisitaCapacitacion;
+	public int getIdvisitacapacitacion() {
+		return idvisitacapacitacion;
+	}
+
+	public void setIdvisitacapacitacion(int idvisitacapacitacion) {
+		this.idvisitacapacitacion = idvisitacapacitacion;
 	}
 
 	@Override
 	public String toString() {
-		return "Capacitaciones [idCapacitacion=" + idCapacitacion + ", fechaCapacitacion=" + fechaCapacitacion
-				+ ", horaCapacitacion=" + horaCapacitacion + ", numAsistCapacitacion=" + numAsistCapacitacion
-				+ ", idVisitaCapacitacion=" + idVisitaCapacitacion + "]";
-	};
+		return "Capacitaciones [idcapacitacion=" + idcapacitacion + ", fechacapacitacion=" + fechacapacitacion
+				+ ", horacapacitacion=" + horacapacitacion + ", numasistcapacitacion=" + numasistcapacitacion
+				+ ", idvisitacapacitacion=" + idvisitacapacitacion + "]";
+	}
+	
+	
 	
 
 }

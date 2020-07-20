@@ -1,129 +1,130 @@
 package com.m5fin.modelo.beans;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="VISITAS")
 public class Visitas {
-	private int idVisita;
-	private String direccionVisita;
-	private String ciudadVisita;
-	private String fechaVisita;
-	private String resumenVisita;
-	private String observacionVisita;
-	private int idClienteVisita;
-	private int idEmpleadoVisita;
 	
+	@Id
+	@GeneratedValue
 	
-	public Visitas(int idVisita, String direccionVisita, String ciudadVisita, String fechaVisita, String resumenVisita,
-			String observacionVisita, int idClienteVisita, int idEmpleadoVisita) {
-		this.idVisita = idVisita;
-		this.direccionVisita = direccionVisita;
-		this.ciudadVisita = ciudadVisita;
-		this.fechaVisita = fechaVisita;
-		this.resumenVisita = resumenVisita;
-		this.observacionVisita = observacionVisita;
-		this.idClienteVisita = idClienteVisita;
-		this.idEmpleadoVisita = idEmpleadoVisita;
-	}
+	@Column(name="idvisita")
+	private int idvisita;
 	
-	public Visitas(String direccionVisita, String ciudadVisita, String fechaVisita, String resumenVisita,
-			String observacionVisita, int idClienteVisita, int idEmpleadoVisita) {
-		this.direccionVisita = direccionVisita;
-		this.ciudadVisita = ciudadVisita;
-		this.fechaVisita = fechaVisita;
-		this.resumenVisita = resumenVisita;
-		this.observacionVisita = observacionVisita;
-		this.idClienteVisita = idClienteVisita;
-		this.idEmpleadoVisita = idEmpleadoVisita;
-	}
+	@Column(name="direccionvisita")
+	private String direccionvisita;
+	
+	@Column(name="ciudadvisita")
+	private String ciudadvisita;
+	
+	@Column(name="fechavisita")
+	private String fechavisita;
+	
+	@Column(name="resumenvisita")
+	private String resumenvisita;
+	
+	@Column(name="observacionvisita")
+	private String observacionvisita;
+	
+	@Column(name="idclientevisita")
+	private int idclientevisita;
+	
+	@Column(name="idempleadovisita")
+	private int idempleadovisita;
 
+	
 	public Visitas() {
-		
 	}
 
-	public int getIdVisita() {
-		return idVisita;
+	public Visitas(int idvisita, String direccionvisita, String ciudadvisita, String fechavisita, String resumenvisita,
+			String observacionvisita, int idclientevisita, int idempleadovisita) {
+		this.idvisita = idvisita;
+		this.direccionvisita = direccionvisita;
+		this.ciudadvisita = ciudadvisita;
+		this.fechavisita = fechavisita;
+		this.resumenvisita = resumenvisita;
+		this.observacionvisita = observacionvisita;
+		this.idclientevisita = idclientevisita;
+		this.idempleadovisita = idempleadovisita;
 	}
 
-
-	public void setIdVisita(int idVisita) {
-		this.idVisita = idVisita;
+	public int getIdvisita() {
+		return idvisita;
 	}
 
-
-	public String getDireccionVisita() {
-		return direccionVisita;
+	public void setIdvisita(int idvisita) {
+		this.idvisita = idvisita;
 	}
 
-
-	public void setDireccionVisita(String direccionVisita) {
-		this.direccionVisita = direccionVisita;
+	public String getDireccionvisita() {
+		return direccionvisita;
 	}
 
-
-	public String getCiudadVisita() {
-		return ciudadVisita;
+	public void setDireccionvisita(String direccionvisita) {
+		this.direccionvisita = direccionvisita;
 	}
 
-
-	public void setCiudadVisita(String ciudadVisita) {
-		this.ciudadVisita = ciudadVisita;
+	public String getCiudadvisita() {
+		return ciudadvisita;
 	}
 
-
-	public String getFechaVisita() {
-		return fechaVisita;
+	public void setCiudadvisita(String ciudadvisita) {
+		this.ciudadvisita = ciudadvisita;
 	}
 
-
-	public void setFechaVisita(String fechaVisita) {
-		this.fechaVisita = fechaVisita;
+	public String getFechavisita() {
+		return fechavisita;
 	}
 
-
-	public String getResumenVisita() {
-		return resumenVisita;
+	public void setFechavisita(String fechavisita) {
+		this.fechavisita = fechavisita;
 	}
 
-
-	public void setResumenVisita(String resumenVisita) {
-		this.resumenVisita = resumenVisita;
+	public String getResumenvisita() {
+		return resumenvisita;
 	}
 
-
-	public String getObservacionVisita() {
-		return observacionVisita;
+	public void setResumenvisita(String resumenvisita) {
+		this.resumenvisita = resumenvisita;
 	}
 
-
-	public void setObservacionVisita(String observacionVisita) {
-		this.observacionVisita = observacionVisita;
+	public String getObservacionvisita() {
+		return observacionvisita;
 	}
 
-
-	public int getIdClienteVisita() {
-		return idClienteVisita;
+	public void setObservacionvisita(String observacionvisita) {
+		this.observacionvisita = observacionvisita;
 	}
 
-
-	public void setIdClienteVisita(int idClienteVisita) {
-		this.idClienteVisita = idClienteVisita;
+	public int getIdclientevisita() {
+		return idclientevisita;
 	}
 
-
-	public int getIdEmpleadoVisita() {
-		return idEmpleadoVisita;
+	public void setIdclientevisita(int idclientevisita) {
+		this.idclientevisita = idclientevisita;
 	}
 
-
-	public void setIdEmpleadoVisita(int idEmpleadoVisita) {
-		this.idEmpleadoVisita = idEmpleadoVisita;
+	public int getIdempleadovisita() {
+		return idempleadovisita;
 	}
 
+	public void setIdempleadovisita(int idempleadovisita) {
+		this.idempleadovisita = idempleadovisita;
+	}
 
 	@Override
 	public String toString() {
-		return "Visitas [idVisita=" + idVisita + ", direccionVisita=" + direccionVisita + ", ciudadVisita="
-				+ ciudadVisita + ", fechaVisita=" + fechaVisita + ", resumenVisita=" + resumenVisita
-				+ ", observacionVisita=" + observacionVisita + ", idClienteVisita=" + idClienteVisita
-				+ ", idEmpleadoVisita=" + idEmpleadoVisita + "]";
-	}	
-
+		return "Visitas [idvisita=" + idvisita + ", direccionvisita=" + direccionvisita + ", ciudadvisita="
+				+ ciudadvisita + ", fechavisita=" + fechavisita + ", resumenvisita=" + resumenvisita
+				+ ", observacionvisita=" + observacionvisita + ", idclientevisita=" + idclientevisita
+				+ ", idempleadovisita=" + idempleadovisita + "]";
+	}
+	
+	
+	
 }
