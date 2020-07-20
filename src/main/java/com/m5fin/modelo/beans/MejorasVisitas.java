@@ -1,6 +1,7 @@
 package com.m5fin.modelo.beans;
 
 public class MejorasVisitas {
+	
 	private int idmejora;
 	private int idclientemejora;
 	private String fechamejora;

@@ -1,52 +1,62 @@
 package com.m5fin.modelo.beans;
 
+
+@Entity
+@Table(name="EMPLEADOS")
 public class Empleados {
-	private int idEmpleado;
-	private String nombreEmpleado;
-	private String especialidadEmpleado;
 	
-	public Empleados(int idEmpleado, String nombreEmpleado, String especialidadEmpleado) {
-		this.idEmpleado = idEmpleado;
-		this.nombreEmpleado = nombreEmpleado;
-		this.especialidadEmpleado = especialidadEmpleado;
-	}
+	@Id
+	@GeneratedValue
+	private int ideempleado;
 	
-	public Empleados(String nombreEmpleado, String especialidadEmpleado) {
-		this.nombreEmpleado = nombreEmpleado;
-		this.especialidadEmpleado = especialidadEmpleado;
-	}
+	@Column(name="nombreempleado")
+	private String nombreempleado;
 	
+	@Column(name="especialidadempleado")
+	private String especialidadempleado;
+
 	public Empleados() {
 		
 	}
 
-	public int getIdEmpleado() {
-		return idEmpleado;
+	public Empleados(int ideempleado, String nombreempleado, String especialidadempleado) {
+		super();
+		this.ideempleado = ideempleado;
+		this.nombreempleado = nombreempleado;
+		this.especialidadempleado = especialidadempleado;
 	}
 
-	public void setIdEmpleado(int idEmpleado) {
-		this.idEmpleado = idEmpleado;
+	public int getIdeempleado() {
+		return ideempleado;
 	}
 
-	public String getNombreEmpleado() {
-		return nombreEmpleado;
+	public void setIdeempleado(int ideempleado) {
+		this.ideempleado = ideempleado;
 	}
 
-	public void setNombreEmpleado(String nombreEmpleado) {
-		this.nombreEmpleado = nombreEmpleado;
+	public String getNombreempleado() {
+		return nombreempleado;
 	}
 
-	public String getEspecialidadEmpleado() {
-		return especialidadEmpleado;
+	public void setNombreempleado(String nombreempleado) {
+		this.nombreempleado = nombreempleado;
 	}
 
-	public void setEspecialidadEmpleado(String especialidadEmpleado) {
-		this.especialidadEmpleado = especialidadEmpleado;
+	public String getEspecialidadempleado() {
+		return especialidadempleado;
+	}
+
+	public void setEspecialidadempleado(String especialidadempleado) {
+		this.especialidadempleado = especialidadempleado;
 	}
 
 	@Override
 	public String toString() {
-		return "Empleados [idEmpleado=" + idEmpleado + ", nombreEmpleado=" + nombreEmpleado + ", especialidadEmpleado="
-				+ especialidadEmpleado + "]";
+		return "Empleados [ideempleado=" + ideempleado + ", nombreempleado=" + nombreempleado
+				+ ", especialidadempleado=" + especialidadempleado + "]";
 	}
+	
+
+
+	
 }

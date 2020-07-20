@@ -1,81 +1,106 @@
 package com.m5fin.modelo.beans;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="CLIENTES")
 public class Clientes {
-	private int idCliente;
-	private String nombreCliente;
-	private String telefonoCliente;
-	private String emailCliente;
-	private String rubroCliente;
-	private String direccionCliente;
+	@Id
+	@GeneratedValue
+	@Column(name="id")
+	private int idcliente;
+	
+	@Column(name="nombrecliente")
+	private String nombrecliente;
+	
+	@Column(name="telefonocliente")
+	private String telefonocliente;
+	
+	@Column(name="emailcliente")
+	private String emailcliente;
+	
+	@Column(name="rubrocliente")
+	private String rubrocliente;
+	
+	@Column(name="direccioncliente")
+	private String direccioncliente;
 	
 	public Clientes() {
 		
 	}
-	
-	public Clientes(int idCliente, String nombreCliente, String telefonoCliente, String emailCliente,
-			String rubroCliente, String direccionCliente) {
-		this.idCliente = idCliente;
-		this.nombreCliente = nombreCliente;
-		this.telefonoCliente = telefonoCliente;
-		this.emailCliente = emailCliente;
-		this.rubroCliente = rubroCliente;
-		this.direccionCliente = direccionCliente;
+
+	public Clientes(int idcliente, String nombrecliente, String telefonocliente, String emailcliente,
+			String rubrocliente, String direccioncliente) {
+		this.idcliente = idcliente;
+		this.nombrecliente = nombrecliente;
+		this.telefonocliente = telefonocliente;
+		this.emailcliente = emailcliente;
+		this.rubrocliente = rubrocliente;
+		this.direccioncliente = direccioncliente;
 	}
 
-	public int getIdCliente() {
-		return idCliente;
+	public int getIdcliente() {
+		return idcliente;
 	}
 
-	public void setIdCliente(int idCliente) {
-		this.idCliente = idCliente;
+	public void setIdcliente(int idcliente) {
+		this.idcliente = idcliente;
 	}
 
-	public String getNombreCliente() {
-		return nombreCliente;
+	public String getNombrecliente() {
+		return nombrecliente;
 	}
 
-	public void setNombreCliente(String nombreCliente) {
-		this.nombreCliente = nombreCliente;
+	public void setNombrecliente(String nombrecliente) {
+		this.nombrecliente = nombrecliente;
 	}
 
-	public String getTelefonoCliente() {
-		return telefonoCliente;
+	public String getTelefonocliente() {
+		return telefonocliente;
 	}
 
-	public void setTelefonoCliente(String telefonoCliente) {
-		this.telefonoCliente = telefonoCliente;
+	public void setTelefonocliente(String telefonocliente) {
+		this.telefonocliente = telefonocliente;
 	}
 
-	public String getEmailCliente() {
-		return emailCliente;
+	public String getEmailcliente() {
+		return emailcliente;
 	}
 
-	public void setEmailCliente(String emailCliente) {
-		this.emailCliente = emailCliente;
+	public void setEmailcliente(String emailcliente) {
+		this.emailcliente = emailcliente;
 	}
 
-	public String getRubroCliente() {
-		return rubroCliente;
+	public String getRubrocliente() {
+		return rubrocliente;
 	}
 
-	public void setRubroCliente(String rubroCliente) {
-		this.rubroCliente = rubroCliente;
+	public void setRubrocliente(String rubrocliente) {
+		this.rubrocliente = rubrocliente;
 	}
 
-	public String getDireccionCliente() {
-		return direccionCliente;
+	public String getDireccioncliente() {
+		return direccioncliente;
 	}
 
-	public void setDireccionCliente(String direccionCliente) {
-		this.direccionCliente = direccionCliente;
+	public void setDireccioncliente(String direccioncliente) {
+		this.direccioncliente = direccioncliente;
 	}
 
 	@Override
 	public String toString() {
-		return "Clientes [idCliente=" + idCliente + ", nombreCliente=" + nombreCliente + ", telefonoCliente="
-				+ telefonoCliente + ", emailCliente=" + emailCliente + ", rubroCliente=" + rubroCliente
-				+ ", direccionCliente=" + direccionCliente + "]";
+		return "Clientes [idcliente=" + idcliente + ", nombrecliente=" + nombrecliente + ", telefonocliente="
+				+ telefonocliente + ", emailcliente=" + emailcliente + ", rubrocliente=" + rubrocliente
+				+ ", direccioncliente=" + direccioncliente + "]";
 	}
+	
+	
+	
+	
 	
 	
 
