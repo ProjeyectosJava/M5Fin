@@ -1,38 +1,29 @@
+<%@ include file="menupro.jsp"%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
-	<a href="index.jsp">Menu Principal</a>
-	<hr>
-	<h1>Revisar Clientes </h1>	
-	<c:if test="${txt != null}">
-	<h3><c:out value="${txt}"></c:out></h3>
-</c:if>
-	<table>
+
+<div class="table-responsive-md">
+<table class="table">
+	<thead class="thead-dark">
 		<tr>
-			<th>ID Cliente</th>
-			<th>Nombre</th>
-			<th>Telefono</th>
-			<th>Email</th>
-			<th>Rubro</th>
-			<th>Direccion</th>
+			<th scope="col">ID Cliente</th>
+			<th scope="col">Nombre</th>
+			<th scope="col">Telefono</th>
+			<th scope="col">Email</th>
+			<th scope="col">Rubro</th>
+			<th scope="col">Direccion</th>
 		</tr>
+	</thead>
 		<c:forEach items="${listaclientes}" var="cli">
 			<tr>
-				<td>${cli.getIdCliente()}</td>
-				<td>${cli.getNombreCliente()}</td>
-				<td>${cli.getTelefonoCliente()}</td>
-				<td>${cli.getEmailCliente()}</td>
-				<td>${cli.getRubroCliente()}</td>
-				<td>${cli.getDireccionCliente()}</td>
+	   			<th scope="row">${cli.getIdcliente()}</th>
+				<td>${cli.getNombrecliente()}</td>
+				<td>${cli.getTelefonocliente()}</td>
+				<td>${cli.getEmailcliente()}</td>
+				<td>${cli.getRubrocliente()}</td>
+				<td>${cli.getDireccioncliente()}</td>
 			</tr>
 		</c:forEach>
 	</table>
+	</div>
 	<br>
-</body>
-</html>
+<%@ include file="footer.jsp"%>

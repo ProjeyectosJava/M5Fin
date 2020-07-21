@@ -44,10 +44,10 @@
 						<a class="nav-link"	href="/lvparacapacitacion">Crear capacitacion </a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="/planificarvisita">Planificar visita</a>
+						<a class="nav-link" href="${baseURL}/profesional/planificarvisitas">Planificar visita</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="/revisarclientes">Revisar Cliente</a>
+						<a class="nav-link" href="${baseURL}/profesional/revisarclientes">Revisar Cliente</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link disabled" href="#">Crear caso de asesoría</a>

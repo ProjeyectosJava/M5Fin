@@ -1,31 +1,25 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
-	<a href="index.jsp">Menu Principal</a>
-	<hr>
-	<h2>Listado Clientes (Generar Visita)</h2>	
-	<c:if test="${ccmensaje != null}">
-	<h3><c:out value="${ccmensaje}"></c:out></h3>
-	</c:if>
+<%@ include file="menupro.jsp" %>
 
-	<table border="1">
+<h4 class="text-center bg-dark text-white py-3">Clientes</h4>
+<div class="container mt-3">
+<div class="table-responsive-md">
+<table class="table">
+	<thead class="thead-dark">
 		<tr>
-			<th>Nombre</th>
-			<th>Telefono</th>
-			<th>Direccion</th>
-			<th colspan="2">Opciones</th>
+			<th scope="col">Id</th>
+			<th scope="col">Nombre</th>
+			<th scope="col">Telefono</th>
+			<th scope="col">Direccion</th>
+			<th scope="col" colspan="2">Opciones</th>
 		</tr>
+	</thead>
 		<c:forEach items="${list}" var="cli">
 			<tr>
-				<td>${cli.getNombreCliente()}</td>
-				<td>${cli.getTelefonoCliente()}</td>
-				<td>${cli.getDireccionCliente()}</td>
-				 <td><a href="generarvisita/${cli.getIdCliente()}/${cli.getNombreCliente()}">Generar Visita</a></td>
+				<th scope="row">${cli.getIdcliente()}</th>	
+				<td>${cli.getNombrecliente()}</td>
+				<td>${cli.getTelefonocliente()}</td>
+				<td>${cli.getDireccioncliente()}</td>
+				 <td><a href="generarvisita/${cli.getIdcliente()}/${cli.getNombrecliente()}">Generar Visita</a></td>
 				<!-- 
 				 <c:url var="url_confirm" value="/admin/orderList"/>
 				<a href="${url_confirm}/${li.orderId}/${"confirmed"}" >Confirmed</a>
@@ -51,6 +45,7 @@
 				<th>Ciudad</th>
 				<th>Empleado Asignado</th>
 			</tr>
+			<!-- 
 			<c:forEach items="${listagenerada}" var="lg">
 				<tr>
 					<td>${lg.getNombrecliente()}</td>
@@ -61,7 +56,9 @@
 					<td>${lg.getNombreempleado()}</td>
 				</tr>
 			</c:forEach>
+			 -->
 		</table>
 	</c:if>
-</body>
-</html>
+</div>
+</div>
+<%@ include file="footer.jsp"%>
