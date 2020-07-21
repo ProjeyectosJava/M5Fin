@@ -1,5 +1,11 @@
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<!-- tag de Spring -->
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%> 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +13,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="../listarempleados">Volver</a>
+	<a href="listarempleados">Volver</a>
 	<hr>
 	<h1>Agregar empleado</h1>
 	<c:if test="${ccmensaje != null}">
@@ -15,14 +21,14 @@
 	</c:if>
 	
 	<c:if test="${ccmensaje == null}">
-		<form:form method="post" action="../editarguardarempleado">
+		<form:form method="post" action="guardarprofesional" modelAttribute="empleado">
 			<table>
 				<tr>
 					<td>
 						Nombre: 
 					</td>
 					<td>
-						<form:input path="nombreEmpleado"/><br>
+						<form:input path="nombreempleado"/><br>
 					</td>
 				</tr>
 				<tr>
@@ -30,18 +36,17 @@
 						Especialidad: 
 					</td>
 					<td>
-						<form:input path="especialidadEmpleado"/><br>
-						<form:hidden path="idEmpleado"/>
+						<form:input path="especialidadempleado"/><br>
+						<form:hidden path="idempleado"/>
 					</td>
 				</tr>
 				<tr>
 					<td colspan="2">
-						<input type="submit" value="Guardar Empleado">
+						<input type="submit" value="Agregar Empleado">
 					</td>
 				</tr>
 			</table>
 		</form:form>
 	</c:if>
-
 </body>
 </html>

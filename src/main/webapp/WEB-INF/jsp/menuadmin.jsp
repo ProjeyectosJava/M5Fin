@@ -38,7 +38,7 @@
 						<a class="nav-link" href="${baseURL}/administrador/listarclientes">Administrar Clientes </a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="/listarempleados">Administrar Profesionales </a>
+						<a class="nav-link" href="${baseURL}/administrador/listarprofesionales">Administrar Profesionales </a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link disabled" href="#">Controlar Pagos cliente </a>

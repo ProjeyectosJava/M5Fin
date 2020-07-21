@@ -16,7 +16,7 @@
 	<ul>
 		<li>CU1 <a  href="listarclientes">Administrar Clientes</a> Listo 
 		</li>
-		<li>CU2 <a  href="listarempleados">Administrar Empleados</a> Listo
+		<li>CU2 <a  href="listarprofesional">Administrar Empleados</a> Listo
 		</li>
 		<li>CU10 <a  href="#">Controlar Pagos Cliente</a>
 		</li>

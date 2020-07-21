@@ -1,5 +1,6 @@
 package com.m5fin.dao;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,7 +13,7 @@ public class Empleados {
 	
 	@Id
 	@GeneratedValue
-	private int ideempleado;
+	private int idempleado;
 	
 	@Column(name="nombreempleado")
 	private String nombreempleado;
@@ -24,19 +25,18 @@ public class Empleados {
 		
 	}
 
-	public Empleados(int ideempleado, String nombreempleado, String especialidadempleado) {
-		super();
-		this.ideempleado = ideempleado;
+	public Empleados(int idempleado, String nombreempleado, String especialidadempleado) {
+		this.idempleado = idempleado;
 		this.nombreempleado = nombreempleado;
 		this.especialidadempleado = especialidadempleado;
 	}
 
-	public int getIdeempleado() {
-		return ideempleado;
+	public int getIdempleado() {
+		return idempleado;
 	}
 
-	public void setIdeempleado(int ideempleado) {
-		this.ideempleado = ideempleado;
+	public void setIdempleado(int idempleado) {
+		this.idempleado = idempleado;
 	}
 
 	public String getNombreempleado() {
@@ -57,7 +57,7 @@ public class Empleados {
 
 	@Override
 	public String toString() {
-		return "Empleados [ideempleado=" + ideempleado + ", nombreempleado=" + nombreempleado
+		return "Empleados [idempleado=" + idempleado + ", nombreempleado=" + nombreempleado
 				+ ", especialidadempleado=" + especialidadempleado + "]";
 	}
 	

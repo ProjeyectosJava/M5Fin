@@ -8,6 +8,7 @@ public interface ClienteServicio {
 
 	Clientes findClienteByid(int id);
 	List<Clientes> listarClientes();
+	
 	void agregarCliente(Clientes c);
 	void eliminarCliente(int clienteid);
 	void editarCliente(Clientes c);
