@@ -15,10 +15,13 @@ import com.m5fin.servicio.ClienteServicio;
 
 
 @Controller
+@RequestMapping("/cliente")
 public class ClienteControlador {
 	
+
 	@Autowired
 	ClienteServicio cs;
+	
 	
 	@RequestMapping("/listarclientes")
 	public String verclientes(Model m) {
@@ -39,7 +42,7 @@ public class ClienteControlador {
 	public String savecliente(@ModelAttribute("cliente") Clientes cliente, Model m) {
 		System.out.println("cliente: " + cliente);
 		cs.agregarCliente(cliente); 
-		return "redirect:/listarclientes"; 
+		return "redirect:/cliente/listarclientes"; 
 	}
 
 	@RequestMapping("/eliminarcliente/{id}") 
@@ -65,5 +68,7 @@ public class ClienteControlador {
 		m.addAttribute("mensaje", "El cliente ha sido editado exitosamente"); 
 		return "redirect:/listarclientes"; 
 	}
+	
+	 
 	
 }
