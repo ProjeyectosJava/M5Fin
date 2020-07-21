@@ -14,14 +14,14 @@
 		<h3><c:out value="${txt}"></c:out></h3>
 	</c:if>
 	
-	<form:form method="post" action="../editguardar">
+	<form:form method="post" action="../editguardar" modelAttribute="cliente">
 		<table>
 			<tr>
 				<td>
 					Nombre: 
 				</td>
 				<td>
-					<form:input path="nombreCliente"/><br/>
+					<form:input path="nombrecliente"/><br/>
 				</td>
 			</tr>
 			<tr>
@@ -29,7 +29,7 @@
 					Telefono: 
 				</td>
 				<td>
-					<form:input path="telefonoCliente"/><br/>
+					<form:input path="telefonocliente"/><br/>
 				</td>
 			</tr>
 			<tr>
@@ -37,7 +37,7 @@
 					Correo electronico: 
 				</td>
 				<td>
-					<form:input path="emailCliente"/><br/>
+					<form:input path="emailcliente"/><br/>
 				</td>
 			</tr>
 			<tr>
@@ -45,7 +45,7 @@
 					Rubro: 
 				</td>
 				<td>
-					<form:input path="rubroCliente" /><br/>
+					<form:input path="rubrocliente" /><br/>
 				</td>
 			</tr>
 			<tr>
@@ -53,8 +53,8 @@
 					Direccion: 
 				</td>
 				<td>
-					<form:input path="direccionCliente" /><br/>
-					<form:hidden path="idCliente"/>
+					<form:input path="direccioncliente" /><br/>
+					<form:input path="idcliente" readonly="true"/>
 				</td>
 			</tr>
 			<tr>

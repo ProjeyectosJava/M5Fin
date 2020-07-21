@@ -8,8 +8,6 @@ import java.util.List;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
-import com.m5fin.modelo.beans.Reportes;
-
 public class ReporteDao {
 
 JdbcTemplate template;

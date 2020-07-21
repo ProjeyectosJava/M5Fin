@@ -8,14 +8,13 @@ http://www.springframework.org/schema/security
 http://www.springframework.org/schema/security/spring-security.xsd">
 
 	<http auto-config="true">
-		<intercept-url pattern="/" access="permitAll" />
-		<!-- 
-		<intercept-url pattern="/listarclientes" access="hasRole('ADMIN')" />
+		<intercept-url pattern="/*" access="permitAll" />
+		<intercept-url pattern="/test" access="hasRole('ADMIN')" />
 		<intercept-url pattern="/nuevotest" access="hasRole('USUARIO')" />
-		 -->
+		 
 	</http>
 	
-	<!-- 
+	
 	<authentication-manager>
 		<authentication-provider>
 		<user-service>
@@ -24,6 +23,6 @@ http://www.springframework.org/schema/security/spring-security.xsd">
 		</user-service>
 		</authentication-provider>
 	</authentication-manager>
-	 -->
+	 
 	
 </bean:beans>

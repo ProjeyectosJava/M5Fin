@@ -16,14 +16,14 @@
 	</c:if>
 	
 	<c:if test="${ccmensaje == null}">
-		<form:form method="post" action="guardar">
+		<form:form method="post" action="guardarcliente" modelAttribute="cliente">
 		<table>
 			<tr>
 				<td>
 					Nombre
 				</td>
 				<td>
-					<form:input path="nombreCliente" /><br/>
+					<form:input path="nombrecliente" /><br/>
 				</td>
 			</tr>
 			<tr>
@@ -31,7 +31,7 @@
 					Telefono: 
 				</td>
 				<td>
-					<form:input path="telefonoCliente" /><br/>						
+					<form:input path="telefonocliente" /><br/>						
 				</td>
 			</tr>
 			<tr>
@@ -39,7 +39,7 @@
 					Correo electronico: 
 				</td>
 				<td>
-					<form:input path="emailCliente" /><br/>
+					<form:input path="emailcliente" /><br/>
 				</td>
 			</tr>		
 			<tr>
@@ -47,7 +47,7 @@
 					Rubro: 
 				</td>
 				<td>
-					<form:input path="rubroCliente" /><br/>
+					<form:input path="rubrocliente" /><br/>
 				</td>
 			</tr>
 			<tr>
@@ -55,7 +55,7 @@
 					Direccion: 
 				</td>
 				<td>
-					<form:input path="direccionCliente" /><br/>
+					<form:input path="direccioncliente" /><br/>
 				</td>
 			</tr>
 			<tr>
@@ -65,7 +65,7 @@
 			</tr>
 		</table>
 		</form:form>
-	<</c:if>
+	</c:if>
 
 </body>
 </html>
