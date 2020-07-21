@@ -5,9 +5,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
-
-import com.m5fin.modelo.beans.ReportesActividades;;
+import org.springframework.jdbc.core.RowMapper;;
 
 /*CU14 Visualizar Actividades*/
 

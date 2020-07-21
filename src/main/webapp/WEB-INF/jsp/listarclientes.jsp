@@ -30,28 +30,28 @@
 			<th>Rubro</th>
 			<th>Direccion</th>
 		</tr>
-		<c:forEach items="${list}" var="cli">
+		<c:forEach items="${lclientes}" var="cli">
 			<tr>
-				<td>${cli.getIdCliente()}</td>
-				<td>${cli.getNombreCliente()}</td>
-				<td>${cli.getTelefonoCliente()}</td>
-				<td>${cli.getEmailCliente()}</td>
-				<td>${cli.getRubroCliente()}</td>
-				<td>${cli.getDireccionCliente()}</td>
+				<td>${cli.getIdcliente()}</td>
+				<td>${cli.getNombrecliente()}</td>
+				<td>${cli.getTelefonocliente()}</td>
+				<td>${cli.getEmailcliente()}</td>
+				<td>${cli.getRubrocliente()}</td>
+				<td>${cli.getDireccioncliente()}</td>
 				<td>
 				<c:if test="${txt == null}">
-					<a href="eliminarcliente/${cli.getIdCliente()}">Eliminar</a>
+					<a href="eliminarcliente/${cli.getIdcliente()}">Eliminar</a>
 				</c:if>
 				<c:if test="${txt != null}">
-					<a href="../eliminarcliente/${cli.getIdCliente()}">Eliminar</a>
+					<a href="../eliminarcliente/${cli.getIdcliente()}">Eliminar</a>
 				</c:if>
 				</td>
 				<td>
 				<c:if test="${txt == null}">
-					<a href="editarcliente/${cli.getIdCliente()}">Modificar</a>
+					<a href="editarcliente/${cli.getIdcliente()}">Modificar</a>
 				</c:if>
 				<c:if test="${txt != null}">
-					<a href="../editarcliente/${cli.getIdCliente()}">Modificar</a>
+					<a href="../editarcliente/${cli.getIdcliente()}">Modificar</a>
 				</c:if>
 				</td>
 			</tr>
