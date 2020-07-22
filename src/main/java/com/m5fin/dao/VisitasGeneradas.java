@@ -4,8 +4,10 @@ public class VisitasGeneradas {
 	private String nombrecliente;
 	private String telefonocliente;
 	private String direccioncliente;
+	
 	private String fechavisita;
 	private String ciudadvisita;
+	
 	private String nombreempleado;
 	
 	public VisitasGeneradas(String nombrecliente, String telefonocliente, String direccioncliente, String fechavisita,

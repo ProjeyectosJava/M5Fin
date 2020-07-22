@@ -21,8 +21,6 @@ public class AdministradorControlador {
 	@Autowired
 	ClienteServicio cs;
 
-
-
 	// --- *** CU1 CRUD CLIENTES *** ----//
 	@RequestMapping("/listarclientes")
 	public String verclientes(Model m) {
@@ -95,8 +93,7 @@ public class AdministradorControlador {
 	  
 	  
 	  @RequestMapping(value = "/guardarprofesional") 
-	  public String saveempleado(@ModelAttribute("cliente") 
-		  Empleados empleado, Model m) {
+	  public String saveempleado(@ModelAttribute("cliente") Empleados empleado, Model m) {
 		  System.out.println("empleado: " + empleado); 
 		  ps.agregarEmpleado(empleado);
 	  return "redirect:/administrador/listarprofesionales"; 

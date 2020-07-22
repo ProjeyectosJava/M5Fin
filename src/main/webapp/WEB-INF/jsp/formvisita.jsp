@@ -13,20 +13,20 @@
 	<c:if test="${ccmensaje != null}">
 		<h3><c:out value="${ccmensaje}"></c:out></h3>
 	</c:if>
-	<%-- <form:form method="post" action="generarvisita" modelAttribute="visita">
+	<%-- <form:form method="post" action="generarvisita" modelAttribute="creavisita">
 		<form:input path="fechaVisita"/>
 	
 	</form:form> 
 	aqui: ${visita.idClienteVisita}, ${visita.fechaVisita}
 	--%>
-	<form:form method="post" action="../../guardarvisita" >
+	<form:form method="post" action="../../guardarvisita"  modelAttribute="creavisita">
 		<table>
 			<tr>
 				<td>
 					Fecha de Visita: 
 				</td>
 				<td>
-					<form:input path="fechaVisita"/><br>
+					<form:input path="fechavisita"/><br>
 				</td>
 			</tr>
 			<tr>
@@ -34,7 +34,7 @@
 					Ciudad: 
 				</td>
 				<td>
-					<form:input path="ciudadVisita"/><br>
+					<form:input path="ciudadvisita"/><br>
 				</td>
 			</tr>
 			<tr>
@@ -42,7 +42,7 @@
 					Direccion: 
 				</td>
 				<td>
-					<form:input path="direccionVisita"/><br>
+					<form:input path="direccionvisita"/><br>
 				</td>
 			</tr>
 			<tr>
@@ -50,7 +50,7 @@
 					Observaciones: 
 				</td>
 				<td>
-					<form:input path="observacionVisita"/><br>
+					<form:input path="observacionvisita"/><br>
 				</td>
 			</tr>
 			<tr>
@@ -58,7 +58,7 @@
 					Resumen: 
 				</td>
 				<td>
-					<form:input path="resumenVisita"/><br>
+					<form:input path="resumenvisita"/><br>
 				</td>
 			</tr>
 			<tr>
@@ -66,8 +66,8 @@
 					Empleado: 
 				</td>
 				<td>
-					<form:select path="idEmpleadoVisita">
-						<form:options items="${listaemp}" itemLabel="nombreEmpleado"  itemValue="idEmpleado"/>
+					<form:select path="idempleadovisita">
+						<form:options items="${listaemp}" itemLabel="nombreempleado"  itemValue="idempleado"/>
 					</form:select>
 				</td>
 			</tr>
@@ -76,7 +76,7 @@
 					IdClienteVisita: 
 				</td>
 				<td>
-					<form:input path="idClienteVisita" readonly="true"/><br>
+					<form:input path="idclientevisita" readonly="true"/><br>
 				</td>
 			</tr>
 			<tr>

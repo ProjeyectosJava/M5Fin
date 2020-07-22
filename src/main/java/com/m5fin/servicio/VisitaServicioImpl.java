@@ -5,9 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.m5fin.dao.ClienteRepositorio;
-import com.m5fin.dao.Clientes;
-import com.m5fin.dao.Empleados;
+import com.m5fin.dao.VisitaRepositorio;
 import com.m5fin.dao.Visitas;
 
 
@@ -15,36 +13,21 @@ import com.m5fin.dao.Visitas;
 public class VisitaServicioImpl implements VisitaServicio{
 
 	@Autowired
-	ClienteRepositorio cr;
+	VisitaRepositorio vr;
 	
-	
+
 	@Override
-	public List<Clientes> getAllClientes() {
-		return (List<Clientes>) cr.findAll();
+	public List<Visitas> ListarVisitas() {
+		return (List<Visitas>) vr.findAll();
 	}
 
 	@Override
-	public List<Visitas> getAllVisitas() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Empleados> getAllEmpleados() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Visitas getVisitasById(int idvisita) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void addVisita(Visitas visita) {
-		// TODO Auto-generated method stub
+	public void agregarVisita(Visitas visita) {
+		vr.save(visita);
 		
 	}
+	
+	
+
 
 }
