@@ -1,6 +1,5 @@
 package com.m5fin.controladores;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,11 +12,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.m5fin.dao.Capacitaciones;
 import com.m5fin.dao.Clientes;
 import com.m5fin.dao.Empleados;
+import com.m5fin.dao.Mejoras;
 import com.m5fin.dao.Visitas;
-import com.m5fin.dao.VisitasGeneradas;
 import com.m5fin.servicio.CapacitacionServicio;
 import com.m5fin.servicio.ClienteServicio;
 import com.m5fin.servicio.EmpleadoServicio;
+import com.m5fin.servicio.MejoraServicio;
 import com.m5fin.servicio.VisitaServicio;
 
 
@@ -36,6 +36,9 @@ public class ProfesionalControlador {
 	
 	@Autowired
 	CapacitacionServicio cap;
+	
+	@Autowired
+	MejoraServicio ms;
 	
 	// CU5 ---*** REVISAR CLIENTES *** --- //
 	/* Lista los clientes existentes es una vista */
@@ -153,6 +156,7 @@ public class ProfesionalControlador {
 	    @RequestMapping("/crearcapacitacion")    
 	    public String revisarvisitas(Model m){    
 	        List<Visitas> listrevisita = vs.ListarVisitas();  
+	        System.out.println("listrevisita: " + listrevisita);
 	        m.addAttribute("listavisitas",listrevisita);  
 	        return "listarcapacitacion";
 	    }
@@ -176,8 +180,55 @@ public class ProfesionalControlador {
 		return "redirect:/profesional/crearcapacitacion";
 		}
 	// CU ---*** FIN CREAR CAPACITACION *** --- //
+		 
+		 
+		// CU ---*** INICIO CREAR ACTIVIDAD DE MEJORA *** --- //
+
+		 /* mostramos listado de clientes mara crear una mejora */
+		 @RequestMapping("/lpmclientes")
+			public String lpmclientes(Model m) {
+				List<Clientes> listacliente = cs.listarClientes();
+				m.addAttribute("lclientes", listacliente);
+				return "preingresomejoras";
+			}
+		 
+		 /* desplegamos formulario para ingresar la mejora con id de cliente asociado */
+		 @RequestMapping(value = "/gestionarmejora/{id}/{ncliente}") 
+		  public String gestionarmejora(@PathVariable int id, @PathVariable String ncliente, Model m){
+			  Mejoras regmejora = new Mejoras(); 
+			  regmejora.setIdclientemejora(id);
+			  m.addAttribute("regmejora",regmejora);
+			  System.out.println("Mostramos regmejora que pasamos al formmejora:" + regmejora);
+		  return "formmejora"; 
+		  }
+		 
+		 
+		 /* guardamos el formulario de mejora */
+		 @RequestMapping(value = "/agregarmejora") 
+		 public String guardarmejora(@ModelAttribute("regmejora") Mejoras mejora, Model m) {
+			 System.out.println("Estamos guardando la mejora: " + mejora);
+			 ms.agregarMejora(mejora);
+	   
+		return "redirect:/profesional/revisarmejoras";
+		}
+
+		// CU ---*** FIN CREAR ACTIVIDAD DE MEJORA *** --- //
+		 
+		
+		// CU ---*** INICIO LISTAR ACTIVIDAD DE MEJORA *** --- //
+		 
+		 /* mostramos listado de clientes mara crear una mejora */
+		 @RequestMapping("/revisarmejoras")
+			public String revisarmejoras(Model m) {
+				List<Mejoras> listamejoras = ms.listarMejoras();
+				m.addAttribute("listamejoras", listamejoras);
+				return "listarmejoras";
+			}
+    
+		// CU ---*** FIN LISTAR ACTIVIDAD DE MEJORA *** --- //
     
     
+     
     
 
 }
