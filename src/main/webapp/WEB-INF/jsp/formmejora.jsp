@@ -23,14 +23,14 @@
 	</c:if>
 	
 	<c:if test="${ccmensaje == null}">
-		<form:form method="post" action="../../agregarmejora">
+		<form:form method="post" action="../../agregarmejora" modelAttribute="regmejora">
 		<table>
 			<tr>
 				<td>
 					Fecha:
 				</td>
 				<td>
-					<form:input path="fechaMejora"/><br>
+					<form:input path="fechamejora"/><br>
 				</td>
 			</tr>
 			<tr>
@@ -38,7 +38,7 @@
 					Motivo: 
 				</td>
 				<td>
-					<form:input path="motivoMejora" /><br/>						
+					<form:input path="motivomejora" /><br/>						
 				</td>
 			</tr>
 			<tr>
@@ -46,7 +46,7 @@
 					Actividad: 
 				</td>
 				<td>
-					<form:input path="actividadesMejora" /><br/>
+					<form:input path="actividadesmejora" /><br/>
 				</td>
 			</tr>		
 			<tr>
@@ -54,7 +54,7 @@
 					Estado: 
 				</td>
 				<td>
-					<form:select path="estadoMejora">
+					<form:select path="estadomejora">
 						<option>En Curso</option>
 						<option>Pendiente</option>
 						<option>Finalizada</option>
@@ -65,11 +65,11 @@
 			<tr>
 				<td></td>
 				<td>
-					<form:input path="idClienteMejora" readonly="true"/>
+					<form:input path="idclientemejora" readonly="true"/>
 				</td>
 			<tr>
 				<td>
-					<input type="submit" value="Ingresar Mejora" />
+					<input type="submit" value="Guardar" />
 				</td>
 			</tr>
 		</table>

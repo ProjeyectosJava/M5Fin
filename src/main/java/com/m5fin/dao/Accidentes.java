@@ -23,29 +23,14 @@ public class Accidentes {
 	@Column(name="sucesoaccidente")
 	private String sucesoaccidente;
 	
-	@Column(name="lugarAaccidente")
-	private String lugarAaccidente;
+	@Column(name="lugaraccidente")
+	private String lugaraccidente;
 	
-	@Column(name="clienteadacciedente")
-	private int clienteadacciedente;
+	@Column(name="idclienteaccidente")
+	private int idclienteaccidente;
 
-	public Accidentes(int idaccidente, String fechaaccidente, String horaaccidente, String sucesoaccidente,
-			String lugarAaccidente, int clienteadacciedente) {
-		this.idaccidente = idaccidente;
-		this.fechaaccidente = fechaaccidente;
-		this.horaaccidente = horaaccidente;
-		this.sucesoaccidente = sucesoaccidente;
-		this.lugarAaccidente = lugarAaccidente;
-		this.clienteadacciedente = clienteadacciedente;
-	}
-	
-	public Accidentes(String fechaaccidente, String horaaccidente, String sucesoaccidente,
-			String lugarAaccidente, int clienteadacciedente) {
-		this.fechaaccidente = fechaaccidente;
-		this.horaaccidente = horaaccidente;
-		this.sucesoaccidente = sucesoaccidente;
-		this.lugarAaccidente = lugarAaccidente;
-		this.clienteadacciedente = clienteadacciedente;
+	public Accidentes() {
+		
 	}
 
 	public int getIdaccidente() {
@@ -80,28 +65,29 @@ public class Accidentes {
 		this.sucesoaccidente = sucesoaccidente;
 	}
 
-	public String getLugarAaccidente() {
-		return lugarAaccidente;
+	public String getLugaraccidente() {
+		return lugaraccidente;
 	}
 
-	public void setLugarAaccidente(String lugarAaccidente) {
-		this.lugarAaccidente = lugarAaccidente;
+	public void setLugaraccidente(String lugaraccidente) {
+		this.lugaraccidente = lugaraccidente;
 	}
 
-	public int getClienteadacciedente() {
-		return clienteadacciedente;
+	public int getIdclienteaccidente() {
+		return idclienteaccidente;
 	}
 
-	public void setClienteadacciedente(int clienteadacciedente) {
-		this.clienteadacciedente = clienteadacciedente;
+	public void setIdclienteaccidente(int idclienteaccidente) {
+		this.idclienteaccidente = idclienteaccidente;
 	}
 
 	@Override
 	public String toString() {
 		return "Accidentes [idaccidente=" + idaccidente + ", fechaaccidente=" + fechaaccidente + ", horaaccidente="
-				+ horaaccidente + ", sucesoaccidente=" + sucesoaccidente + ", lugarAaccidente=" + lugarAaccidente
-				+ ", clienteadacciedente=" + clienteadacciedente + "]";
+				+ horaaccidente + ", sucesoaccidente=" + sucesoaccidente + ", lugaraccidente=" + lugaraccidente
+				+ ", idclienteaccidente=" + idclienteaccidente + "]";
 	}
+	
 	
 	
 	

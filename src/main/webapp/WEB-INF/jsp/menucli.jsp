@@ -39,7 +39,7 @@
 	  	<div class="collapse navbar-collapse" id="navbarNavDropdown">
 		    <ul class="navbar-nav">
 		      <li class="nav-item">
-		        <a class="nav-link" href="/reportaraccidente">Reportar accidente</a> 
+		        <a class="nav-link" href="${baseURL}/cliente/reportaraccidente">Reportar accidente</a> 
 		      </li>
 		      <li class="nav-item">
 		        <a class="nav-link disabled" href="#">Solicitar asesoria especial</a> 

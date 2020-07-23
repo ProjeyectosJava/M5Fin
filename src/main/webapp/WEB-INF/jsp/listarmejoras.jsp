@@ -17,15 +17,15 @@
 	<table>
 		<tr>
 			<th>Fecha Mejora</th>
-			<th>Nombre Cliente</th>
+			<th>Id Cliente</th>
 			<th>Motivo Mejora</th>
 			<th>Actividades Mejora</th>
 			<th>Estado Mejora</th>
 		</tr>
-		<c:forEach items="${listmej}" var="lm">
+		<c:forEach items="${listamejoras}" var="lm">
 			<tr>
 				<td>${lm.getFechamejora()}</td>
-				<td>${lm.getNombrecliente()}</td>
+				<td>${lm.getIdclientemejora()}</td>
 				<td>${lm.getMotivomejora()}</td>
 				<td>${lm.getActividadesmejora()}</td>
 				<td>${lm.getEstadomejora()}</td>

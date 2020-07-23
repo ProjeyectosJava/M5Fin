@@ -26,17 +26,21 @@ public class Mejoras {
 	@Column(name = "estadomejora")
 	private String estadomejora;
 	
-	@Column(name = "idClientemejora")
-	private int idClientemejora;
+	@Column(name = "idclientemejora")
+	private int idclientemejora;
+
+	public Mejoras() {
+		
+	}
 
 	public Mejoras(int idmejora, String fechamejora, String motivomejora, String actividadesmejora, String estadomejora,
-			int idClientemejora) {
+			int idclientemejora) {
 		this.idmejora = idmejora;
 		this.fechamejora = fechamejora;
 		this.motivomejora = motivomejora;
 		this.actividadesmejora = actividadesmejora;
 		this.estadomejora = estadomejora;
-		this.idClientemejora = idClientemejora;
+		this.idclientemejora = idclientemejora;
 	}
 
 	public int getIdmejora() {
@@ -79,21 +83,19 @@ public class Mejoras {
 		this.estadomejora = estadomejora;
 	}
 
-	public int getIdClientemejora() {
-		return idClientemejora;
+	public int getIdclientemejora() {
+		return idclientemejora;
 	}
 
-	public void setIdClientemejora(int idClientemejora) {
-		this.idClientemejora = idClientemejora;
+	public void setIdclientemejora(int idclientemejora) {
+		this.idclientemejora = idclientemejora;
 	}
 
 	@Override
 	public String toString() {
 		return "Mejoras [idmejora=" + idmejora + ", fechamejora=" + fechamejora + ", motivomejora=" + motivomejora
-				+ ", actividadesmejora=" + actividadesmejora + ", estadomejora=" + estadomejora + ", idClientemejora="
-				+ idClientemejora + "]";
+				+ ", actividadesmejora=" + actividadesmejora + ", estadomejora=" + estadomejora + ", idclientemejora="
+				+ idclientemejora + "]";
 	}
 	
-	
-
 }

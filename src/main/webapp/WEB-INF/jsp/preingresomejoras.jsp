@@ -20,12 +20,12 @@
 			<th>Telefono</th>
 			<th>Email</th>
 		</tr>
-		<c:forEach items="${listaclientes}" var="cli">
+		<c:forEach items="${lclientes}" var="cli">
 			<tr>
-				<td>${cli.getNombreCliente()}</td>
-				<td>${cli.getTelefonoCliente()}</td>
-				<td>${cli.getEmailCliente()}</td>
-				<td><a href="gestionarmejora/${cli.getIdCliente()}/${cli.getNombreCliente()}">Gestionar Mejora</a>
+				<td>${cli.getNombrecliente()}</td>
+				<td>${cli.getTelefonocliente()}</td>
+				<td>${cli.getEmailcliente()}</td>
+				<td><a href="gestionarmejora/${cli.getIdcliente()}/${cli.getNombrecliente()}">Gestionar Mejora</a>
 				</td>
 			</tr>
 		</c:forEach>
