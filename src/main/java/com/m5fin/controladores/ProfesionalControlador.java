@@ -9,12 +9,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.m5fin.dao.Capacitaciones;
 import com.m5fin.dao.Clientes;
 import com.m5fin.dao.Empleados;
 import com.m5fin.dao.Visitas;
 import com.m5fin.dao.VisitasGeneradas;
+import com.m5fin.servicio.CapacitacionServicio;
 import com.m5fin.servicio.ClienteServicio;
 import com.m5fin.servicio.EmpleadoServicio;
 import com.m5fin.servicio.VisitaServicio;
@@ -33,7 +34,8 @@ public class ProfesionalControlador {
 	@Autowired
 	VisitaServicio vs;
 	
-
+	@Autowired
+	CapacitacionServicio cap;
 	
 	// CU5 ---*** REVISAR CLIENTES *** --- //
 	/* Lista los clientes existentes es una vista */
@@ -64,8 +66,8 @@ public class ProfesionalControlador {
 				System.out.println("recorriendo lista"+ L);
 				listavisexis.stream().forEach((V)->{
 					System.out.println("recorriendo lista visita" + V);		
-					VisitasGeneradas vistagenerada = new VisitasGeneradas();
 					if (L.getIdcliente() == V.getIdclientevisita()) {
+						VisitasGeneradas vistagenerada = new VisitasGeneradas();
 						System.out.println("Encontre uno igual " + L.getNombrecliente());
 						vistagenerada.setNombrecliente(L.getNombrecliente());
 						vistagenerada.setCiudadvisita(V.getCiudadvisita());
@@ -124,6 +126,36 @@ public class ProfesionalControlador {
     
     
     // CU4 ---*** PLANIFICAR VISITAS *** --- //
+	 
+	 
+	// CU ---*** INICIO CREAR CAPACITACION *** --- //
+	 /* Lista los clientes existentes es una vista */
+	    @RequestMapping("/crearcapacitacion")    
+	    public String revisarvisitas(Model m){    
+	        List<Visitas> listrevisita = vs.ListarVisitas();  
+	        m.addAttribute("listavisitas",listrevisita);  
+	        return "listarcapacitacion";
+	    }
+	 
+	    
+	    @RequestMapping(value = "/generarcapacitacion/{id}") 
+		 public String visitacliente(@PathVariable int id, Model m){
+		 Capacitaciones regcap = new Capacitaciones();
+		 regcap.setIdvisitacapacitacion(id);
+		 m.addAttribute("regcap",regcap); 
+		 System.out.println("regcap que va al formulario: " + regcap);
+		 return "formcapacitacion";
+	    }
+	    
+	    /* guardamos el formulario de capacitaion */
+		 @RequestMapping(value = "/guardarcapacitacion") 
+		 public String guardarcapacitacion(@ModelAttribute("regcap") Capacitaciones capacitacion, Model m) {
+			 System.out.println("Estamos guardando la capacitacion: " + capacitacion);
+			 cap.agregarCapacitacion(capacitacion);
+	   
+		return "redirect:/profesional/crearcapacitacion";
+		}
+	// CU ---*** FIN CREAR CAPACITACION *** --- //
     
     
     

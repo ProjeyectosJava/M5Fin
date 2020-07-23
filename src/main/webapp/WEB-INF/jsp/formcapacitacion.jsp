@@ -23,14 +23,14 @@
 	<br>
 	<c:if test="${msg == null}">
 	<h2>Creacion de Capacitacion para cliente</h2>
-	<form:form method="post" action="../crearcapacitacion">
+	<form:form method="post" action="../guardarcapacitacion" modelAttribute="regcap">
 		<table>
 			<tr>
 				<td>
 					Fecha Capacitacion
 				</td>
 				<td> 
-					<form:input path="fechaCapacitacion"/><br> 
+					<form:input path="fechacapacitacion"/><br> 
 				</td>
 			</tr>
 			<tr>
@@ -38,7 +38,7 @@
 					Hora Capacitacion 
 				</td>
 				<td>
-					<form:input path="horaCapacitacion"/><br>
+					<form:input path="horacapacitacion"/><br>
 				</td>
 			</tr>
 			<tr>
@@ -46,7 +46,7 @@
 					Numero asistente capacitacion
 				</td>
 				<td>
-					<form:input path="numAsistCapacitacion"/><br>
+					<form:input path="numasistcapacitacion"/><br>
 				</td>
 			</tr>
 			<tr>
@@ -54,12 +54,12 @@
 					Id visita
 				</td>
 				<td>
-					<form:input path="idVisitaCapacitacion" readonly="true"/><br>
+					<form:input path="idvisitacapacitacion" readonly="true"/><br>
 				</td>
 			</tr>
 			<tr>
 			<td colspan="2">
-				<input type="submit" value="Enviar Capacitacion">  
+				<input type="submit" value="Guardar">  
 			</td>
 			</tr>
 		</table>

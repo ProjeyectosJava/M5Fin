@@ -21,7 +21,7 @@
 		<h2>Listado de visitas generadas</h2>
 		<table>
 			<tr>
-				<th>Identificador Visita </th>
+				<th>Id Visita </th>
 				<th>Direccion</th>
 				<th>Ciudad </th>
 				<th>Fecha Visita</th>
@@ -30,13 +30,13 @@
 			</tr>
 			<c:forEach items="${listavisitas}" var="lgv">
 				<tr>
-					<td>${lgv.getIdVisita()}</td>
-					<td>${lgv.getDireccionVisita()}</td>
-					<td>${lgv.getCiudadVisita()}</td>
-					<td>${lgv.getFechaVisita()}</td>
-					<td>${lgv.getIdClienteVisita()}</td>
-					<td>${lgv.getIdEmpleadoVisita()}</td>
-					<td><a href="generarcapacitacion/${lgv.getIdVisita()}">Generar Capacitacion</a></td>
+					<td>${lgv.getIdvisita()}</td>
+					<td>${lgv.getDireccionvisita()}</td>
+					<td>${lgv.getCiudadvisita()}</td>
+					<td>${lgv.getFechavisita()}</td>
+					<td>${lgv.getIdclientevisita()}</td>
+					<td>${lgv.getIdempleadovisita()}</td>
+					<td><a href="generarcapacitacion/${lgv.getIdvisita()}">Generar Capacitacion</a></td>
 				</tr>
 			</c:forEach>
 		</table>
