@@ -25,6 +25,7 @@
 				<th>Direccion</th>
 				<th>Ciudad </th>
 				<th>Fecha Visita</th>
+				
 				<th>Identificador Cliente</th>
 				<th>Nombre Cliente</th>
 				<th>Empleado Asignado</th>
@@ -36,6 +37,7 @@
 					<td>${lgv.getDireccionvisita()}</td>
 					<td>${lgv.getCiudadvisita()}</td>
 					<td>${lgv.getFechavisita()}</td>
+					
 					<td>${lgv.cliente.idcliente}</td>
 					<td>${lgv.cliente.nombrecliente}</td>
 					<td>${lgv.empleado.idempleado}</td>
