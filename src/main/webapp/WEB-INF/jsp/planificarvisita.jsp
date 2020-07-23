@@ -32,11 +32,11 @@
 </div>
 </div>
 	<br>
-	<c:if test="${listavisgen.size() == 0}">
+	<c:if test="${listavisitas.size() == 0}">
 	<h4 class="text-center bg-dark text-white py-3">No existen Visitas Generadas</h4>
 	</c:if>
 	
-	<c:if test="${listavisgen.size() > 0}">
+	<c:if test="${listavisitas.size() > 0}">
 		<h4 class="text-center bg-dark text-white py-3">Visitas Generadas</h4>
 		<div class="container mt-3">
 		<div class="table-responsive-md">
@@ -53,13 +53,13 @@
 		</thead>	
 		<c:forEach items="${listavisitas}" var="lg">
 			<tr>
-				<th scope="row">${lg.nombrecliente}</th>
-				<td>${lg.telefonocliente}</td>
-				<td>${lg.direccioncliente}</td>
+				<td>${lg.cliente.nombrecliente}</td>
+				<td>${lg.cliente.telefonocliente}</td>
+				<td>${lg.cliente.direccioncliente}</td> 
 				<td>${lg.fechavisita}</td>
 				<td>${lg.ciudadvisita}</td>
-				<td>${lg.nombreempleado}</td>
-			</tr>
+				<td>${lg.empleado.nombreempleado}</td> 
+		</tr>
 		</c:forEach>
 		</table>
 		</div>

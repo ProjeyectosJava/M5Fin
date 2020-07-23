@@ -49,6 +49,25 @@ public class ProfesionalControlador {
     // CU5 ---*** FIN REVISAR CLIENTES *** --- //
     
 	// CU4 ---*** PLANIFICAR VISITAS *** --- //
+    
+	  @RequestMapping("/planificarvisitas") 
+	  public String viewcli(Model m) {
+		  System.out.println("Estamos en planificar visita en la sesion de listar clientes");
+		  List<Clientes> listcli = cs.listarClientes(); 
+		  m.addAttribute("list",listcli);
+		  
+			List<Visitas> listajpql = vs.ListarVisitasDemo();
+			m.addAttribute("listavisitas", listajpql);
+			System.out.println("lista de objeto jspl: " + listajpql);
+			return "planificarvisita";
+
+	  }	
+    
+    
+    
+    
+    
+    /*  Planificar Visitas con ForEACH 
     @RequestMapping("/planificarvisitas")
 	public String viewcli(Model m) {
 		System.out.println("Estamos en planificar visita en la sesion de listar clientes");
@@ -93,34 +112,38 @@ public class ProfesionalControlador {
 	    m.addAttribute("listavisitas",listavisitas);  
 		return "planificarvisita";
 		 
-	}
-    
-    @RequestMapping(value = "/generarvisita/{id}/{ncliente}") 
-	 public String visitacliente(@PathVariable int id, @PathVariable String ncliente, Model m){
+	} */
+	
+	
+	
+	
+	  @RequestMapping(value = "/generarvisita/{id}/{ncliente}") 
+	  public String visitacliente(@PathVariable int id, @PathVariable String ncliente, Model m){
+	  
+	  Visitas regvisita = new Visitas(); 
+	  Clientes cliente = new Clientes();
+	  cliente.setIdcliente(id);
+	  regvisita.setCliente(cliente);
+	  m.addAttribute("creavisita",regvisita);
+	  System.out.println("Mostramos despues de crear Visita m:" + m);
+	  
+	  
+	  List<Empleados> listemp=es.listarempleados();
+	  m.addAttribute("listaemp",listemp);
+	  System.out.println("Mostramos despues de listaemp:" + m);
+	  
+	  return "formvisita"; }
+	  
+	  
+	  //guardamos el formulario en tabla visita
+	  
+	  @RequestMapping(value = "/guardarvisita") 
+	  public String guardarvisita(@ModelAttribute("creavisita") Visitas visita, Model m) {
+		  System.out.println("Estamos guardando la visita"); vs.agregarVisita(visita);
+	  return "redirect:/profesional/planificarvisitas"; 
+	  }
+	 
 
-	 Visitas regvisita = new Visitas();
-	 regvisita.setIdclientevisita(id);
-	 m.addAttribute("creavisita",regvisita); 
-	 System.out.println("Mostramos despues de crear Visita m:" + m);
-	 
-	 List<Empleados> listemp=es.listarempleados();
-	 m.addAttribute("listaemp",listemp); 
-	 System.out.println("Mostramos despues de listaemp:" + m);
-	 
-	 return "formvisita";
-}
-    
-    
-	/* guardamos el formulario en tabla visita */
-	 @RequestMapping(value = "/guardarvisita") 
-	 public String guardarvisita(@ModelAttribute("creavisita") Visitas visita, Model m) {
-		 System.out.println("Estamos guardando la visita");
-		 vs.agregarVisita(visita);
-  
-		 
-	return "redirect:/profesional/planificarvisitas";
-	}
- 
     
     
     
