@@ -1,6 +1,7 @@
 <%@ include file="menupro.jsp" %>
 
 <h4 class="text-center bg-dark text-white py-3">Clientes</h4>
+	
 <div class="container mt-3">
 <div class="table-responsive-md">
 <table class="table">
@@ -27,37 +28,42 @@
 				 -->
 			</tr>
 		</c:forEach>
-	</table>
+</table>
+</div>
+</div>
 	<br>
 	<c:if test="${listavisgen.size() == 0}">
-	<h3>No hay visitas generadas</h3>
+	<h4 class="text-center bg-dark text-white py-3">No existen Visitas Generadas</h4>
 	</c:if>
 	
 	<c:if test="${listavisgen.size() > 0}">
-		<hr>
-		<h2>Listado de visitas generadas</h2>
-		<table border="1">
+		<h4 class="text-center bg-dark text-white py-3">Visitas Generadas</h4>
+		<div class="container mt-3">
+		<div class="table-responsive-md">
+		<table class="table">
+		<thead class="thead-dark">
 			<tr>
-				<th>Nombre Cliente</th>
-				<th>Telefono</th>
-				<th>Direccion</th>
-				<th>Fecha Visita</th>
-				<th>Ciudad</th>
-				<th>Empleado Asignado</th>
+				<th scope="col">Nombre Cliente</th>
+				<th scope="col">Telefono</th>
+				<th scope="col">Direccion</th>
+				<th scope="col">Fecha Visita</th>
+				<th scope="col">Ciudad</th>
+				<th scope="col">Empleado Asignado</th>
 			</tr>
-			
-			<c:forEach items="${listavisitas}" var="lg">
-				<tr>
-					<td>${lg.nombrecliente}</td>
-					<td>${lg.telefonocliente}</td>
-					<td>${lg.direccioncliente}</td>
-					<td>${lg.fechavisita}</td>
-					<td>${lg.ciudadvisita}</td>
-					<td>${lg.nombreempleado}</td>
-				</tr>
-			</c:forEach>
+		</thead>	
+		<c:forEach items="${listavisitas}" var="lg">
+			<tr>
+				<th scope="row">${lg.nombrecliente}</th>
+				<td>${lg.telefonocliente}</td>
+				<td>${lg.direccioncliente}</td>
+				<td>${lg.fechavisita}</td>
+				<td>${lg.ciudadvisita}</td>
+				<td>${lg.nombreempleado}</td>
+			</tr>
+		</c:forEach>
 		</table>
+		</div>
+		</div>
 	</c:if>
-</div>
-</div>
+
 <%@ include file="footer.jsp"%>

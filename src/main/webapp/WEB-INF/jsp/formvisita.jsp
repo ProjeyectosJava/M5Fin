@@ -1,93 +1,64 @@
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
-	<a href="../../planificarvisita">Volver</a>
-	<hr>
-	<h1>Generar Visita Cliente ${ncliente}</h1>
-	<c:if test="${ccmensaje != null}">
-		<h3><c:out value="${ccmensaje}"></c:out></h3>
-	</c:if>
-	<%-- <form:form method="post" action="generarvisita" modelAttribute="creavisita">
-		<form:input path="fechaVisita"/>
-	
-	</form:form> 
-	aqui: ${visita.idClienteVisita}, ${visita.fechaVisita}
-	--%>
-	<form:form method="post" action="../../guardarvisita"  modelAttribute="creavisita">
-		<table>
-			<tr>
-				<td>
-					Fecha de Visita: 
-				</td>
-				<td>
-					<form:input path="fechavisita"/><br>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					Ciudad: 
-				</td>
-				<td>
-					<form:input path="ciudadvisita"/><br>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					Direccion: 
-				</td>
-				<td>
-					<form:input path="direccionvisita"/><br>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					Observaciones: 
-				</td>
-				<td>
-					<form:input path="observacionvisita"/><br>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					Resumen: 
-				</td>
-				<td>
-					<form:input path="resumenvisita"/><br>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					Empleado: 
-				</td>
-				<td>
-					<form:select path="idempleadovisita">
-						<form:options items="${listaemp}" itemLabel="nombreempleado"  itemValue="idempleado"/>
-					</form:select>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					IdClienteVisita: 
-				</td>
-				<td>
-					<form:input path="idclientevisita" readonly="true"/><br>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<input type="submit" value="Generar visita" />
-				</td>
-			</tr>
-		</table>
-		<br>
-	
-	</form:form>
+<%@ include file="menupro.jsp"%>
+
+<h4 class="text-center bg-dark text-white py-3">Generando visita cliente ${ncliente}</h4>
+<div class="container mt-4">
+	<div class="row justify-content-center align-items-center">
+		<div class="col-md-10">
+		
+			<form:form method="post" action="../../guardarvisita"  modelAttribute="creavisita">
+				<div class="form-group row">
+					<label for="fechavis" class="col-md-2 col-form-label mr-1">Fecha de Visita:</label>
+					<div class="col-md-7"> 
+						<form:input class="form-control" id="fechavis" path="fechavisita"/>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="ciudadvis" class="col-md-2 col-form-label mr-1">Ciudad:</label>
+					<div class="col-md-7"> 
+						<form:input class="form-control" id="ciudadvis" path="ciudadvisita"/>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="direccionvis" class="col-md-2 col-form-label mr-1">Direccion:</label>
+					<div class="col-md-7"> 
+						<form:input class="form-control" id="direccionvis" path="direccionvisita"/>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="obsvis" class="col-md-2 col-form-label mr-1">Observaciones:</label>
+					<div class="col-md-7"> 
+						<form:input class="form-control" id="obsvis" path="observacionvisita"/>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="resumenvis" class="col-md-2 col-form-label mr-1">Resumen:</label>
+					<div class="col-md-7"> 
+						<form:input class="form-control" id="resumenvis" path="resumenvisita"/>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="empleadovis" class="col-md-2 col-form-label mr-1">Empleado:</label> 
+					<div class="col-md-7">
+						<form:select id="empleadovis" path="idempleadovisita">
+							<div class="input-group-prepend">
+							<form:options class="input-group-text" items="${listaemp}" itemLabel="nombreempleado"  itemValue="idempleado"/>
+							</div>
+						</form:select>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="idclivis" class="col-md-2 col-form-label mr-1">IdClienteVisita:</label>
+					<div class="col-md-7"> 
+						<form:input class="form-control" id="idclivis" path="idclientevisita" readonly="true"/>
+					</div>
+				</div>
+				<div class="form-group row">
+					<input type="submit" class="btn btn-dark" value="Guardar" />
+				</div>
+			</form:form>
+		</div>
+	</div>
+</div>
 
 </body>
 </html>

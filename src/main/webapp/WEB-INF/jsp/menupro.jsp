@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
@@ -50,7 +50,7 @@
 						<a class="nav-link" href="${baseURL}/profesional/revisarclientes">Revisar Cliente</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link disabled" href="#">Crear caso de asesorÃ­a</a>
+						<a class="nav-link disabled" href="#">Crear caso de asesoría</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="/lpmclientes">Ingresar actividad de mejora </a>

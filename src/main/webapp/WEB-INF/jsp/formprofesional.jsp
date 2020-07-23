@@ -1,52 +1,30 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ include file="menuadmin.jsp"%>
 
-<!-- tag de Spring -->
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%> 
-
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
-	<a href="listarempleados">Volver</a>
-	<hr>
-	<h1>Agregar empleado</h1>
-	<c:if test="${ccmensaje != null}">
-		<h3><c:out value="${ccmensaje}"></c:out></h3>
-	</c:if>
-	
-	<c:if test="${ccmensaje == null}">
-		<form:form method="post" action="guardarprofesional" modelAttribute="empleado">
-			<table>
-				<tr>
-					<td>
-						Nombre: 
-					</td>
-					<td>
-						<form:input path="nombreempleado"/><br>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						Especialidad: 
-					</td>
-					<td>
-						<form:input path="especialidadempleado"/><br>
+<h4 class="text-center bg-dark text-white py-3">Nuevo profesional</h4>
+<div class="container mt-4">
+	<div class="row justify-content-center align-items-center">
+		<div class="col-md-10">
+		
+			<form:form method="post" action="guardarprofesional" modelAttribute="empleado">
+				<div class="form-group row">
+					<label for="nombreemp" class="col-md-2 col-form-label mr-1">Nombre:</label>
+					<div class="col-md-7">	
+						<form:input class="form-control" id="nombreemp" path="nombreempleado"/>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="especialidademp" class="col-md-2 col-form-label mr-1">Especialidad:</label>
+					<div class="col-md-7">
+						<form:input class="form-control" id="especialidademp"  path="especialidadempleado"/>
 						<form:hidden path="idempleado"/>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<input type="submit" value="Agregar Empleado">
-					</td>
-				</tr>
-			</table>
-		</form:form>
-	</c:if>
+					</div>
+				</div>
+				<div class="form-group row">
+					<input type="submit" class="btn btn-dark" value="Guardar">
+				</div>
+			</form:form>
+		</div>
+	</div>
+</div>
 </body>
 </html>
