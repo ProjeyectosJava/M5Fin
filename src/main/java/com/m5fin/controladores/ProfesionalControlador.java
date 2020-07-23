@@ -143,15 +143,12 @@ public class ProfesionalControlador {
 	  return "redirect:/profesional/planificarvisitas"; 
 	  }
 	 
-
-    
-    
-    
-    
-    // CU4 ---*** PLANIFICAR VISITAS *** --- //
+   
+    // CU4 ---*** FIN PLANIFICAR VISITAS *** --- //
 	 
 	 
 	// CU ---*** INICIO CREAR CAPACITACION *** --- //
+	  
 	 /* Lista los clientes existentes es una vista */
 	    @RequestMapping("/crearcapacitacion")    
 	    public String revisarvisitas(Model m){    

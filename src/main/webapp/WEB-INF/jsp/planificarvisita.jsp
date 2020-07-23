@@ -53,13 +53,13 @@
 		</thead>	
 		<c:forEach items="${listavisitas}" var="lg">
 			<tr>
-				<td>${lg.cliente.nombrecliente}</td>
-				<td>${lg.cliente.telefonocliente}</td>
-				<td>${lg.cliente.direccioncliente}</td> 
-				<td>${lg.fechavisita}</td>
-				<td>${lg.ciudadvisita}</td>
-				<td>${lg.empleado.nombreempleado}</td> 
-		</tr>
+				 	<td>${lg.cliente.nombrecliente}</td>
+					<td>${lg.cliente.telefonocliente}</td>
+					<td>${lg.cliente.direccioncliente}</td> 
+					<td>${lg.fechavisita}</td>
+					<td>${lg.ciudadvisita}</td>
+					<td>${lg.empleado.nombreempleado}</td> 
+			</tr>
 		</c:forEach>
 		</table>
 		</div>

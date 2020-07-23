@@ -26,7 +26,9 @@
 				<th>Ciudad </th>
 				<th>Fecha Visita</th>
 				<th>Identificador Cliente</th>
+				<th>Nombre Cliente</th>
 				<th>Empleado Asignado</th>
+				<th>Nombre Empleado</th>
 			</tr>
 			<c:forEach items="${listavisitas}" var="lgv">
 				<tr>
@@ -34,8 +36,10 @@
 					<td>${lgv.getDireccionvisita()}</td>
 					<td>${lgv.getCiudadvisita()}</td>
 					<td>${lgv.getFechavisita()}</td>
-					<td>${lgv.getIdclientevisita()}</td>
-					<td>${lgv.getIdempleadovisita()}</td>
+					<td>${lgv.cliente.idcliente}</td>
+					<td>${lgv.cliente.nombrecliente}</td>
+					<td>${lgv.empleado.idempleado}</td>
+					<td>${lgv.empleado.nombreempleado}</td>
 					<td><a href="generarcapacitacion/${lgv.getIdvisita()}">Generar Capacitacion</a></td>
 				</tr>
 			</c:forEach>
