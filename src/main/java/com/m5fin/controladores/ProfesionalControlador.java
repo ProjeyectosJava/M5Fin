@@ -152,22 +152,29 @@ public class ProfesionalControlador {
 	 
 	// CU ---*** INICIO CREAR CAPACITACION *** --- //
 	  
-	 /* Lista los clientes existentes es una vista */
+	 /* Lista los clientes para generar capacitaciones*/
 	    @RequestMapping("/crearcapacitacion")    
-	    public String revisarvisitas(Model m){    
+	    public String crearcapacitacion(Model m){    
 	        List<Visitas> listrevisita = vs.ListarVisitas();  
-	        System.out.println("listrevisita: " + listrevisita);
 	        m.addAttribute("listavisitas",listrevisita);  
+	        System.out.println("listrevisita: " + listrevisita);
+	        
+	        List<Capacitaciones> listcap = cap.listarCapacitaciones();
+	        m.addAttribute("listacapacitaciones", listcap);
+	        System.out.println("listacapacitaciones : " + listcap);
+
 	        return "listarcapacitacion";
 	    }
 	 
 	    
-	    @RequestMapping(value = "/generarcapacitacion/{id}") 
-		 public String visitacliente(@PathVariable int id, Model m){
+	    @RequestMapping(value = "/generarcapacitacion/{id}/{ncliente}") 
+		 public String generarcapacitacion(@PathVariable int id, @PathVariable String ncliente, Model m){
 		 Capacitaciones regcap = new Capacitaciones();
 		 regcap.setIdvisitacapacitacion(id);
 		 m.addAttribute("regcap",regcap); 
+		 m.addAttribute("ncliente", ncliente);
 		 System.out.println("regcap que va al formulario: " + regcap);
+		 System.out.println("ncliente va al formcapacitacion: " + ncliente);
 		 return "formcapacitacion";
 	    }
 	    

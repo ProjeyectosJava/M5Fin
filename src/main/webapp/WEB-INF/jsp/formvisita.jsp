@@ -41,7 +41,7 @@
 					<div class="col-md-7">
 						<form:select id="empleadovis" path="empleado.idempleado">
 							<div class="input-group-prepend">
-							<form:options class="input-group-text" items="${listaemp}" itemLabel="nombreempleado"  itemValue="idempleado"/>
+								<form:options class="input-group-text" items="${listaemp}" itemLabel="nombreempleado"  itemValue="idempleado"/>
 							</div>
 						</form:select>
 					</div>
@@ -60,5 +60,4 @@
 	</div>
 </div>
 
-</body>
-</html>
+<%@ include file="footer.jsp"%>

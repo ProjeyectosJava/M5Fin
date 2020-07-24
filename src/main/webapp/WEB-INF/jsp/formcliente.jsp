@@ -44,5 +44,5 @@
 		</div>
 	</div>
 </div>
-</body>
-</html>
+
+<%@ include file="menupro.jsp"%>
