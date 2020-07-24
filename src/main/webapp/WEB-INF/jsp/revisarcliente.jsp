@@ -1,5 +1,6 @@
 <%@ include file="menupro.jsp"%>
 
+<h4 class="text-center bg-dark text-white py-3">Revision de Clientes</h4>
 
 <div class="table-responsive-md">
 <table class="table">

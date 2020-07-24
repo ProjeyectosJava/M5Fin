@@ -1,35 +1,28 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
-	<a href="index.jsp">Menu Principal</a>
-	<hr>
-	<h1>Ingresar Mejoras</h1>	
-	<c:if test="${txt != null}">
-	<h3><c:out value="${txt}"></c:out></h3>
-</c:if>
-	<table>
-		<tr>
-			<th>Nombre</th>
-			<th>Telefono</th>
-			<th>Email</th>
-		</tr>
-		<c:forEach items="${lclientes}" var="cli">
-			<tr>
-				<td>${cli.getNombrecliente()}</td>
-				<td>${cli.getTelefonocliente()}</td>
-				<td>${cli.getEmailcliente()}</td>
-				<td><a href="gestionarmejora/${cli.getIdcliente()}/${cli.getNombrecliente()}">Gestionar Mejora</a>
-				</td>
-			</tr>
-		</c:forEach>
+<%@ include file="menupro.jsp" %>
+
+<h4 class="text-center bg-dark text-white py-3">Ingresar Actividad de Mejora</h4>
+<div class="container mt-3">
+	<div class="table-responsive-md">
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Nombre</th>
+					<th scope="col">Telefono</th>
+					<th scope="col">Email</th>
+					<th scope="col">Crear Mejora</th>
+				</tr>
+			</thead>
+				<c:forEach items="${lclientes}" var="cli">
+					<tr>
+						<th scope="row">${cli.getNombrecliente()}</th>
+						<td>${cli.getTelefonocliente()}</td>
+						<td>${cli.getEmailcliente()}</td>
+						<td><a href="gestionarmejora/${cli.getIdcliente()}/${cli.getNombrecliente()}">Crear</a>
+						</td>
+					</tr>
+				</c:forEach>
 	</table>
-	<br>
-</body>
-</html>
+</div>
+</div>
+
+<%@ include file="footer.jsp" %>

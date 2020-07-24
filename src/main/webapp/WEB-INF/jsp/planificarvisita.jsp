@@ -1,6 +1,6 @@
 <%@ include file="menupro.jsp" %>
 
-<h4 class="text-center bg-dark text-white py-3">Clientes</h4>
+<h4 class="text-center bg-dark text-white py-3">Planificar visitas de Clientes</h4>
 	
 <div class="container mt-3">
 <div class="table-responsive-md">

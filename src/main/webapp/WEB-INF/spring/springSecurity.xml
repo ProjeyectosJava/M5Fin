@@ -8,21 +8,40 @@ http://www.springframework.org/schema/security
 http://www.springframework.org/schema/security/spring-security.xsd">
 
 	<http auto-config="true">
-		<intercept-url pattern="/*" access="permitAll" />
-		<intercept-url pattern="/test" access="hasRole('ADMIN')" />
-		<intercept-url pattern="/nuevotest" access="hasRole('USUARIO')" />
-		 
-	</http>
+		<!-- 
+		<intercept-url pattern="/" access="hasRole('SUPER')" />
+		 -->
+		 <intercept-url pattern="/" access="permitAll" />
+		
+		<intercept-url pattern="/submenuadmin" access="hasRole('ADMIN')" />
+		<intercept-url pattern="/submenuprof" access="hasRole('PROF')" />
+		<intercept-url pattern="/submenucliente" access="hasRole('CLIENTE')" />
+		
+		<intercept-url pattern="/administrador/*" access="hasRole('ADMIN')" />
+		<intercept-url pattern="/profesional/*" access="hasRole('PROF')" />
+		<intercept-url pattern="/cliente/*" access="hasRole('CLIENTE')" />
 	
+	<!-- 
+		<form-login 
+			login-page="/login"
+			authentication-failure-url="/error"
+       		username-parameter="username"
+       		password-parameter="password"
+		/>
+		<csrf />
+		<logout logout-success-url="/login" />
+		-->
+	</http>
 	
 	<authentication-manager>
 		<authentication-provider>
 		<user-service>
-			<user name="manuel" password="{noop}1234" authorities="ROLE_ADMIN" />
-			<user name="javier" password="{noop}5678" authorities="ROLE_USUARIO" />
+			<user name="admin" password="{noop}1234" authorities="ROLE_ADMIN" />
+			<user name="profe" password="{noop}1234" authorities="ROLE_PROF" />
+			<user name="clien" password="{noop}1234" authorities="ROLE_CLIENTE" />
+			<user name="super" password="{noop}1234" authorities="ROLE_ADMIN, ROLE_PROF, ROLE_CLIENTE" />
 		</user-service>
 		</authentication-provider>
 	</authentication-manager>
 	 
-	
 </bean:beans>

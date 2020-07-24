@@ -24,6 +24,4 @@
 
 <a href="formprofesional" class="btn btn-dark">Agregar Profesional</a>
 
-
-</body>
-</html>
+<%@ include file="footer.jsp"%>
