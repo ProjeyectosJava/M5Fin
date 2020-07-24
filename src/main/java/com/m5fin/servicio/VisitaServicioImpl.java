@@ -34,7 +34,7 @@ public class VisitaServicioImpl implements VisitaServicio{
 	}
 
 	@Override
-	public List<Visitas> ListarVisitasDemo() {
+	public List<Visitas> ListarVisitasEspecial() {
 		// TODO Auto-generated method stub
 		
 		/*
@@ -50,6 +50,8 @@ public class VisitaServicioImpl implements VisitaServicio{
 		System.out.println("Listando query " + query);
 		return query.getResultList();
 	}
+	
+	
 	
 	
 

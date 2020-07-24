@@ -59,7 +59,7 @@ public class ProfesionalControlador {
 		  List<Clientes> listcli = cs.listarClientes(); 
 		  m.addAttribute("list",listcli);
 		  
-			List<Visitas> listajpql = vs.ListarVisitasDemo();
+			List<Visitas> listajpql = vs.ListarVisitasEspecial();
 			m.addAttribute("listavisitas", listajpql);
 			System.out.println("lista de objeto jspl: " + listajpql);
 			return "planificarvisita";

@@ -42,7 +42,7 @@
 		        <a class="nav-link" href="${baseURL}/cliente/reportaraccidente">Reportar accidente</a> 
 		      </li>
 		      <li class="nav-item">
-		        <a class="nav-link disabled" href="#">Solicitar asesoria especial</a> 
+		        <a class="nav-link" href="${baseURL}/cliente/visitasasesoria">Solicitar asesoria especial</a> 
 		      </li>
 		    </ul>
 	  	</div>
