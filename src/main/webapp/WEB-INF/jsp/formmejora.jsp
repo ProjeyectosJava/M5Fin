@@ -39,7 +39,7 @@
 					</div>
 					<div class="form-group row">
 						<div class="col-md-7">
-							<form:input class="form-control" id="idclimej" path="idclientemejora" readonly="true"/>
+							<form:input class="form-control" id="idclimej" path="cliente.idcliente" readonly="true"/>
 						</div>
 					</div>
 					<div class="form-group row">

@@ -11,7 +11,7 @@ public interface AsesoriaServicio {
 	void agregaAsesoria(Asesorias asesoria);
 	void eliminaAsesoria(int idasesoria);
 	
-	
+	List<Asesorias> ListarAsesoriasEspecial(); 
 	
 	
 }

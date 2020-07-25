@@ -11,10 +11,18 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.m5fin.dao.Asesorias;
+import com.m5fin.dao.Capacitaciones;
 import com.m5fin.dao.Clientes;
 import com.m5fin.dao.Empleados;
+import com.m5fin.dao.Mejoras;
+import com.m5fin.dao.Visitas;
+import com.m5fin.servicio.AsesoriaServicio;
+import com.m5fin.servicio.CapacitacionServicio;
 import com.m5fin.servicio.ClienteServicio;
 import com.m5fin.servicio.EmpleadoServicio;
+import com.m5fin.servicio.MejoraServicio;
+import com.m5fin.servicio.VisitaServicio;
 
 
 
@@ -26,6 +34,19 @@ public class AdministradorControlador {
 	
 	@Autowired
 	ClienteServicio cs;
+	
+	@Autowired
+	CapacitacionServicio cap;
+	
+	@Autowired
+	VisitaServicio vs;	
+	
+	@Autowired
+	MejoraServicio ms;
+	
+	@Autowired
+	AsesoriaServicio as;
+	
 
 	// --- *** CU1 CRUD CLIENTES *** ----//
 	@RequestMapping("/listarclientes")
@@ -129,9 +150,84 @@ public class AdministradorControlador {
 	  
 	  // --- *** FIN CU1 CRUD PROFESIONALES *** ----//
 	  
+	// --- *** INICIO CU VISUALIZAR ACTIVIDADES *** ----//
+	  
+	  @RequestMapping("/visualizadoractividades")
+		public String visualizadoractividades(Model m) {
+			System.out.println("lo enviamos a un menu para elejir una actividad");
+			return "menuvisact";
+		}
+	  
+	  @RequestMapping("/vcapacitaciones")
+		public String vcapacitaciones(Model m) {
+		  int opcion = 1;
+		  List<Capacitaciones> listacapacitaciones = cap.ListarCapacitacionesEspecial();
+		  m.addAttribute("listacapacitaciones", listacapacitaciones);
+		  m.addAttribute("opcion", opcion);
+		  
+		  listacapacitaciones.stream().forEach((C)->{
+			  System.out.println("Elemento: " + C);
+			  System.out.println("Fechacap " + C.getFechacapacitacion());
+			  System.out.println("Empleado name " + C.getVisita().getEmpleado().getNombreempleado());
+		  });
+		  System.out.println("pasamos una lista de capacitaciones " + listacapacitaciones);
+		  System.out.println("pasamos opcion: " + opcion);
+		  System.out.println("pasamo el model m asi: " + m);
+		return "menuvisact";
+		}
+	  
+	  @RequestMapping("/vvisitas")
+		public String vvisitas(Model m) {
+		  int opcion = 2;
+		  List<Visitas> listavisitas = vs.ListarVisitasEspecial();
+		  m.addAttribute("listavisitas", listavisitas);
+		  m.addAttribute("opcion", opcion);
+		  
+		  listavisitas.stream().forEach((C)->{
+			  System.out.println("Elemento: " + C);
+			  System.out.println("Fechacap " + C.getEmpleado().getNombreempleado());
+		  });
+		  System.out.println("pasamos una lista de capacitaciones " + listavisitas);
+		  System.out.println("pasamos opcion: " + opcion);
+		  System.out.println("pasamo el model m asi: " + m);
+		return "menuvisact";
+		}
+	  
+	  @RequestMapping("/vmejoras")
+		public String vmejoras(Model m) {
+		  int opcion = 3;
+		  List<Mejoras> listamejoras = ms.ListarMejorasEspecial();
+		  m.addAttribute("listamejoras", listamejoras);
+		  m.addAttribute("opcion", opcion);
+		  
+		  listamejoras.stream().forEach((C)->{
+			  C.getCliente().getIdcliente();
+		  });
+		  System.out.println("pasamos una lista de capacitaciones " + listamejoras);
+		  System.out.println("pasamos opcion: " + opcion);
+		  System.out.println("pasamo el model m asi: " + m);
+		return "menuvisact";
+		}
 	  
 	  
+	  @RequestMapping("/vasesorias")
+		public String vasesorias(Model m) {
+		  int opcion = 4;
+		  List<Asesorias> listaasesorias = as.ListarAsesoriasEspecial();
+		  m.addAttribute("listaasesorias", listaasesorias);
+		  m.addAttribute("opcion", opcion);
+		  
+		  List<Visitas> listavisita = vs.ListarVisitasEspecial();
+		  
+		  
+		  System.out.println("pasamos una lista de capacitaciones " + listaasesorias);
+		  System.out.println("pasamos opcion: " + opcion);
+		  System.out.println("pasamo el model m asi: " + m);
+		  System.out.println("listavisita: " + listavisita);
+		return "menuvisact";
+		}
 	  
+	  // --- *** FIN CU VISUALIZAR ACTIVIDADES *** ----//
 	 
 
 }

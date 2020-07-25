@@ -27,7 +27,7 @@
 				<div class="form-group row">
 					<label for="idclicap" class="col-md-2 col-form-label mr-1">Id Visita:</label>
 					<div class="col-md-7">
-						<form:input class="form-control" id="idclicap" path="idvisitacapacitacion" readonly="true"/>
+						<form:input class="form-control" id="idclicap" path="visita.idvisita" readonly="true"/>
 					</div>
 				</div>
 				<div class="form-group row">

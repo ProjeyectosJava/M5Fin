@@ -170,7 +170,9 @@ public class ProfesionalControlador {
 	    @RequestMapping(value = "/generarcapacitacion/{id}/{ncliente}") 
 		 public String generarcapacitacion(@PathVariable int id, @PathVariable String ncliente, Model m){
 		 Capacitaciones regcap = new Capacitaciones();
-		 regcap.setIdvisitacapacitacion(id);
+		 Visitas visita = new Visitas();
+		 visita.setIdvisita(id);
+		 regcap.setVisita(visita);
 		 m.addAttribute("regcap",regcap); 
 		 m.addAttribute("ncliente", ncliente);
 		 System.out.println("regcap que va al formulario: " + regcap);
@@ -203,7 +205,9 @@ public class ProfesionalControlador {
 		 @RequestMapping(value = "/gestionarmejora/{id}/{ncliente}") 
 		  public String gestionarmejora(@PathVariable int id, @PathVariable String ncliente, Model m){
 			  Mejoras regmejora = new Mejoras(); 
-			  regmejora.setIdclientemejora(id);
+			  Clientes cliente = new Clientes();
+			  cliente.setIdcliente(id);
+			  regmejora.setCliente(cliente);
 			  m.addAttribute("regmejora",regmejora);
 			  System.out.println("Mostramos regmejora que pasamos al formmejora:" + regmejora);
 		  return "formmejora"; 
@@ -229,6 +233,7 @@ public class ProfesionalControlador {
 			public String revisarmejoras(Model m) {
 				List<Mejoras> listamejoras = ms.listarMejoras();
 				m.addAttribute("listamejoras", listamejoras);
+				System.out.println("Listamejoras: " + listamejoras);
 				return "listarmejoras";
 			}
     

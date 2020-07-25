@@ -22,7 +22,7 @@
 <body>
 <c:set var="baseURL" value="${pageContext.request.contextPath}"></c:set>
 <header>
-	<h3 class="bg-success text-white" style="margin-bottom:0px;">
+	<h3 class="bg-success text-white mb-0">
 		Zona Cliente
 	</h3>
 	<nav class="navbar navbar-expand-md bg-success navbar-dark">
