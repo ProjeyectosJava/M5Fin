@@ -4,4 +4,5 @@ encoding//src/main/resources=UTF-8
 encoding//src/main/webapp/WEB-INF/jsp/formcliente.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/jsp/formeditcliente.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/jsp/listarcapacitacion.jsp=UTF-8
+encoding//src/test/java=UTF-8
 encoding/<project>=UTF-8

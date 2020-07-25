@@ -62,7 +62,10 @@
 					Asesoria Especial 
 				</td>
 				<td>
-					<form:input path="especialasesoria"/><br>
+					<form:select path="especialasesoria">
+						<option>Si</option>
+						<option selected>No</option>
+					</form:select>			
 				</td>
 			</tr>		
 			<tr>

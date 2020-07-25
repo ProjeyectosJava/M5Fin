@@ -2,6 +2,8 @@ package com.m5fin.controladores;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,10 +16,14 @@ import com.m5fin.dao.Empleados;
 import com.m5fin.servicio.ClienteServicio;
 import com.m5fin.servicio.EmpleadoServicio;
 
+
+
 @Controller
 @RequestMapping("/administrador")
 public class AdministradorControlador {
 
+	static Logger log = LoggerFactory.getLogger(ClienteControlador.class.getName());
+	
 	@Autowired
 	ClienteServicio cs;
 
@@ -41,12 +47,14 @@ public class AdministradorControlador {
 	public String savecliente(@ModelAttribute("cliente") Clientes cliente, Model m) {
 		System.out.println("cliente: " + cliente);
 		cs.agregarCliente(cliente);
+		 log.info("Registramos al nuevo cliente: " + cliente.getNombrecliente() + " id: " + cliente.getIdcliente());
 		return "redirect:/administrador/listarclientes";
 	}
 
 	@RequestMapping("/eliminarcliente/{id}")
 	public String eliminar(@PathVariable int id, Model m) {
 		cs.eliminarCliente(id);
+		log.debug("Eliminamos el cliente id: " + id);
 		m.addAttribute("mensaje", "El cliente se eliminó exitosamente");
 		return "redirect:/administrador/listarclientes";
 	}
