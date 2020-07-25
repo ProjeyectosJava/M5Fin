@@ -8,5 +8,7 @@ public interface CapacitacionServicio {
 	
 	void agregarCapacitacion(Capacitaciones cap);
 	List<Capacitaciones> listarCapacitaciones();
+	
+	List<Capacitaciones> ListarCapacitacionesEspecial(); 
 
 }

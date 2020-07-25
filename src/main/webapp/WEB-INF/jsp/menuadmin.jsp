@@ -47,7 +47,7 @@
 						<a class="nav-link disabled" href="#">Calcular Accidentabilidad</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link"	href="/visualizadoractividades">Visualizar Actividades</a>
+						<a class="nav-link"	href="${baseURL}/administrador/visualizadoractividades">Visualizar Actividades</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link disabled" href="#">Notificar	atrasos</a>

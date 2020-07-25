@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -26,21 +28,27 @@ public class Mejoras {
 	@Column(name = "estadomejora")
 	private String estadomejora;
 	
+	/* reemplazamos la llave foranea por el @many y @join
 	@Column(name = "idclientemejora")
 	private int idclientemejora;
-
+	*/
+	
+	@ManyToOne
+	@JoinColumn(name = "idclientemejora") 
+	Clientes cliente;
+	
 	public Mejoras() {
 		
 	}
 
 	public Mejoras(int idmejora, String fechamejora, String motivomejora, String actividadesmejora, String estadomejora,
-			int idclientemejora) {
+			Clientes cliente) {
 		this.idmejora = idmejora;
 		this.fechamejora = fechamejora;
 		this.motivomejora = motivomejora;
 		this.actividadesmejora = actividadesmejora;
 		this.estadomejora = estadomejora;
-		this.idclientemejora = idclientemejora;
+		this.cliente = cliente;
 	}
 
 	public int getIdmejora() {
@@ -83,19 +91,20 @@ public class Mejoras {
 		this.estadomejora = estadomejora;
 	}
 
-	public int getIdclientemejora() {
-		return idclientemejora;
+	public Clientes getCliente() {
+		return cliente;
 	}
 
-	public void setIdclientemejora(int idclientemejora) {
-		this.idclientemejora = idclientemejora;
+	public void setCliente(Clientes cliente) {
+		this.cliente = cliente;
 	}
 
 	@Override
 	public String toString() {
 		return "Mejoras [idmejora=" + idmejora + ", fechamejora=" + fechamejora + ", motivomejora=" + motivomejora
-				+ ", actividadesmejora=" + actividadesmejora + ", estadomejora=" + estadomejora + ", idclientemejora="
-				+ idclientemejora + "]";
+				+ ", actividadesmejora=" + actividadesmejora + ", estadomejora=" + estadomejora + ", cliente=" + cliente
+				+ "]";
 	}
+
 	
 }

@@ -12,6 +12,7 @@ http://www.springframework.org/schema/security/spring-security.xsd">
 		<intercept-url pattern="/" access="hasRole('SUPER')" />
 		 -->
 		 <intercept-url pattern="/" access="permitAll" />
+		 <intercept-url pattern="/rest/*" access="permitAll" />
 		
 		<intercept-url pattern="/submenuadmin" access="hasRole('ADMIN')" />
 		<intercept-url pattern="/submenuprof" access="hasRole('PROF')" />

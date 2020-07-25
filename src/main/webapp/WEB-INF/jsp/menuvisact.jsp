@@ -18,7 +18,9 @@
 	<li><a href="vasesorias">Asesorias</a></li>
 </ul>
 	
+	
 	<c:if test="${opcion == 1}">
+	
 	<hr>
 	<h3>Actividad Capacitaciones</h3>
 	<table>
@@ -31,8 +33,8 @@
 	</tr>
 	<c:forEach items="${listacapacitaciones}" var="lvc">
 		<tr>
-			<td>${lvc.getIdcliente()}</td>
-			<td>${lvc.getNombrecliente()}</td>
+			<td>${lvc.getVisita().getCliente().getIdcliente()}</td>
+			<td>${lvc.getVisita().getCliente().getNombrecliente()}</td> 
 			<td>${lvc.getFechacapacitacion()}</td>
 			<td>${lvc.getHoracapacitacion()}</td>
 			<td>${lvc.getNumasistcapacitacion()}</td>
@@ -57,14 +59,14 @@
 	</tr>
 	<c:forEach items="${listavisitas}" var="lvv">
 		<tr>
-			<td>${lvv.getIdcliente()}</td>
-			<td>${lvv.getNombrecliente()}</td>
+			<td>${lvv.getCliente().getIdcliente()}</td>
+			<td>${lvv.getCliente().getNombrecliente()}</td>
 			<td>${lvv.getCiudadvisita()}</td>
 			<td>${lvv.getDireccionvisita()}</td>
 			<td>${lvv.getResumenvisita()}</td>
 			<td>${lvv.getObservacionvisita()}</td>
 			<td>${lvv.getFechavisita()}</td>
-			<td>${lvv.getNombreempleado()}</td>
+			<td>${lvv.getEmpleado().getNombreempleado()}</td>
 		</tr>
 	</c:forEach>
 	</table>
@@ -86,9 +88,9 @@
 	</tr>
 	<c:forEach items="${listamejoras}" var="lvm">
 		<tr>
-			<td>${lvm.getIdcliente()}</td>
-			<td>${lvm.getNombrecliente()}</td>
-			<td>${lvm.getRubrocliente()}</td>
+			<td>${lvm.getCliente().getIdcliente()}</td>
+			<td>${lvm.getCliente().getNombrecliente()}</td>
+			<td>${lvm.getCliente().getRubrocliente()}</td>
 			<td>${lvm.getFechamejora()}</td>
 			<td>${lvm.getMotivomejora()}</td>
 			<td>${lvm.getActividadesmejora()}</td>
@@ -115,14 +117,14 @@
 	</tr>
 	<c:forEach items="${listaasesorias}" var="lva">
 		<tr>
-			<td>${lva.getIdcliente()}</td>
-			<td>${lva.getNombrecliente()}</td>
+			<td>${lva.getVisita().getCliente().getIdcliente()}</td>
+			<td>${lva.getVisita().getCliente().getNombrecliente()}</td>
 			<td>${lva.getDetalleasesoria()}</td>
 			<td>${lva.getGestionasesoria()}</td>
 			<td>${lva.getPropuestaasesoria()}</td>
 			<td>${lva.getFechaasesoria()}</td>
 			<td>${lva.getEspecialasesoria()}</td>
-			<td>${lva.getNombreempleado()}</td>
+			<td>${lva.getVisita().getEmpleado().getNombreempleado()}</td>
 		</tr>
 	</c:forEach>
 	</table>
