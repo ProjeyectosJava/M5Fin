@@ -1,3 +1,4 @@
+
 <%@ include file="menupro.jsp" %>
 <c:if test="${listavisitas.size() == 0}">
 	<h4 class="text-center bg-dark text-white py-3">No existen visitas creadas</h4>
@@ -21,13 +22,13 @@
 					<th scope="col">Crear</th>
 				</tr>
 			</thead>
-			
 			<c:forEach items="${listavisitas}" var="lgv">
 				<tr>
 					<th scope="row">${lgv.getIdvisita()}</th>
 					<td>${lgv.getDireccionvisita()}</td>
 					<td>${lgv.getCiudadvisita()}</td>
 					<td>${lgv.getFechavisita()}</td>
+					
 					<td>${lgv.cliente.idcliente}</td>
 					<td>${lgv.cliente.nombrecliente}</td>
 					<td>${lgv.empleado.idempleado}</td>
@@ -66,7 +67,7 @@
 					<td>${lc.getFechacapacitacion()}</td>
 					<td>${lc.getHoracapacitacion()}</td>
 					<td>${lc.getNumasistcapacitacion()}</td>
-					<td>${lc.getIdvisitacapacitacion()}</td>
+					<td>${lc.getVisita().getIdvisita()}</td>
 				</tr>
 			</c:forEach>
 		</table>

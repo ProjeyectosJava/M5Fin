@@ -16,7 +16,7 @@ public class EmpleadoServicioImpl implements EmpleadoServicio{
 	EmpleadoRepositorio pr;
 
 	@Override
-	public Empleados FindEmpleadoById(int idempleado) {
+	public Empleados FindEmpleadoById(int idempleado) { 
 		return pr.findOne(idempleado);
 	}
 

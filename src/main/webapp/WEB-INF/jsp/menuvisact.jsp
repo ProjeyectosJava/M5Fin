@@ -1,134 +1,194 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
-<a href="index.jsp">Menu Principal</a>
-<hr>
-<h2>Seleccione Actividad a Visaulizar</h2>
-<ul>
-	<li><a href="vcapacitaciones">Capacitaciones</a></li>
-	<li><a href="vvisitas">Visitas</a></li>
-	<li><a href="vmejoras">Mejoras</a></li>
-	<li><a href="vasesorias">Asesorias</a></li>
-</ul>
+<%@ include file="menuadmin.jsp" %>
+
+
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark mt-0">
+		<a class="navbar-brand" href="${baseURL}/administrador/visualizadoractividades"> 
+			Actividades
+		</a>
+		
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarNavDropdown2" aria-controls="navbarNavDropdown2"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
 	
+		<div class="collapse navbar-collapse" id="navbarNavDropdown2">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link"	href="${baseURL}/administrador/vcapacitaciones">Capacitaciones </a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="${baseURL}/administrador/vvisitas">Visitas</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="${baseURL}/administrador/vmejoras">Mejoras</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="${baseURL}/administrador/vasesorias">Asesorias</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+ 
+ 
+ 	<c:if test="${opcion == Null}">
+	 	<div class="col-md-12">
+			<img src="https://image.freepik.com/vector-gratis/ilustracion-concepto-contenido_114360-1483.jpg" class="img-fluid rounded mx-auto d-block">
+		</div>
+ 	</c:if>
 	<c:if test="${opcion == 1}">
-	<hr>
-	<h3>Actividad Capacitaciones</h3>
-	<table>
-	<tr>
-		<th>Id Cliente</th>
-		<th>Nombre Cliente</th>
-		<th>Fecha Capacitacion</th>
-		<th>Hora Capacitacion</th>
-		<th>Cantidad Asistentes</th>
-	</tr>
-	<c:forEach items="${listacapacitaciones}" var="lvc">
-		<tr>
-			<td>${lvc.getIdcliente()}</td>
-			<td>${lvc.getNombrecliente()}</td>
-			<td>${lvc.getFechacapacitacion()}</td>
-			<td>${lvc.getHoracapacitacion()}</td>
-			<td>${lvc.getNumasistcapacitacion()}</td>
-		</tr>
-	</c:forEach>
-	</table>
+		<c:if test="${listacapacitaciones.size() == 0}">
+			<h4 class="text-center bg-dark text-white py-3">No existen actividades creadas</h4>
+		</c:if>
+		
+		<c:if test="${listacapacitaciones.size() > 0}">
+		<h4 class="text-center bg-dark text-white py-3">Actividades Capacitaciones</h4>
+		<div class="container mt-3">
+		<div class="table-responsive-md">
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Id Cliente</th>
+					<th scope="col">Nombre Cliente</th>
+					<th scope="col">Fecha Capacitacion</th>
+					<th scope="col">Hora Capacitacion</th>
+					<th scope="col">Cantidad Asistentes</th>
+				</tr>
+			</thead>
+			<c:forEach items="${listacapacitaciones}" var="lvc">
+				<tr>
+					<th scope="row">${lvc.getVisita().getCliente().getIdcliente()}</th>
+					<td>${lvc.getVisita().getCliente().getNombrecliente()}</td> 
+					<td>${lvc.getFechacapacitacion()}</td>
+					<td>${lvc.getHoracapacitacion()}</td>
+					<td>${lvc.getNumasistcapacitacion()}</td>
+				</tr>
+			</c:forEach>
+		</table>
+		</div>
+		</div>
+		</c:if>
 	</c:if>
 	
 	<c:if test="${opcion == 2}">
-	<hr>
-	<h3>Actividad Visitas</h3>
-	<table>
-	<tr>
-		<th>Id Cliente</th>
-		<th>Nombre Cliente</th>
-		<th>Ciudad</th>
-		<th>Direccion</th>
-		<th>Resumen</th>
-		<th>Observacion</th>
-		<th>Fecha</th>
-		<th>Nombre Empleado</th>
-	</tr>
-	<c:forEach items="${listavisitas}" var="lvv">
-		<tr>
-			<td>${lvv.getIdcliente()}</td>
-			<td>${lvv.getNombrecliente()}</td>
-			<td>${lvv.getCiudadvisita()}</td>
-			<td>${lvv.getDireccionvisita()}</td>
-			<td>${lvv.getResumenvisita()}</td>
-			<td>${lvv.getObservacionvisita()}</td>
-			<td>${lvv.getFechavisita()}</td>
-			<td>${lvv.getNombreempleado()}</td>
-		</tr>
-	</c:forEach>
-	</table>
+		<c:if test="${listavisitas.size() == 0}">
+			<h4 class="text-center bg-dark text-white py-3">No existen actividades creadas</h4>
+		</c:if>
+		
+		<c:if test="${listavisitas.size() > 0}">
+		<h4 class="text-center bg-dark text-white py-3">Actividades Visitas</h4>
+				<div class="container mt-3">
+		<div class="table-responsive-md">
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Id Cliente</th>
+					<th scope="col">Nombre Cliente</th>
+					<th scope="col">Ciudad</th>
+					<th scope="col">Direccion</th>
+					<th scope="col">Resumen</th>
+					<th scope="col">Observacion</th>
+					<th scope="col">Fecha</th>
+					<th scope="col">Nombre Empleado</th>
+				</tr>
+			</thead>
+				<c:forEach items="${listavisitas}" var="lvv">
+					<tr>
+						<th scope="row">${lvv.getCliente().getIdcliente()}</th>
+						<td>${lvv.getCliente().getNombrecliente()}</td>
+						<td>${lvv.getCiudadvisita()}</td>
+						<td>${lvv.getDireccionvisita()}</td>
+						<td>${lvv.getResumenvisita()}</td>
+						<td>${lvv.getObservacionvisita()}</td>
+						<td>${lvv.getFechavisita()}</td>
+						<td>${lvv.getEmpleado().getNombreempleado()}</td>
+					</tr>
+				</c:forEach>
+		</table>
+		</div>
+		</div>
+		</c:if>
 	</c:if>
 	
 
 	<c:if test="${opcion == 3}">
-	<hr>
-	<h3>Actividad Mejoras</h3>
-	<table>
-	<tr>
-		<th>Id Cliente</th>
-		<th>Nombre Cliente</th>
-		<th>Rubro</th>
-		<th>Fecha </th>
-		<th>Motivo</th>
-		<th>Actividades</th>
-		<th>Estado</th>
-	</tr>
-	<c:forEach items="${listamejoras}" var="lvm">
-		<tr>
-			<td>${lvm.getIdcliente()}</td>
-			<td>${lvm.getNombrecliente()}</td>
-			<td>${lvm.getRubrocliente()}</td>
-			<td>${lvm.getFechamejora()}</td>
-			<td>${lvm.getMotivomejora()}</td>
-			<td>${lvm.getActividadesmejora()}</td>
-			<td>${lvm.getEstadomejora()}</td>
-		</tr>
-	</c:forEach>
-	</table>
+		<c:if test="${listamejoras.size() == 0}">
+			<h4 class="text-center bg-dark text-white py-3">No existen actividades creadas</h4>
+		</c:if>
+		
+		<c:if test="${listamejoras.size() > 0}">
+		<h4 class="text-center bg-dark text-white py-3">Actividades Mejoras</h4>
+		<div class="container mt-3">
+			<div class="table-responsive-md">
+			<table class="table">
+				<thead class="thead-dark">
+					<tr>
+						<th scope="col">Id Cliente</th>
+						<th scope="col">Nombre Cliente</th>
+						<th scope="col">Rubro</th>
+						<th scope="col">Fecha </th>
+						<th scope="col">Motivo</th>
+						<th scope="col">Actividades</th>
+						<th scope="col">Estado</th>
+					</tr>
+				</thead>
+				<c:forEach items="${listamejoras}" var="lvm">
+					<tr>
+						<th scope="row">${lvm.getCliente().getIdcliente()}</th>
+						<td>${lvm.getCliente().getNombrecliente()}</td>
+						<td>${lvm.getCliente().getRubrocliente()}</td>
+						<td>${lvm.getFechamejora()}</td>
+						<td>${lvm.getMotivomejora()}</td>
+						<td>${lvm.getActividadesmejora()}</td>
+						<td>${lvm.getEstadomejora()}</td>
+					</tr>
+				</c:forEach>
+		</table>
+		</div>
+		</div>
+		</c:if>
 	</c:if>
 	
 		
 	<c:if test="${opcion == 4}">
-	<hr>
-	<h3>Actividad Mejoras</h3>
-	<table>
-	<tr>
-		<th>Id Cliente</th>
-		<th>Nombre Cliente</th>
-		<th>Detalle</th>
-		<th>Gestion </th>
-		<th>Propuesta</th>
-		<th>Fecha</th>
-		<th>Especial</th>
-		<th>Empleado</th>
-	</tr>
-	<c:forEach items="${listaasesorias}" var="lva">
-		<tr>
-			<td>${lva.getIdcliente()}</td>
-			<td>${lva.getNombrecliente()}</td>
-			<td>${lva.getDetalleasesoria()}</td>
-			<td>${lva.getGestionasesoria()}</td>
-			<td>${lva.getPropuestaasesoria()}</td>
-			<td>${lva.getFechaasesoria()}</td>
-			<td>${lva.getEspecialasesoria()}</td>
-			<td>${lva.getNombreempleado()}</td>
-		</tr>
-	</c:forEach>
-	</table>
+		<c:if test="${listaasesorias.size() == 0}">
+			<h4 class="text-center bg-dark text-white py-3">No existen actividades creadas</h4>
+		</c:if>
+		
+		<c:if test="${listaasesorias.size() > 0}">
+		<h4 class="text-center bg-dark text-white py-3">Actividades Asesorias</h4>
+		<div class="container mt-3">
+			<div class="table-responsive-md">
+			<table class="table">
+				<thead class="thead-dark">
+					<tr>
+						<th scope="col">Id Cliente</th>
+						<th scope="col">Nombre Cliente</th>
+						<th scope="col">Detalle</th>
+						<th scope="col">Gestion </th>
+						<th scope="col">Propuesta</th>
+						<th scope="col">Fecha</th>
+						<th scope="col">Especial</th>
+						<th scope="col">Empleado</th>
+					</tr>
+				</thead>
+					<c:forEach items="${listaasesorias}" var="lva">
+						<tr>
+							<th scope="row">${lva.getVisita().getCliente().getIdcliente()}</th>
+							<td>${lva.getVisita().getCliente().getNombrecliente()}</td>
+							<td>${lva.getDetalleasesoria()}</td>
+							<td>${lva.getGestionasesoria()}</td>
+							<td>${lva.getPropuestaasesoria()}</td>
+							<td>${lva.getFechaasesoria()}</td>
+							<td>${lva.getEspecialasesoria()}</td>
+							<td>${lva.getVisita().getEmpleado().getNombreempleado()}</td>
+						</tr>
+					</c:forEach>
+			</table>
+		</div>
+	</div>
+	</c:if>
 	</c:if>
 	
 	
-	
-</body>
-</html>
+<%@ include file="footer.jsp" %>

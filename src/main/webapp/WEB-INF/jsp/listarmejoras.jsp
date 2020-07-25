@@ -6,8 +6,9 @@
 	<table class="table">
 		<thead class="thead-dark">
 			<tr>
-				<th scope="col">Fecha Mejora</th>
 				<th scope="col">Id Cliente</th>
+				<th scope="col">Nombre Cliente</th>
+				<th scope="col">Fecha Mejora</th>
 				<th scope="col">Motivo Mejora</th>
 				<th scope="col">Actividades Mejora</th>
 				<th scope="col">Estado Mejora</th>
@@ -15,7 +16,8 @@
 		</thead>
 		<c:forEach items="${listamejoras}" var="lm">
 			<tr>
-				<th scope="row">${lm.getIdclientemejora()}</th>
+				<th scope="row">${lm.getCliente().getIdcliente()}</th>
+				<td>${lm.getCliente().getNombrecliente()}</td>
 				<td>${lm.getFechamejora()}</td>
 				<td>${lm.getMotivomejora()}</td>
 				<td>${lm.getActividadesmejora()}</td>

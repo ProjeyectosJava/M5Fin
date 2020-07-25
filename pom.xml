@@ -88,6 +88,20 @@
 	    <version>${org.springframework-version}</version>
 	</dependency>
 
+	<!-- Dependencia Spring para usar con Rest -->
+	<dependency>  
+	    <groupId>org.springframework</groupId>  
+	    <artifactId>spring-webmvc</artifactId>  
+	    <version>${org.springframework-version}</version>  
+	</dependency>  
+	
+	<!-- Despendencia Jackson para usar con Rest -->
+	<dependency>
+		<groupId>com.fasterxml.jackson.core</groupId>
+		<artifactId>jackson-databind</artifactId>
+		<version>2.9.4</version>
+  	</dependency>
+
 	<dependency>
 	    <groupId>com.oracle.database.jdbc</groupId>
 	    <artifactId>ojdbc8</artifactId>

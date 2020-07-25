@@ -17,7 +17,7 @@
 <body>
 	<c:set var="baseURL" value="${pageContext.request.contextPath}"></c:set>
 	<header>
-		<h3 class="bg-success text-white" style="margin-bottom: 0px;">
+		<h3 class="bg-success text-white mb-0">
 			Zona Administrador
 		</h3>
 		<nav class="navbar navbar-expand-md bg-success navbar-dark">
@@ -47,7 +47,7 @@
 						<a class="nav-link disabled" href="#">Calcular Accidentabilidad</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link"	href="/visualizadoractividades">Visualizar Actividades</a>
+						<a class="nav-link"	href="${baseURL}/administrador/visualizadoractividades">Visualizar Actividades</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link disabled" href="#">Notificar	atrasos</a>
