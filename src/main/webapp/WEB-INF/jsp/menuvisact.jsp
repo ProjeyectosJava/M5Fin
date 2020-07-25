@@ -30,6 +30,12 @@
 		</div>
 	</nav>
  
+ 
+ 	<c:if test="${opcion == Null}">
+	 	<div class="col-md-12">
+			<img src="https://image.freepik.com/vector-gratis/ilustracion-concepto-contenido_114360-1483.jpg" class="img-fluid rounded mx-auto d-block">
+		</div>
+ 	</c:if>
 	<c:if test="${opcion == 1}">
 		<c:if test="${listacapacitaciones.size() == 0}">
 			<h4 class="text-center bg-dark text-white py-3">No existen actividades creadas</h4>

@@ -22,6 +22,7 @@ http://www.springframework.org/schema/security/spring-security.xsd">
 		<intercept-url pattern="/profesional/*" access="hasRole('PROF')" />
 		<intercept-url pattern="/cliente/*" access="hasRole('CLIENTE')" />
 	
+		<csrf disabled="true"/>
 	<!-- 
 		<form-login 
 			login-page="/login"
