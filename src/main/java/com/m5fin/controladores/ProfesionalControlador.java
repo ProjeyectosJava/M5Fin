@@ -233,6 +233,7 @@ public class ProfesionalControlador {
 			public String revisarmejoras(Model m) {
 				List<Mejoras> listamejoras = ms.listarMejoras();
 				m.addAttribute("listamejoras", listamejoras);
+				System.out.println("Listamejoras: " + listamejoras);
 				return "listarmejoras";
 			}
     

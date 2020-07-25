@@ -67,7 +67,7 @@
 					<td>${lc.getFechacapacitacion()}</td>
 					<td>${lc.getHoracapacitacion()}</td>
 					<td>${lc.getNumasistcapacitacion()}</td>
-					<td>${lc.getIdvisitacapacitacion()}</td>
+					<td>${lc.getVisita().getIdvisita()}</td>
 				</tr>
 			</c:forEach>
 		</table>

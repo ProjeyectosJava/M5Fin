@@ -76,13 +76,14 @@ public class ClienteControlador {
 	
   
    // enviamos al cliente con una visita a formulario de asesorias 
-    @RequestMapping(value = "/generarasesoria/{id}") 
-	 public String generaasesoria(@PathVariable int id, Model m){
+    @RequestMapping(value = "/generarasesoria/{id}/{ncliente}") 
+	 public String generaasesoria(@PathVariable int id, @PathVariable String ncliente, Model m){
 	 Asesorias regasesoria = new Asesorias();
 	 Visitas visita = new Visitas();
 	 visita.setIdvisita(id);
 	 regasesoria.setVisita(visita);
 	 m.addAttribute("regase",regasesoria); 
+	 m.addAttribute("ncliente", ncliente);
 	 System.out.println("regcap que va al formulario: " + regasesoria);
 	 return "formasesoria";
     }
