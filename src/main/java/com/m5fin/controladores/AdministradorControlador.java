@@ -52,6 +52,9 @@ public class AdministradorControlador {
 	@Autowired
 	AccidenteServicio ac;
 	
+	@Autowired
+	EmpleadoServicio ps;
+	
 
 	// --- *** CU1 CRUD CLIENTES *** ----//
 	@RequestMapping("/listarclientes")
@@ -105,8 +108,7 @@ public class AdministradorControlador {
 	// --- *** FIN CU1 CRUD CLIENTES *** ----//
 	
 	
-	@Autowired
-	EmpleadoServicio ps;
+
 
 	// --- *** CU1 CRUD PROFESIONALES *** ----//
 	@RequestMapping("/listarprofesionales")
@@ -268,9 +270,31 @@ public class AdministradorControlador {
 	  
 	  @RequestMapping("/listarreporte/{id}") 
 	  public String listarreporte(@PathVariable Integer id, Model m) { 
+		  // Reportamos Mejoras por id cliente
 		  List<Mejoras> listamejoras = ms.ListarPorId(id);
 		  System.out.println("listamejoras: " + listamejoras);
-		   m.addAttribute("listamejoras",listamejoras);
+		  m.addAttribute("listamejoras",listamejoras);
+		  
+		  // Reportamos Accidentes por id cliente
+		  List<Accidentes> listaaccidentes = ac.ListarPorId(id);
+		  m.addAttribute("listaaccidentes",listaaccidentes);
+		  System.out.println("listaaccidentes: " + listaaccidentes);
+		  
+		  // Reportamos visitas por id cliente
+		  List<Visitas> listavisitas = vs.ListarPorId(id);
+		  m.addAttribute("listavisitas",listavisitas);
+		  System.out.println("listavisitas: " + listavisitas);
+		  
+		  
+		  // Reportamos visitas por id cliente
+		  List<Capacitaciones> listacapacitaciones = cap.ListarPorId(id);
+		  m.addAttribute("listacapacitaciones",listacapacitaciones);
+		  System.out.println("listacapacitaciones: " + listacapacitaciones);
+		  
+		  
+		  
+		  
+	
 	  return "reporteclientelistado"; 
 	  }
 	

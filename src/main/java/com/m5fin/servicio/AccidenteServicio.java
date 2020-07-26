@@ -8,4 +8,6 @@ public interface AccidenteServicio {
 	
 	List<Accidentes> listarAccidentes();
 	void agregarAccidente(Accidentes accidente);
+	
+	List<Accidentes> ListarPorId(Integer id);
 }

@@ -44,6 +44,19 @@ public class CapacitacionServicioImpl implements CapacitacionServicio{
 		System.out.println("Listando cap query " + query);
 		return query.getResultList();
 	}
+
+
+	@Override
+	public List<Capacitaciones> ListarPorId(Integer id) {
+		String jpql = "SELECT cap FROM Capacitaciones cap WHERE cap.visita.cliente.idcliente=:codigo"; // esto es solo un string 
+		
+
+		Query query = em.createQuery(jpql); // esto transforma el String en jpql
+		query.setParameter("codigo", id); //pasamos el id a la consulta jpql
+		
+		System.out.println("Listando query en capacitaciones " + query);
+		return query.getResultList();
+	}
 	
 
 }

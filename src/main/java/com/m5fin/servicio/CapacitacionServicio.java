@@ -10,5 +10,7 @@ public interface CapacitacionServicio {
 	List<Capacitaciones> listarCapacitaciones();
 	
 	List<Capacitaciones> ListarCapacitacionesEspecial(); 
+	
+	List<Capacitaciones> ListarPorId(Integer id);
 
 }

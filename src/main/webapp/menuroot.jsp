@@ -47,8 +47,6 @@
 		      </li>
 		        <li class="nav-item">
 		        <a class="nav-link" href="${baseURL}/logout">Logout</a>
-		        <h2>Parte 2</h2>
-
 		      </li>
 		    </ul>
 	  	</div>

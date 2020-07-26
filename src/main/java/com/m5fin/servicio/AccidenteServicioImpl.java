@@ -2,6 +2,10 @@ package com.m5fin.servicio;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +18,9 @@ public class AccidenteServicioImpl implements AccidenteServicio{
 	@Autowired
 	AccidenteRepositorio ar;
 	
+	@PersistenceContext
+	EntityManager em;
+	
 	@Override
 	public void agregarAccidente(Accidentes accidente) {
 		ar.save(accidente);		
@@ -22,6 +29,16 @@ public class AccidenteServicioImpl implements AccidenteServicio{
 	@Override
 	public List<Accidentes> listarAccidentes() {
 		return (List<Accidentes>) ar.findAll();
+	}
+
+	@Override
+	public List<Accidentes> ListarPorId(Integer id) {
+		String jpql = "SELECT a FROM Accidentes a WHERE a.cliente.idcliente=:codigo"; // esto es solo un string 
+		Query query = em.createQuery(jpql); // esto transforma el String en jpql
+		query.setParameter("codigo", id); //pasamos el id a la consulta jpql
+		
+		System.out.println("Listando query en accidentes " + query);
+		return query.getResultList();
 	}
 
 }

@@ -50,6 +50,16 @@ public class VisitaServicioImpl implements VisitaServicio{
 		System.out.println("Listando query " + query);
 		return query.getResultList();
 	}
+
+	@Override
+	public List<Visitas> ListarPorId(Integer id) {
+		String jpql = "SELECT v FROM Visitas v WHERE v.cliente.idcliente=:codigo"; // esto es solo un string 
+		Query query = em.createQuery(jpql); // esto transforma el String en jpql
+		query.setParameter("codigo", id); //pasamos el id a la consulta jpql
+		
+		System.out.println("Listando query en accidentes " + query);
+		return query.getResultList();
+	}
 	
 	
 	

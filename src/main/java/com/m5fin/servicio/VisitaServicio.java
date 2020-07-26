@@ -3,7 +3,6 @@ package com.m5fin.servicio;
 import java.util.List;
 
 import com.m5fin.dao.Visitas;
-import com.m5fin.dao.VisitasGeneradas;
 
 public interface VisitaServicio {
 	
@@ -12,6 +11,8 @@ public interface VisitaServicio {
 	void agregarVisita(Visitas visita);
 	
 	List<Visitas> ListarVisitasEspecial(); 
+	
+	List<Visitas> ListarPorId(Integer id);
 	
 
 }

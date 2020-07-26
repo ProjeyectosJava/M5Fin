@@ -89,27 +89,23 @@
 		<h3>Reporte de Visitas y Capacitacion</h3>
 		<table>
 			<tr>
-				<th>Id </th>
-				<th>Nombre </th>
-				<th>Rubro</th>
-				<th>Fecha</th>
-				<th>Fecha</th>
-				<th>Ciudad</th>
-				<th>Resumen</th>
+				<th>Id Cliente</th>
+				<th>Nombre Cliente</th>
+				<th>Direccion Visita </th>
+				<th>Fecha visita </th>
+				<th>Ciudad visita </th>
 				<th>Empleado</th>
-				<th>Fecha</th>
-				<th>Hora</th>
-				<th>Asistentes</th>
+				<th>Fecha Capacitacion</th>
+				<th>Hora Capacitacion </th>
+				<th>Asistentes a Capacitacion</th>
 			</tr>
 				<c:forEach items="${listavisycap}" var="lvc">
 					<tr>
 						<td>${lvc.getVisita().getCliente().getIdcliente()}</td> 
 						<td>${lvc.getVisita().getCliente().getNombrecliente()}</td>
-						<td>${lvc.getVisita().getCliente().getRubrocliente()}</td>
 						<td>${lvc.getVisita().getDireccionvisita()}</td>
 						<td>${lvc.getVisita().getFechavisita()}</td>
 						<td>${lvc.getVisita().getCiudadvisita()}</td>
-						<td>${lvc.getVisita().getResumenvisita()}</td>
 						<td>${lvc.getVisita().getEmpleado().getNombreempleado()}</td>
 						<td>${lvc.getFechacapacitacion()}</td>
 						<td>${lvc.getHoracapacitacion()}</td>
