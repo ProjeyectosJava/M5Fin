@@ -41,4 +41,40 @@ public class MejoraServicioImpl implements MejoraServicio {
 		return query.getResultList();
 	}
 
+	@Override
+	public Mejoras findMejoraByid(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Mejoras> findAll(Iterable<Integer> id) {
+		return (List<Mejoras>) mr.findAll(id);
+	}
+
+	@Override
+	public List<Mejoras> ListarPorId(Integer id) {
+		String jpql = "SELECT m FROM Mejoras m WHERE m.cliente.idcliente=:codigo"; // esto es solo un string 
+		Query query = em.createQuery(jpql); // esto transforma el String en jpql
+		query.setParameter("codigo", id); //pasamos el id a la consulta jpql
+		
+		System.out.println("Listando jpql " + jpql);
+		System.out.println("Listando query " + query);
+		return query.getResultList();
+	}
+
+	/*
+	@Override
+	public List ListarPorId(Integer id); {
+		String jpql = "SELECT m FROM Mejoras m WHERE m.cliente.idclientemejora=:codigo"; // esto es solo un string 
+		Query query = em.createQuery(jpql); // esto transforma el String en jpql
+		query.setParameter("codigo", id);
+		
+		System.out.println("Listando jpql " + jpql);
+		System.out.println("Listando query " + query);
+		return query.getResultList();
+	}*/
+
+	
+
 }

@@ -53,10 +53,10 @@
 						<a class="nav-link disabled" href="#">Notificar	atrasos</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="/reportecliente">Reporte cliente </a>
+						<a class="nav-link" href="${baseURL}/administrador/reportecliente">Reporte cliente </a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="/reporteglobal">Reporte global </a>
+						<a class="nav-link" href="${baseURL}/administrador/reporteglobal">Reporte global </a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="${baseURL}/cliente/testes">testes </a>
