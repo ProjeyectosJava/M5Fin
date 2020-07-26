@@ -8,7 +8,7 @@
 				<div class="form-group row">					
 					<label for="idcliente" class="col-md-2 col-form-label mr-1">Id Cliente:</label>
 					<div class="col-md-7">
-						<form:input class="form-control" id="idcliente" path="idclienteaccidente"/>
+						<form:input class="form-control" id="idcliente" path="cliente.idcliente"/>
 					</div>
 				</div>
 				

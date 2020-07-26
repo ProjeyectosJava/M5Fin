@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -26,11 +28,27 @@ public class Accidentes {
 	@Column(name="lugaraccidente")
 	private String lugaraccidente;
 	
+	/*
 	@Column(name="idclienteaccidente")
 	private int idclienteaccidente;
+	*/
+	
+	@ManyToOne
+	@JoinColumn(name = "idclienteaccidente")
+	Clientes cliente;
 
 	public Accidentes() {
 		
+	}
+
+	public Accidentes(int idaccidente, String fechaaccidente, String horaaccidente, String sucesoaccidente,
+			String lugaraccidente, Clientes cliente) {
+		this.idaccidente = idaccidente;
+		this.fechaaccidente = fechaaccidente;
+		this.horaaccidente = horaaccidente;
+		this.sucesoaccidente = sucesoaccidente;
+		this.lugaraccidente = lugaraccidente;
+		this.cliente = cliente;
 	}
 
 	public int getIdaccidente() {
@@ -73,22 +91,22 @@ public class Accidentes {
 		this.lugaraccidente = lugaraccidente;
 	}
 
-	public int getIdclienteaccidente() {
-		return idclienteaccidente;
+	public Clientes getCliente() {
+		return cliente;
 	}
 
-	public void setIdclienteaccidente(int idclienteaccidente) {
-		this.idclienteaccidente = idclienteaccidente;
+	public void setCliente(Clientes cliente) {
+		this.cliente = cliente;
 	}
 
 	@Override
 	public String toString() {
 		return "Accidentes [idaccidente=" + idaccidente + ", fechaaccidente=" + fechaaccidente + ", horaaccidente="
 				+ horaaccidente + ", sucesoaccidente=" + sucesoaccidente + ", lugaraccidente=" + lugaraccidente
-				+ ", idclienteaccidente=" + idclienteaccidente + "]";
+				+ ", cliente=" + cliente + "]";
 	}
-	
-	
+
+
 	
 	
 

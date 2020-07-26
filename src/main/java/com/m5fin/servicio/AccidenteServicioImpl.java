@@ -1,5 +1,7 @@
 package com.m5fin.servicio;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,11 @@ public class AccidenteServicioImpl implements AccidenteServicio{
 	@Override
 	public void agregarAccidente(Accidentes accidente) {
 		ar.save(accidente);		
+	}
+
+	@Override
+	public List<Accidentes> listarAccidentes() {
+		return (List<Accidentes>) ar.findAll();
 	}
 
 }

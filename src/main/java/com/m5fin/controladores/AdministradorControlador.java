@@ -11,12 +11,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.m5fin.dao.Accidentes;
 import com.m5fin.dao.Asesorias;
 import com.m5fin.dao.Capacitaciones;
 import com.m5fin.dao.Clientes;
 import com.m5fin.dao.Empleados;
 import com.m5fin.dao.Mejoras;
 import com.m5fin.dao.Visitas;
+import com.m5fin.servicio.AccidenteServicio;
 import com.m5fin.servicio.AsesoriaServicio;
 import com.m5fin.servicio.CapacitacionServicio;
 import com.m5fin.servicio.ClienteServicio;
@@ -46,6 +48,9 @@ public class AdministradorControlador {
 	
 	@Autowired
 	AsesoriaServicio as;
+	
+	@Autowired
+	AccidenteServicio ac;
 	
 
 	// --- *** CU1 CRUD CLIENTES *** ----//
@@ -228,6 +233,51 @@ public class AdministradorControlador {
 		}
 	  
 	  // --- *** FIN CU VISUALIZAR ACTIVIDADES *** ----//
+	  
+	  // --- *** INICIO REPORTE GLOBAL *** ----//
+	  @RequestMapping("/reporteglobal")
+		public String reporteglobal(Model m) {
+			List<Mejoras> listamejoras = ms.listarMejoras();
+			List<Accidentes> listaccidente = ac.listarAccidentes();
+			List<Capacitaciones> listavisycap = cap.listarCapacitaciones();
+			
+			System.out.println("listamejoras   : " + listamejoras);
+			System.out.println("listaccidente  : " + listaccidente);
+			System.out.println("listavisycap   : " + listavisycap);
+			
+			m.addAttribute("listamejoras",listamejoras);
+			m.addAttribute("listaccidente",listaccidente);
+			m.addAttribute("listavisycap",listavisycap);
+			
+			return "reporteglobal";
+		}
+	  
+	  
+	  
+	  // --- *** FIN REPORTE GLOBAL *** ----//
+	 
+
+	  // --- *** INICIO REPORTE POR CLIENTE *** ----//
+	  @RequestMapping("/reportecliente")
+		public String reportecliente(Model m) {
+			List<Clientes> listacliente = cs.listarClientes();
+			System.out.println("listacliente   : " + listacliente);
+			m.addAttribute("listacliente",listacliente);
+			return "reportecliente";
+		}
+	  
+	  @RequestMapping("/listarreporte/{id}") 
+	  public String listarreporte(@PathVariable Integer id, Model m) { 
+		  List<Mejoras> listamejoras = ms.ListarPorId(id);
+		  System.out.println("listamejoras: " + listamejoras);
+		   m.addAttribute("listamejoras",listamejoras);
+	  return "reporteclientelistado"; 
+	  }
+	
+	  
+	  
+	  
+	  // --- *** FIN REPORTE GLOBAL *** ----//
 	 
 
 }
