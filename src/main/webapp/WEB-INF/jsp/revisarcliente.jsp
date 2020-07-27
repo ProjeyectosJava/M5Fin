@@ -2,6 +2,7 @@
 
 <h4 class="text-center bg-dark text-white py-3">Revision de Clientes</h4>
 
+<div class="container">
 <div class="table-responsive-md">
 <table class="table">
 	<thead class="thead-dark">
@@ -26,5 +27,6 @@
 		</c:forEach>
 	</table>
 	</div>
-	<br>
+</div>
+
 <%@ include file="footer.jsp"%>

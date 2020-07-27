@@ -107,11 +107,11 @@
 
 <div class="container">
 	<c:if test="${listacapacitaciones.size() == 0}">
-		<h5 class="text-center bg-secondary text-white-50 py-2 mt-5">No contiene reportes de visitas y capacitaciones</h5>
+		<h5 class="text-center bg-secondary text-white-50 py-2 mt-5">No contiene reportes capacitaciones</h5>
 	</c:if>
 	
 	<c:if test="${listacapacitaciones.size() > 0}">
-		<h5 class="text-center bg-dark text-white py-2 mb-0 mt-5">Reporte de Visitas</h5>
+		<h5 class="text-center bg-dark text-white py-2 mb-0 mt-5">Reporte de Capacitaciones</h5>
 		<div class="table-responsive-md">
 			<table class="table">
 				<thead class="thead-dark">

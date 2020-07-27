@@ -241,14 +241,17 @@ public class AdministradorControlador {
 		public String reporteglobal(Model m) {
 			List<Mejoras> listamejoras = ms.listarMejoras();
 			List<Accidentes> listaccidente = ac.listarAccidentes();
+			List<Visitas> listavisitas = vs.ListarVisitas();
 			List<Capacitaciones> listavisycap = cap.listarCapacitaciones();
 			
 			System.out.println("listamejoras   : " + listamejoras);
 			System.out.println("listaccidente  : " + listaccidente);
+			System.out.println("listaccidente  : " + listavisitas);
 			System.out.println("listavisycap   : " + listavisycap);
 			
 			m.addAttribute("listamejoras",listamejoras);
 			m.addAttribute("listaccidente",listaccidente);
+			m.addAttribute("listavisitas", listavisitas);
 			m.addAttribute("listavisycap",listavisycap);
 			
 			return "reporteglobal";
