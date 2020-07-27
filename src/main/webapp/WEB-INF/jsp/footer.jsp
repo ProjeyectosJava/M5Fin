@@ -1,7 +1,7 @@
 
 <footer>
-<div class="bg-success text-white py-3">
-	Aqui va el footer
+<div>
+	<!-- aqui va el footer -->
 </div>
 </footer>
 

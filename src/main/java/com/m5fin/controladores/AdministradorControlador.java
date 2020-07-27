@@ -268,8 +268,9 @@ public class AdministradorControlador {
 			return "reportecliente";
 		}
 	  
-	  @RequestMapping("/listarreporte/{id}") 
-	  public String listarreporte(@PathVariable Integer id, Model m) { 
+	  @RequestMapping("/listarreporte/{id}/{ncliente}") 
+	  public String listarreporte(@PathVariable Integer id, @PathVariable String ncliente, Model m) {
+		  m.addAttribute("ncliente", ncliente);
 		  // Reportamos Mejoras por id cliente
 		  List<Mejoras> listamejoras = ms.ListarPorId(id);
 		  System.out.println("listamejoras: " + listamejoras);
