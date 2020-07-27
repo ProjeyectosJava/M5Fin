@@ -1,3 +1,4 @@
 .DS_Store
 target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
 target/m2e-wtp/web-resources/META-INF/maven/M5ProyectoFinal/m5fin/pom.properties
+/target/
