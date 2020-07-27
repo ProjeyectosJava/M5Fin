@@ -44,7 +44,7 @@
 						<a class="nav-link disabled" href="#">Controlar Pagos cliente </a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link disabled" href="#">Calcular Accidentabilidad</a>
+						<a class="nav-link" href="${baseURL}/administrador/listaraccidentes">Calcular Accidentabilidad</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link"	href="${baseURL}/administrador/visualizadoractividades">Visualizar Actividades</a>

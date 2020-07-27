@@ -295,17 +295,31 @@ public class AdministradorControlador {
 		  m.addAttribute("listacapacitaciones",listacapacitaciones);
 		  System.out.println("listacapacitaciones: " + listacapacitaciones);
 		  
-		  
-		  
-		  
 	
 	  return "reporteclientelistado"; 
 	  }
+
+
+	  // --- *** FIN REPORTE POR CLIENTE GLOBAL *** ----//
+	  
+	  
+	  // --- *** INICIO CALCULAR ACCIDENTABILIDAD *** ----//
+	 
+	  // LISTAR TABLA DE ACCIDENTES COMPLETA 
+		@RequestMapping("/listaraccidentes")
+		public String listaccidentes(Model m) {
+			System.out.println("Estamos en listar accidentes");
+			List<Accidentes> listaaccidentes = ac.listarAccidentes();
+			List<Accidentes> listaaccidentesord = ac.listarAccidentesOrd();
+			
+			m.addAttribute("listaaccidentes", listaaccidentesord);
+			System.out.println("listaaccidentes lista          : "  + listaaccidentes);
+			System.out.println("listaaccidentes lista ordenados: "  + listaaccidentesord);
+			return "listaraccidentes";
+		}
+	  
+	  
 	
 	  
-	  
-	  
-	  // --- *** FIN REPORTE GLOBAL *** ----//
-	 
 
 }
