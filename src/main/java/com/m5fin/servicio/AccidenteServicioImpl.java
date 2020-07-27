@@ -43,7 +43,7 @@ public class AccidenteServicioImpl implements AccidenteServicio{
 
 	@Override
 	public List<Accidentes> listarAccidentesOrd() {
-		String jpql = "SELECT a FROM Accidentes a ORDER BY a.getCliente()"; // esto es solo un string 
+		String jpql = "SELECT a FROM Accidentes a ORDER BY a.cliente.idcliente"; // esto es solo un string 
 		Query query = em.createQuery(jpql); // esto transforma el String en jpql
 		System.out.println("Listando query en accidentes " + query);
 		

@@ -1,8 +1,9 @@
-<%@ include file="menupro.jsp" %>
+<%@ include file="menuadmin.jsp" %>
 
-
-<div class="table-responsive-md">
 <h4 class="text-center bg-dark text-white py-3">Listado Accidentes reportados</h4>
+
+<div class="container">
+<div class="table-responsive-md">
 	<table class="table">
 		<thead class="thead-dark">
 			<tr>
@@ -33,6 +34,7 @@
 	
 	<p>Total de accidentes reportados:${listaaccidentes.size()} </p>
 	</div>
+</div>
 </div>
 
 <%@ include file="footer.jsp" %>

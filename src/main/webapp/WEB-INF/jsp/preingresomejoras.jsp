@@ -1,7 +1,7 @@
 <%@ include file="menupro.jsp" %>
 
 <h4 class="text-center bg-dark text-white py-3">Ingresar Actividad de Mejora</h4>
-<div class="container mt-3">
+<div class="container">
 	<div class="table-responsive-md">
 		<table class="table">
 			<thead class="thead-dark">
