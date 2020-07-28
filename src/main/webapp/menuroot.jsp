@@ -45,9 +45,16 @@
 		      <li class="nav-item">
 		        <a class="nav-link" href="${baseURL}/submenucliente">Cliente</a>
 		      </li>
-		        <li class="nav-item">
+		      <li class="nav-item">
+		        <a class="nav-link" href="${baseURL}/rest/info">Info Rest</a>
+		      </li>
+		      <li class="nav-item">
 		        <a class="nav-link" href="${baseURL}/logout">Logout</a>
 		      </li>
+		      <li class="nav-item">
+		        <a class="nav-link" href="${baseURL}/pendientes">Tareas por hacer</a>
+		      </li>
+		      
 		    </ul>
 	  	</div>
 	</nav>
