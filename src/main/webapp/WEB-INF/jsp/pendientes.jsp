@@ -30,8 +30,9 @@
 <li>Logearse desde base de datos</li>
 <li></li>
 <li></li>
-
-
 </ul>
+
+${auth}
+
 </body>
 </html>
