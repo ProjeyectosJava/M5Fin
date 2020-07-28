@@ -2,6 +2,7 @@ package com.m5fin.controladores;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -140,7 +141,8 @@ public class ProfesionalControlador {
 	  m.addAttribute("listaemp",listemp);
 	  System.out.println("Mostramos despues de listaemp:" + m);
 	  
-	  return "formvisita"; }
+	  return "formvisita"; 
+	  }
 	  
 	  
 	  //guardamos el formulario en tabla visita

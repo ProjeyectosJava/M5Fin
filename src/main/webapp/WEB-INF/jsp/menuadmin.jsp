@@ -41,7 +41,7 @@
 						<a class="nav-link" href="${baseURL}/administrador/listarprofesionales">Administrar Profesionales </a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link disabled" href="#">Controlar Pagos cliente </a>
+						<a class="nav-link" href="${baseURL}/administrador/controldepago">Controlar Pagos cliente </a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="${baseURL}/administrador/listaraccidentes">Calcular Accidentabilidad</a>

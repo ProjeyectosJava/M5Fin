@@ -48,6 +48,8 @@ public class AsesoriaServicioImpl implements AsesoriaServicio{
 		System.out.println("Listando cap query " + query);
 		return query.getResultList();
 	}
+	
+	
 
 	@Override
 	public Asesorias findAsesoriaByid(int id) {

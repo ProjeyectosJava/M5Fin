@@ -1,9 +1,12 @@
 package com.m5fin.controladores;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
+import org.apache.logging.log4j.LogManager; 
+import org.apache.logging.log4j.Logger;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +20,7 @@ import com.m5fin.dao.Capacitaciones;
 import com.m5fin.dao.Clientes;
 import com.m5fin.dao.Empleados;
 import com.m5fin.dao.Mejoras;
+import com.m5fin.dao.Pagos;
 import com.m5fin.dao.Visitas;
 import com.m5fin.servicio.AccidenteServicio;
 import com.m5fin.servicio.AsesoriaServicio;
@@ -24,6 +28,7 @@ import com.m5fin.servicio.CapacitacionServicio;
 import com.m5fin.servicio.ClienteServicio;
 import com.m5fin.servicio.EmpleadoServicio;
 import com.m5fin.servicio.MejoraServicio;
+import com.m5fin.servicio.PagosServicio;
 import com.m5fin.servicio.VisitaServicio;
 
 
@@ -32,7 +37,7 @@ import com.m5fin.servicio.VisitaServicio;
 @RequestMapping("/administrador")
 public class AdministradorControlador {
 
-	static Logger log = LoggerFactory.getLogger(ClienteControlador.class.getName());
+	static Logger log = LogManager.getLogger(ClienteControlador.class);
 	
 	@Autowired
 	ClienteServicio cs;
@@ -53,7 +58,12 @@ public class AdministradorControlador {
 	AccidenteServicio ac;
 	
 	@Autowired
-	EmpleadoServicio ps;
+	EmpleadoServicio es;
+	
+	@Autowired
+	PagosServicio pse;
+	
+	boolean noexiste;
 	
 
 	// --- *** CU1 CRUD CLIENTES *** ----//
@@ -76,14 +86,14 @@ public class AdministradorControlador {
 	public String savecliente(@ModelAttribute("cliente") Clientes cliente, Model m) {
 		System.out.println("cliente: " + cliente);
 		cs.agregarCliente(cliente);
-		 log.info("Registramos al nuevo cliente: " + cliente.getNombrecliente() + " id: " + cliente.getIdcliente());
+		 log.info("Se registró un nuevo cliente " + "Id:" + cliente.getIdcliente()+  " Nombre:" + cliente.getNombrecliente());
 		return "redirect:/administrador/listarclientes";
 	}
 
 	@RequestMapping("/eliminarcliente/{id}")
 	public String eliminar(@PathVariable int id, Model m) {
 		cs.eliminarCliente(id);
-		log.debug("Eliminamos el cliente id: " + id);
+		log.debug("Se eliminó el cliente id:" + id);
 		m.addAttribute("mensaje", "El cliente se eliminó exitosamente");
 		return "redirect:/administrador/listarclientes";
 	}
@@ -102,6 +112,7 @@ public class AdministradorControlador {
 	public String udatacliente(@ModelAttribute("cliente") Clientes cliente, Model m) {
 		cs.editarCliente(cliente);
 		m.addAttribute("mensaje", "El cliente ha sido editado exitosamente");
+		 log.info("Se modificó el registro del cliente" + " Id:" + cliente.getIdcliente() +  " Nombre:" + cliente.getNombrecliente());
 		return "redirect:/administrador/listarclientes";
 	}
 
@@ -114,7 +125,7 @@ public class AdministradorControlador {
 	@RequestMapping("/listarprofesionales")
 	public String verempleaddo(Model m) {
 		System.out.println("Estamos en listar profesionales");
-		List<Empleados> listaempleado = ps.listarempleados();
+		List<Empleados> listaempleado = es.listarempleados();
 		m.addAttribute("lempleado", listaempleado);
 		System.out.println("Profesionales lista:"  + listaempleado);
 		return "listarprofesional";
@@ -131,28 +142,32 @@ public class AdministradorControlador {
 	  @RequestMapping(value = "/guardarprofesional") 
 	  public String saveempleado(@ModelAttribute("cliente") Empleados empleado, Model m) {
 		  System.out.println("empleado: " + empleado); 
-		  ps.agregarEmpleado(empleado);
-	  return "redirect:/administrador/listarprofesionales"; 
+		  es.agregarEmpleado(empleado);
+		  log.info("Se registró un nuevo profesional" + " Id:" + empleado.getIdempleado()+  " Nombre:" + empleado.getNombreempleado());
+	      return "redirect:/administrador/listarprofesionales"; 
 	  }
 	  
 	  @RequestMapping("/eliminarprofesional/{id}") 
 	  public String eliminarempleado(@PathVariable int id, Model m) { 
-		  ps.eliminarempleado(id);
+		  es.eliminarempleado(id);
 		  m.addAttribute("mensaje", "El Profesional se eliminó exitosamente"); 
-	  return "redirect:/administrador/listarprofesionales"; }
+		  log.debug("Se eliminó el profesional Id:" + id);
+	      return "redirect:/administrador/listarprofesionales"; }
 	  
 	  @RequestMapping(value = "/editarprofesional/{id}") 
 	  public String updateempleado(@PathVariable int id, Model m) { 
 		  Empleados emp = new Empleados(); 
 		  System.out.println("new emp:" + emp); 
-		  emp = ps.FindEmpleadoById(id); 
+		  emp = es.FindEmpleadoById(id); 
 		  System.out.println("emp pasado: " + emp);
 		  m.addAttribute("empleado", emp); 
 	  return "formeditprofesional"; }
 	  
 	  @RequestMapping(value = "/editguardarpro") public String
 	  udataempleado(@ModelAttribute("empleado") Empleados empleado, Model m) {
-	  ps.editarEmpleado(empleado); m.addAttribute("mensaje",  "El empleado ha sido editado exitosamente"); 
+
+	  es.editarEmpleado(empleado); m.addAttribute("mensaje",  "El empleado ha sido editado exitosamente"); 
+	  log.info("Se modifico el registro del profesional" + " Id:" + empleado.getIdempleado()+  " Nombre:" + empleado.getNombreempleado());
 	  return  "redirect:/administrador/listarprofesionales"; }
 	  
 	  // --- *** FIN CU1 CRUD PROFESIONALES *** ----//
@@ -231,6 +246,7 @@ public class AdministradorControlador {
 		  System.out.println("pasamos opcion: " + opcion);
 		  System.out.println("pasamo el model m asi: " + m);
 		  System.out.println("listavisita: " + listavisita);
+		 
 		return "menuvisact";
 		}
 	  
@@ -253,6 +269,9 @@ public class AdministradorControlador {
 			m.addAttribute("listaccidente",listaccidente);
 			m.addAttribute("listavisitas", listavisitas);
 			m.addAttribute("listavisycap",listavisycap);
+			
+			log.info("Se generó un reporte global");
+
 			
 			return "reporteglobal";
 		}
@@ -295,6 +314,9 @@ public class AdministradorControlador {
 		  m.addAttribute("listacapacitaciones",listacapacitaciones);
 		  System.out.println("listacapacitaciones: " + listacapacitaciones);
 		  
+		  log.info("Se generó reporte del cliente id:" + id);
+
+		  
 	
 	  return "reporteclientelistado"; 
 	  }
@@ -315,11 +337,117 @@ public class AdministradorControlador {
 			m.addAttribute("listaaccidentes", listaaccidentesord);
 			System.out.println("listaaccidentes lista          : "  + listaaccidentes);
 			System.out.println("listaaccidentes lista ordenados: "  + listaaccidentesord);
+		
+			log.info("Se calculó tabla de accidentabilidad");
+
 			return "listaraccidentes";
+			
+
 		}
 	  
 	  
-	
+	  // --- *** FIN CALCULAR ACCIDENTABILIDAD *** ----//
+		
+		
+	  // --- *** INICIO CONTROL DE PAGO DE CLIENTES *** ----//
+		
+		// Listamos los clientes para gestion de pagos
+		@RequestMapping("/controldepago")
+		public String listaclipagos(Model m) {
+			// creamos lista de tabla pagos
+			List<Clientes> listalosclientes = cs.listarClientes();
+			m.addAttribute("listalosclientes", listalosclientes);
+			System.out.println("Lista completa de clientes:" + listalosclientes);
+			
+			// creamos lista de tabla pagos
+			List<Pagos> listapagos = pse.listarPagos();
+			m.addAttribute("listapagos", listapagos);
+			System.out.println("Lista completa de pagos:" + listapagos);
+			
+			//Lista nueva de clientes para almacenar los registros no repetidos
+			List<Clientes> listacligp = new ArrayList<Clientes>();
+			System.out.println("Creamos nueva lista vacia");
+			
+			//iterador lista clientes
+			listalosclientes.stream().forEach((L) ->{
+				noexiste = false;
+					// iterados lista pagos
+					for(Pagos V: listapagos) {
+						System.out.println("Valor lista Cliente:" + L.getIdcliente());
+						System.out.println("Valor lista Pagos:" + V.getCliente().getIdcliente());
+				
+						
+						if (L.getIdcliente()!= V.getCliente().getIdcliente())  {
+							// si la el el cliente es distinto de cliente pagos no existe = true
+							noexiste = true;
+							System.out.println("valor comparacion ¿Son distintos?: " + noexiste);
+						}  else {
+							// si el cliente es igual de cliente pagos no existe = false
+							// si es falso debe terminar el ciclo y volver al ciclo de clientes
+							noexiste = false;
+							System.out.println("valor comparacion ¿Son distintos?: " + noexiste);
+							break;
+						}
+						
+						
+					}
+				 
+						System.out.println("Termino el ciclo");
+						System.out.println("preguntamos si el ciclo termino en false");
+					
+						
+						if  (noexiste == true) {
+							System.out.println("No existe:" + noexiste);
+							System.out.println("Guardamos los registros");
+							Clientes listagenerada = new Clientes();
+							listagenerada.setIdcliente(L.getIdcliente());
+							listagenerada.setNombrecliente(L.getNombrecliente());
+							listagenerada.setDireccioncliente(L.getDireccioncliente());
+							listagenerada.setEmailcliente(L.getEmailcliente());
+							listagenerada.setTelefonocliente(L.getTelefonocliente());
+							listacligp.add(listagenerada);
+							
+						
+						}
+						
+
+				
+			});
+			
+			System.out.println("La lista generada final fue:" + listacligp);
+			m.addAttribute("listacligp", listacligp);
+		
+		return "lcligenerapagos";
+		
+		}	
+			
+		
+		
+		// Una vez escogido el cliente lo enviamos a un formulario para gestion de pagos
+		  @RequestMapping(value = "/generapagosporcliente/{id}/{ncliente}") 
+		  public String gestionclientepago(@PathVariable int id, @PathVariable String ncliente, Model m){
+			  System.out.println("estamos  en generar por cliente");
+			  Pagos regpagos = new Pagos(); 
+			  Clientes cliente = new Clientes();
+			  cliente.setIdcliente(id);
+			  regpagos.setCliente(cliente);
+			  m.addAttribute("creapagos",regpagos);
+			  System.out.println("Mostramos despues de crear Pagos m:" + m);
+			  System.out.println("estamos enviando al formulario formgestionpagos");
+		  return "formgestionpagos"; 
+		  }
+		 
+		  //guardamos el formulario en tabla visita
+		  
+		  @RequestMapping(value = "/guardapagos") 
+		  public String guardarpagos (@ModelAttribute("creapago") Pagos pago, Model m) {
+			  System.out.println("Estamos guardando el formulario de gestion pagos "); 
+			  pse.agregarPago(pago);
+		  return "redirect:/administrador/controldepago";
+		  
+		  }
+			 
+		  
 	  
 
 }
