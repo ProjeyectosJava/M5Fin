@@ -1,10 +1,7 @@
 package com.m5fin.controladores;
 
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -36,6 +33,11 @@ public class BaseControlador {
 	@RequestMapping("/pendientes")
 	public String pendientes(Model m) {
 		return "pendientes";
+	}
+	
+	@RequestMapping("/rest/infoapirest")
+	public String infoapirest() {
+		return "infoapirest";
 	}
 	
 	/*
