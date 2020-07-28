@@ -49,6 +49,17 @@ public class AsesoriaServicioImpl implements AsesoriaServicio{
 		return query.getResultList();
 	}
 
+	@Override
+	public Asesorias findAsesoriaByid(int id) {
+		return ar.findOne(id);
+	}
+
+	@Override
+	public void editarAsesoria(Asesorias a) {
+		ar.save(a);
+		
+	}
+
 
 
 }

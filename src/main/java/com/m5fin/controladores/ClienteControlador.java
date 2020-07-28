@@ -85,7 +85,7 @@ public class ClienteControlador {
 	 m.addAttribute("regase",regasesoria); 
 	 m.addAttribute("ncliente", ncliente);
 	 System.out.println("regcap que va al formulario: " + regasesoria);
-	 return "formasesoria";
+	 return "formasesoriaespecial";
     }
     
     // guardamos el formulario de asesoria
@@ -106,9 +106,6 @@ public class ClienteControlador {
 		m.addAttribute("mensaje", "La asesoria se eliminó exitosamente");
 		return "redirect:/cliente/visitasasesoria";
 	}
-
-	
-
 
 // --- *** CU FIN  AGREGAR CASO DE ASESORIAS  *** ----//
 	

@@ -9,11 +9,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.m5fin.dao.Asesorias;
 import com.m5fin.dao.Capacitaciones;
 import com.m5fin.dao.Clientes;
 import com.m5fin.dao.Empleados;
 import com.m5fin.dao.Mejoras;
 import com.m5fin.dao.Visitas;
+import com.m5fin.servicio.AsesoriaServicio;
 import com.m5fin.servicio.CapacitacionServicio;
 import com.m5fin.servicio.ClienteServicio;
 import com.m5fin.servicio.EmpleadoServicio;
@@ -39,6 +41,9 @@ public class ProfesionalControlador {
 	
 	@Autowired
 	MejoraServicio ms;
+	
+	@Autowired
+	AsesoriaServicio as;
 	
 	// CU5 ---*** REVISAR CLIENTES *** --- //
 	/* Lista los clientes existentes es una vista */
@@ -152,7 +157,7 @@ public class ProfesionalControlador {
 	 
 	// CU ---*** INICIO CREAR CAPACITACION *** --- //
 	  
-	 /* Lista los clientes para generar capacitaciones*/
+	 /* Lista las visitas para generar capacitaciones*/
 	    @RequestMapping("/crearcapacitacion")    
 	    public String crearcapacitacion(Model m){    
 	        List<Visitas> listrevisita = vs.ListarVisitas();  
@@ -238,6 +243,112 @@ public class ProfesionalControlador {
 			}
     
 		// CU ---*** FIN LISTAR ACTIVIDAD DE MEJORA *** --- //
+		 
+		 
+		// CU ---*** INICIO CREAR CASO DE ASESORIA *** --- //
+		 @RequestMapping("/crearasesoria")    
+		    public String crearasesoria(Model m){    
+		        List<Visitas> listvisita = vs.ListarVisitas();  
+		        m.addAttribute("listvisita",listvisita);  
+		        System.out.println("listvisita asesoria: " + listvisita);
+		        return "listavisitaasesoria";
+		    }
+		 
+		// enviamos al cliente con una visita a formulario de asesorias 
+		    @RequestMapping(value = "/generarasesoria/{id}/{ncliente}") 
+			 public String generaasesoria(@PathVariable int id, @PathVariable String ncliente, Model m){
+			 Asesorias regasesoria = new Asesorias();
+			 Visitas visita = new Visitas();
+			 visita.setIdvisita(id);
+			 regasesoria.setVisita(visita);
+			 m.addAttribute("regase",regasesoria); 
+			 m.addAttribute("ncliente", ncliente);
+			 System.out.println("regcap que va al formulario: " + regasesoria);
+			 return "formasesoria";
+		    }
+		 
+		 // guardamos el formulario de asesoria
+		    @RequestMapping(value = "/guardarasesoria") 
+			 public String guardarasesoria(@ModelAttribute("regase") Asesorias asesoria, Model m) {
+				 System.out.println("Estamos guardando la Asesoria " + asesoria);
+				 as.agregaAsesoria(asesoria);
+				
+			return "redirect:/profesional/crearasesoria";
+			}
+		 
+		// CU ---*** FIN CREAR CASO DE ASESORIA *** --- //
+		    
+		    
+		 // CU ---*** INICIO INGRESAR ASESORIA (GESTIONAR)*** --- //
+		    
+		    @RequestMapping("/menuasesorias")    
+		    public String menuasesorias(){
+		    	return "menuasesorias";
+		    }
+		    
+		    @RequestMapping("/gestionasesorianormal")    
+		    public String ingresarasesoria(Model m){    
+		    	List<Asesorias> listaasesorias = as.listarAsesorias();
+		    	System.out.println("Listamos toda la tabla de asesorias : " + listaasesorias );
+		    	m.addAttribute("lasesorias", listaasesorias);
+		    	
+		    	/* Lo uso para llegar a las tablas enlazadas
+		    	listaasesorias.stream().forEach((f)->{
+		    		f.getVisita().getEmpleado().getNombreempleado()
+		    	});
+		    	*/
+		        return "listaasesorianormal";
+		    }
+		    
+		    
+		    @RequestMapping(value = "/inciarasesorianormal/{idvi}/{idas}/{fechasesor}/{ncliente}") 
+			 public String inciarasesoria(@PathVariable int idvi, 
+					 					  @PathVariable int idas, 
+					 					  @PathVariable String fechasesor, 
+					 					  @PathVariable String ncliente, 
+					 					  Model m){
+		    	
+		    	Visitas regvisita = new Visitas();
+		    	regvisita.setIdvisita(idvi);
+				
+		    	Asesorias regasesoria = new Asesorias();
+				regasesoria.setIdasesoria(idas);
+				regasesoria.setFechaasesoria(fechasesor);
+				regasesoria.setGestionasesoria("Iniciada");
+				regasesoria.setEspecialasesoria("No");
+				regasesoria.setVisita(regvisita);
+			 
+				m.addAttribute("regase",regasesoria); 
+				m.addAttribute("ncliente", ncliente);
+				
+				System.out.println("regcap que va al formulario: " + regasesoria);
+				return "formasesoriainiciada";
+		    }
+		    
+		    /*Guarda formulario formasesoriainiciada*/
+		    @RequestMapping(value = "/guardarasesoriainiciada") 
+			 public String guardarasesoriainiciada(@ModelAttribute("regase") Asesorias asesoria, Model m) {
+				 as.agregaAsesoria(asesoria);
+				 System.out.println("Asesoria Iniciada guardada: " + asesoria);
+				
+			return "redirect:/profesional/ingresarasesoria";
+			}
+		    
+		    
+		    @RequestMapping(value = "/actualizarasesorianormal/{idas}/{ncliente}") 
+			 public String actualizarasesorianormal(@PathVariable int idas, 
+					 								@PathVariable String ncliente, 
+					 								Model m){		    	
+		    	
+		    	m.addAttribute("ncliente", ncliente);
+
+		    	Asesorias asesorianormal = as.findAsesoriaByid(idas);
+				m.addAttribute("asesorianormal", asesorianormal);
+				//System.out.println("regcap que va al formulario: " + regasesoria);
+				return "formeditasesorianormal";
+		    }
+		    
+		 // CU ---*** FIN INGRESAR ASESORIA (GESTIONAR)*** --- //
     
     
      

@@ -1,6 +1,6 @@
-<%@ include file="menupro.jsp"%>
+<%@ include file="menucli.jsp"%>
 
-<h4 class="text-center bg-dark text-white py-3">Creando Asesooria a cliente ${ncliente}</h4>
+<h4 class="text-center bg-dark text-white py-3">Creando Asesooria Especial a cliente ${ncliente}</h4>
 <div class="container mt-4">
 	<div class="row justify-content-center align-items-center">
 		<div class="col-md-10">
@@ -8,7 +8,7 @@
 				<div class="form-group row">
 					<label for="detalleasesoria" class="col-md-2 col-form-label mr-1">Detalle</label>
 						<div class="col-md-7"> 
-							<form:input class="form-control" id="detalleasesoria" path="detalleasesoria" readonly="true"/> 
+							<form:input class="form-control" id="detalleasesoria" path="detalleasesoria"/> 
 						</div>
 				</div>
 				<div class="form-group row">
@@ -20,7 +20,7 @@
 				<div class="form-group row">
 					<label for="propuestaasesoria" class="col-md-2 col-form-label mr-1">Propuesta</label>
 						<div class="col-md-7">  
-							<form:input class="form-control" id="propuestaasesoria" path="propuestaasesoria" readonly="true"/>
+							<form:input class="form-control" id="propuestaasesoria" path="propuestaasesoria"/>
 						</div>
 				</div>
 				
@@ -34,7 +34,7 @@
 				<div class="form-group row">
 					<label for="especialasesoria" class="col-md-2 col-form-label mr-1">Asesoria Especial</label>
 						<div class="col-md-7">  
-							<form:input class="form-control" id="especialasesoria" path="especialasesoria" value="No" readonly="true"/>
+							<form:input class="form-control" id="especialasesoria" path="especialasesoria" value="Si"/>
 						</div>
 				</div>
 				
