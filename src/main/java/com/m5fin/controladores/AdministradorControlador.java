@@ -142,14 +142,9 @@ public class AdministradorControlador {
 	  @RequestMapping(value = "/guardarprofesional") 
 	  public String saveempleado(@ModelAttribute("cliente") Empleados empleado, Model m) {
 		  System.out.println("empleado: " + empleado); 
-<<<<<<< HEAD
 		  es.agregarEmpleado(empleado);
-	  return "redirect:/administrador/listarprofesionales"; 
-=======
-		  ps.agregarEmpleado(empleado);
 		  log.info("Se registró un nuevo profesional" + " Id:" + empleado.getIdempleado()+  " Nombre:" + empleado.getNombreempleado());
 	      return "redirect:/administrador/listarprofesionales"; 
->>>>>>> ef5e411412503e0483415a883cbc50b5db3debe1
 	  }
 	  
 	  @RequestMapping("/eliminarprofesional/{id}") 
@@ -170,12 +165,9 @@ public class AdministradorControlador {
 	  
 	  @RequestMapping(value = "/editguardarpro") public String
 	  udataempleado(@ModelAttribute("empleado") Empleados empleado, Model m) {
-<<<<<<< HEAD
+
 	  es.editarEmpleado(empleado); m.addAttribute("mensaje",  "El empleado ha sido editado exitosamente"); 
-=======
-	  ps.editarEmpleado(empleado); m.addAttribute("mensaje",  "El empleado ha sido editado exitosamente"); 
 	  log.info("Se modifico el registro del profesional" + " Id:" + empleado.getIdempleado()+  " Nombre:" + empleado.getNombreempleado());
->>>>>>> ef5e411412503e0483415a883cbc50b5db3debe1
 	  return  "redirect:/administrador/listarprofesionales"; }
 	  
 	  // --- *** FIN CU1 CRUD PROFESIONALES *** ----//
