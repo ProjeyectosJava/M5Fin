@@ -1,4 +1,3 @@
-<%@ include file="menupro.jsp"%>
 <%@ include file="menuasesorias.jsp" %>
 
 	<c:if test="${lasesorias.size() == 0}">
