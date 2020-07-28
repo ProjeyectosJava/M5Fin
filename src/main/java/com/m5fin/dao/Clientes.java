@@ -28,7 +28,7 @@ public class Clientes {
 	
 	@Column(name="direccioncliente")
 	private String direccioncliente;
-	
+		
 	public Clientes() {
 		
 	}

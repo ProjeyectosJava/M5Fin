@@ -135,7 +135,8 @@ public class ProfesionalControlador {
 	  m.addAttribute("listaemp",listemp);
 	  System.out.println("Mostramos despues de listaemp:" + m);
 	  
-	  return "formvisita"; }
+	  return "formvisita"; 
+	  }
 	  
 	  
 	  //guardamos el formulario en tabla visita
