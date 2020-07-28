@@ -12,6 +12,11 @@ import javax.persistence.Table;
 @Table (name="CAPACITACIONES")
 public class Capacitaciones {
 	
+	/*
+	@SequenceGenerator(name = "CapacitacionIdGenerator", sequenceName = "CAPACITACIONES_SEQ")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CapacitacionIdGenerator")
+	 */
+	
 	@Id
 	@GeneratedValue
 	
