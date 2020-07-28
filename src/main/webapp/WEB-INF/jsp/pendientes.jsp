@@ -1,3 +1,5 @@
+<%@ include file="/menuroot.jsp" %>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -9,13 +11,14 @@
 <body>
 <h1>Pendientes por realizar</h1>
 <ol>
-<li>Crear Informacion para Api Rest (no asignado)</li>
+<li>Crear Informacion para Api Rest (Listo)</li>
 <li>Checklist (crear y responder) (no asignado)</li>
 <li>Finalizar el Logger (Andrea)</li>
 <li>Notificar atrasos (Daniel)</li>
 <li>Gestionar Asesorias especiales (Esteban)</li>
 <li>Eliminar registros asociados (no asignado)</li>
 <li>Crear script con datos para entrega final (no asignado)</li>
+<li>Agregar Iconos al menu raiz (No Asignado)</li>
 </ol>
 
 <br>
@@ -27,8 +30,9 @@
 <li>Logearse desde base de datos</li>
 <li></li>
 <li></li>
-
-
 </ul>
+
+${auth}
+
 </body>
 </html>

@@ -46,7 +46,7 @@
 		        <a class="nav-link" href="${baseURL}/submenucliente">Cliente</a>
 		      </li>
 		      <li class="nav-item">
-		        <a class="nav-link" href="${baseURL}/rest/info">Info Rest</a>
+		        <a class="nav-link" href="${baseURL}/rest/infoapirest">Info Rest</a>
 		      </li>
 		      <li class="nav-item">
 		        <a class="nav-link" href="${baseURL}/logout">Logout</a>
