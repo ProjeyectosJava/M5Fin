@@ -12,6 +12,11 @@ import javax.persistence.Table;
 @Table(name="ASESORIAS")
 public class Asesorias {
 	
+	/*
+	@SequenceGenerator(name = "AsesoriaIdGenerator", sequenceName = "ASESORIAS_SEQ")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "AsesoriaIdGenerator")
+	 */
+	
 	@Id
 	@GeneratedValue
 	@Column(name="idasesoria")

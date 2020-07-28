@@ -11,6 +11,12 @@ import javax.persistence.Table;
 @Entity
 @Table(name="MEJORAS")
 public class Mejoras {
+	
+	/*
+	@SequenceGenerator(name = "MejoraIdGenerator", sequenceName = "MEJORAS_SEQ")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "MejoraIdGenerator")
+	 */
+	
 	@Id
 	@GeneratedValue
 	@Column(name = "idmejora")

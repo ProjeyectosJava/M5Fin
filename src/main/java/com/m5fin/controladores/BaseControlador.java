@@ -32,6 +32,12 @@ public class BaseControlador {
 		return "indexcli";
 	}
 	
+	
+	@RequestMapping("/pendientes")
+	public String pendientes(Model m) {
+		return "pendientes";
+	}
+	
 	/*
 	@RequestMapping("/error")
     public String error(ModelMap model)
