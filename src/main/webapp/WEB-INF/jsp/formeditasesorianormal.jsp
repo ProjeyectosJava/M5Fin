@@ -30,7 +30,13 @@
 				<div class="form-group row">
 					<label for="gestionasesoria" class="col-md-2 col-form-label mr-1">Gestion</label>
 					<div class="col-md-7"> 
+						<!--
 						<form:input class="form-control" id="gestionasesoria" path="gestionasesoria" readonly="true"/>
+						-->
+						<form:select path="gestionasesoria" >
+							<option selected>En Curso</option>
+							<option>Finalizada</option>
+						</form:select>
 					</div>
 				</div>
 				
@@ -55,6 +61,13 @@
 					<label for="idvivisita" class="col-md-2 col-form-label mr-1">IdVisitaAsesoria</label>
 					<div class="col-md-7"> 
 						<form:input class="form-control" id="idvivisita" path="visita.idvisita" readonly="true"/>
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<label for="idasesoria" class="col-md-2 col-form-label mr-1">idasesoria</label>
+					<div class="col-md-7"> 
+						<form:input class="form-control" id="idasesoria" path="idasesoria" readonly="true"/>
 					</div>
 				</div>
 				<div class="form-group row">
