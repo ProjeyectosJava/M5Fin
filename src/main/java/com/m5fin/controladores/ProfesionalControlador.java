@@ -2,7 +2,6 @@ package com.m5fin.controladores;
 
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,12 +11,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.m5fin.dao.Asesorias;
 import com.m5fin.dao.Capacitaciones;
+import com.m5fin.dao.Chequeos;
 import com.m5fin.dao.Clientes;
 import com.m5fin.dao.Empleados;
 import com.m5fin.dao.Mejoras;
 import com.m5fin.dao.Visitas;
 import com.m5fin.servicio.AsesoriaServicio;
 import com.m5fin.servicio.CapacitacionServicio;
+import com.m5fin.servicio.ChequeoServicio;
 import com.m5fin.servicio.ClienteServicio;
 import com.m5fin.servicio.EmpleadoServicio;
 import com.m5fin.servicio.MejoraServicio;
@@ -45,6 +46,9 @@ public class ProfesionalControlador {
 	
 	@Autowired
 	AsesoriaServicio as;
+	
+	@Autowired
+	ChequeoServicio chk;
 	
 	// CU5 ---*** REVISAR CLIENTES *** --- //
 	/* Lista los clientes existentes es una vista */
@@ -286,23 +290,39 @@ public class ProfesionalControlador {
 		    
 		 // CU ---*** INICIO INGRESAR ASESORIA (GESTIONAR)*** --- //
 		    
+		    /*Ingresa al submenu de asesorias*/
 		    @RequestMapping("/menuasesorias")    
 		    public String menuasesorias(){
 		    	return "menuasesorias";
 		    }
 		    
+		    /*Ingresa a la gestion de asesorias normales*/
 		    @RequestMapping("/gestionasesorianormal")    
 		    public String ingresarasesoria(Model m){    
 		    	List<Asesorias> listaasesorias = as.listarAsesorias();
 		    	System.out.println("Listamos toda la tabla de asesorias : " + listaasesorias );
 		    	m.addAttribute("lasesorias", listaasesorias);
+		    	return "listaasesorianormal";
+		    }
+		    
+		    /*Ingresa a la gestion de asesorias especiales*/
+		    @RequestMapping("/gestionasesoriaespecial")    
+		    public String gestionasesoriaespecial(Model m){
+		    	boolean esEspecial = false;
+		    	List<Asesorias> listaasesorias = as.listarAsesorias();
+		    	System.out.println("Listamos asesorias : " + listaasesorias );
+		    	m.addAttribute("listespecial", listaasesorias);
 		    	
-		    	/* Lo uso para llegar a las tablas enlazadas
-		    	listaasesorias.stream().forEach((f)->{
-		    		f.getVisita().getEmpleado().getNombreempleado()
-		    	});
-		    	*/
-		        return "listaasesorianormal";
+		    	for(Asesorias a:listaasesorias) {
+		    		if(a.getEspecialasesoria().contentEquals("Si")){
+		    			esEspecial = true;
+		    		}		    		
+		    	}
+		    	
+		    	m.addAttribute("esEspecial",esEspecial);
+		    	
+		    	System.out.println("pasamos m: " + m);
+		        return "listaasesoriaespecial";
 		    }
 		    
 		    
@@ -336,7 +356,7 @@ public class ProfesionalControlador {
 				 as.agregaAsesoria(asesoria);
 				 System.out.println("Asesoria Iniciada guardada: " + asesoria);
 				
-			return "redirect:/profesional/ingresarasesoria";
+			return "redirect:/profesional/gestionasesorianormal";
 			}
 		    
 		    
@@ -355,8 +375,47 @@ public class ProfesionalControlador {
 		    
 		 // CU ---*** FIN INGRESAR ASESORIA (GESTIONAR)*** --- //
     
+		    
+		    /*** INICIO CREAR CHECKLIST ***/
     
-     
+		    @RequestMapping("/crearchecklist")
+			public String crearchecklist(Model m) {
+			  List<Visitas> listavisita = vs.ListarVisitasEspecial();
+			  m.addAttribute("listavisita", listavisita);
+			  
+			  System.out.println("pasamo el model m asi: " + m);
+			  System.out.println("listavisita: " + listavisita);
+			 
+			return "crearchecklist";
+			}
+		    
+		    
+		    @RequestMapping(value = "/agregarchecklist/{idvis}/{ncliente}") 
+			 public String agregarchecklist(@PathVariable int idvis, @PathVariable String ncliente, Model m){		    	
+		    	
+		    	m.addAttribute("ncliente", ncliente);
+		    	Visitas visita = new Visitas();
+		    	visita.setIdvisita(idvis);
+	    		Chequeos chequeo = new Chequeos();
+		    	chequeo.setVisita(visita);
+		    	chequeo.setEstadochequeo("Iniciado");
+		    	
+		    	m.addAttribute("chequeo", chequeo);
+				System.out.println("chequeo: " + chequeo);
+				return "formchecklist";
+		    }
+		    
+		    
+		    /*Guarda formulario formasesoriainiciada*/
+		    @RequestMapping(value = "/guardarchecklist") 
+			 public String guardarchecklist(@ModelAttribute("chequeo") Chequeos chequeo, Model m) {
+		    	System.out.println("chequeo a guardar: " + chequeo);
+				 chk.agregarChequeo(chequeo);
+				
+			return "redirect:/profesional/crearchecklist";
+			}
+		    
+		 
     
-
+		    /*** FIN CREAR CHECKLIST ***/
 }

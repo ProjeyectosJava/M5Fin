@@ -1,13 +1,23 @@
 <%@ include file="menuasesorias.jsp" %>
 
-	<c:if test="${lasesorias.size() == 0}">
+	<p>hay especial: ${esEspecial}</p>
+	<c:set var = "gestion" value="${listespecial[0].getGestionasesoria()}"/>
+	
+	${gestion}
+	<c:if test="${listespecial[1].getGestionasesoria() == 'No Iniciada'}">igual</c:if>
+	
+	<c:if test="${!esEspecial}">
 		<h5 class="text-center bg-dark text-white py-2">No existen Asesorias para Gestionar</h5>
 	</c:if>
+
+
 	
-	<c:if test="${lasesorias.size() > 0}">
-		<h5 class="text-center bg-dark text-white py-2">Gestionar Asesorias Normales</h5>
+	<c:if test="${esEspecial}">
+		<h5 class="text-center bg-dark text-white py-2">Gestionar Asesorias Especiales</h5>
 		
-		<!-- Aseorias No Iniciadas -->
+		<!-- 
+		Aseorias No Iniciadas 
+		-->
 		<div class="container mt-3">
 			<h5 class="text-center bg-dark text-white py-2 mb-0">No Iniciadas</h5>
 			<div class="table-responsive-md">
@@ -24,33 +34,27 @@
 							<th scope="col">Gestionar Asesoria</th>
 						</tr>
 					</thead>	
-					<c:forEach items="${lasesorias}" var="lg">
+					<c:forEach items="${listespecial}" var="lg">
 						<tr>
-							<c:if test="${lg.getEspecialasesoria() == 'No' && lg.getGestionasesoria() == 'No Iniciada' }">
-							
-							<c:set var = "gestion" value="No Inciada"/>
-						    <c:if test="${lg.getGestionasesoria() eq gestion}" var="xxx">
-						    </c:if>
-						    	<td>gola ${xxx}</td>
-							
-								<th scope="row">${lg.getIdasesoria()}</th>
-								<td>${lg.getVisita().getIdvisita()}</td>
-								<td>${lg.getVisita().getCliente().getNombrecliente()}</td>
-								<td>${lg.getVisita().getEmpleado().getNombreempleado()}</td> 	 	 
-								<td>${lg.getGestionasesoria()}</td>
-								<td>${lg.getEspecialasesoria()}</td>
-								<td>${lg.getFechaasesoria()}</td>
-								<td><a href="inciarasesorianormal/${lg.getVisita().getIdvisita()}/${lg.getIdasesoria()}/${lg.getFechaasesoria()}/${lg.getVisita().getCliente().getNombrecliente()}">Iniciar Asesoria</a></td> 	 
-							</c:if>
+						<c:if test="${lg.getEspecialasesoria() == 'Si' && lg.getGestionasesoria() == 'No Iniciada' }">
+							<th scope="row">${lg.getIdasesoria()}</th>
+							<td>${lg.getVisita().getIdvisita()}</td>
+							<td>${lg.getVisita().getCliente().getNombrecliente()}</td>
+							<td>${lg.getVisita().getEmpleado().getNombreempleado()}</td> 	 	 
+							<td>${lg.getGestionasesoria()}</td>
+							<td>${lg.getEspecialasesoria()}</td>
+							<td>${lg.getFechaasesoria()}</td>
+							<td><a href="inciarasesorianormal/${lg.getVisita().getIdvisita()}/${lg.getIdasesoria()}/${lg.getFechaasesoria()}/${lg.getVisita().getCliente().getNombrecliente()}">Iniciar Asesoria</a></td> 	 
+						</c:if>
 						</tr>
 					</c:forEach>
 				</table>
 			</div>
 		</div>
 		
-		<!-- Asesorias Iniciadas -->
-		<div class="container mt-4">
-			<h5 class="text-center bg-dark text-white py-3 mb-0">Iniciadas</h5>
+		<!-- Asesorias Iniciadas 
+		<div class="container mt-5">
+			<h5 class="text-center bg-dark text-white py-3 mb-0">En Curso</h5>
 			<div class="table-responsive-md">
 				<table class="table table-warning">
 					<thead class="thead-dark">
@@ -67,9 +71,9 @@
 							<th scope="col">Actualizar</th>
 						</tr>
 					</thead>	
-					<c:forEach items="${lasesorias}" var="lg">
+					<c:forEach items="${listespecial}" var="lg">
 						<tr>
-							<c:if test="${lg.getEspecialasesoria() == 'No' && lg.getGestionasesoria() == 'En Curso' }">
+							<c:if test="${lg.getEspecialasesoria() == 'Si' && lg.getGestionasesoria() == 'En Curso' }">
 								<th scope="row">${lg.getIdasesoria()}</th>
 								<td>${lg.getVisita().getIdvisita()}</td>
 								<td>${lg.getVisita().getCliente().getNombrecliente()}</td>
@@ -89,9 +93,10 @@
 				</table>
 			</div>
 		</div>
+		-->
 		
-		<!-- Asesorias Finalizadas -->
-		<div class="container mt-4">
+		<!-- Asesorias Finalizadas 
+		<div class="container mt-5">
 			<h5 class="text-center bg-dark text-white py-3 mb-0">Finalizada</h5>
 			<div class="table-responsive-md">
 				<table class="table table-success">
@@ -108,9 +113,9 @@
 							<th scope="col">Fecha Asesoria</th>
 						</tr>
 					</thead>	
-					<c:forEach items="${lasesorias}" var="lg">
+					<c:forEach items="${listespecial}" var="lg">
 						<tr>
-							<c:if test="${lg.getEspecialasesoria() == 'No' && lg.getGestionasesoria() == 'Finalizada' }">
+							<c:if test="${lg.getEspecialasesoria() == 'Si' && lg.getGestionasesoria() == 'Finalizada' }">
 								<th scope="row">${lg.getIdasesoria()}</th>
 								<td>${lg.getVisita().getIdvisita()}</td>
 								<td>${lg.getVisita().getCliente().getNombrecliente()}</td>
@@ -127,6 +132,7 @@
 			</div>
 		</div>
 	</c:if>
+		-->
 		
 		
 

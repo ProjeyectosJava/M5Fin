@@ -7,9 +7,9 @@
 			<form:form method="post" action="../../guardarasesoria" modelAttribute="regase">
 				<div class="form-group row">
 					<label for="detalleasesoria" class="col-md-2 col-form-label mr-1">Detalle</label>
-						<div class="col-md-7"> 
-							<form:input class="form-control" id="detalleasesoria" path="detalleasesoria" readonly="true"/> 
-						</div>
+				<div class="col-md-7"> 
+					<form:input class="form-control" id="detalleasesoria" path="detalleasesoria" readonly="true"/> 
+				</div>
 				</div>
 				<div class="form-group row">
 					<label for="gestionasesoria" class="col-md-2 col-form-label mr-1">Gestion</label>
