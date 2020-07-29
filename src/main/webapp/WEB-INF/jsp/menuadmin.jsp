@@ -50,7 +50,7 @@
 						<a class="nav-link"	href="${baseURL}/administrador/visualizadoractividades">Visualizar Actividades</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link disabled" href="#">Notificar	atrasos</a>
+						<a class="nav-link" href="${baseURL}/administrador/listaclientepagatr">Notificar atrasos</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="${baseURL}/administrador/reportecliente">Reporte cliente </a>
