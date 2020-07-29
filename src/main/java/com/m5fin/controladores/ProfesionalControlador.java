@@ -323,11 +323,12 @@ public class ProfesionalControlador {
 		    }
 		    
 		    
-		    @RequestMapping(value = "/inciarasesorianormal/{idvi}/{idas}/{fechasesor}/{ncliente}") 
+		    @RequestMapping(value = "/inciarasesoria/{idvi}/{idas}/{fechasesor}/{ncliente}/{especial}") 
 			 public String inciarasesoria(@PathVariable int idvi, 
 					 					  @PathVariable int idas, 
 					 					  @PathVariable String fechasesor, 
-					 					  @PathVariable String ncliente, 
+					 					  @PathVariable String ncliente,
+					 					 @PathVariable String especial,
 					 					  Model m){
 		    	
 		    	Visitas regvisita = new Visitas();
@@ -336,8 +337,8 @@ public class ProfesionalControlador {
 		    	Asesorias regasesoria = new Asesorias();
 				regasesoria.setIdasesoria(idas);
 				regasesoria.setFechaasesoria(fechasesor);
-				regasesoria.setGestionasesoria("Iniciada");
-				regasesoria.setEspecialasesoria("No");
+				regasesoria.setGestionasesoria("En Curso");
+				regasesoria.setEspecialasesoria(especial);
 				regasesoria.setVisita(regvisita);
 			 
 				m.addAttribute("regase",regasesoria); 
@@ -352,12 +353,15 @@ public class ProfesionalControlador {
 			 public String guardarasesoriainiciada(@ModelAttribute("regase") Asesorias asesoria, Model m) {
 				 as.agregaAsesoria(asesoria);
 				 System.out.println("Asesoria Iniciada guardada: " + asesoria);
-				
-			return "redirect:/profesional/gestionasesorianormal";
+				 if(asesoria.getEspecialasesoria().contentEquals("No")) {
+					 return "redirect:/profesional/gestionasesorianormal";
+				 } else {
+					 return "redirect:/profesional/gestionasesoriaespecial";
+				 }
 			}
 		    
 		    
-		    @RequestMapping(value = "/actualizarasesorianormal/{idas}/{ncliente}") 
+		    @RequestMapping(value = "/actualizarasesoria/{idas}/{ncliente}") 
 			 public String actualizarasesorianormal(@PathVariable int idas, 
 					 								@PathVariable String ncliente, 
 					 								Model m){		    	

@@ -45,4 +45,4 @@
 	</div>
 </div>
 
-<%@ include file="menupro.jsp"%>
+<%@ include file="footer.jsp"%>

@@ -4,7 +4,7 @@
 <div class="container mt-4">
 	<div class="row justify-content-center align-items-center">
 		<div class="col-md-10">
-			<form:form method="post" action="../../../../guardarasesoriainiciada" modelAttribute="regase">
+			<form:form method="post" action="../../../../../guardarasesoriainiciada" modelAttribute="regase">
 				
 				<div class="form-group row">
 					<label for="fechaasesoria" class="col-md-2 col-form-label mr-1">Fecha Asesoria</label>

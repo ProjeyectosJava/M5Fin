@@ -5,7 +5,6 @@
 <strong>Consideraciones:</strong>
 <ul>
 	<li>La api esta creada sobre la tabla Clientes.</li>
-	<li>Tomar en cuenta que localhost:8181 debera adaptarlo en funcion de su configuracion local.</li>
 	<li>Recomendamos usar Postman para realizar las pruebas.</li>
 	<li>La aplicacion debe estar en ejecucion para realizar las pruebas con Postman</li>
 	<li>El formato de entrada y salida de informacion es JSON</li>
@@ -13,24 +12,35 @@
 
 <table border="1" cellpadding="3">
 <tr>
+	<th>Recurso</th>
+	<th>Metodo</th>
+	<th>Ruta</th>
+	
+</tr>
+<tr>
 	<td>Listar todos los registros</td>
-	<td>GET: http://localhost:8181/m5fin/rest/clilist</td>
+	<td>GET</td>
+	<td>/m5fin/rest/clilist</td>
 </tr>
 <tr>
 	<td>Listar un resgitro</td>
-	<td>GET: http://localhost:8181/m5fin/rest/clidetalle/ID <- reemplazar ID por un id de registro valido</td>
+	<td>GET</td>
+	<td>/m5fin/rest/clidetalle/ID <i>(reemplazar ID por un id de registro valido)</i></td>
 </tr>
 <tr>
 	<td>Guardar un nuevo resgitro</td>
-	<td>POST: http://localhost:8181/m5fin/rest/clilist</td>
+	<td>POST</td>
+	<td>/m5fin/rest/clilist</td>
 </tr>
 <tr>
 	<td>Actualizar un resgitro</td>
-	<td>PUT: http://localhost:8181/m5fin/rest/clilist</td>
+	<td>PUT</td>
+	<td>/m5fin/rest/clilist</td>
 </tr>
 <tr>
 	<td>Eliminar un resgitro</td>
-	<td>DELETE: http://localhost:8181/m5fin/rest/clidetalle/ID <- reemplazar ID por un id de registro valido</td>
+	<td>DELETE</td>
+	<td>/m5fin/rest/clidetalle/ID <i>(reemplazar ID por un id de registro valido)</i></td>
 </tr>
 </table>
 
