@@ -33,7 +33,7 @@ ${registrovisita}
 						<form:hidden class="form-control" id="estadochequeo"  path="estadochequeo" readonly="true"/>
 					</div>
 					<div class="form-group row col-md-2">
-						<input type="submit" class="btn btn-dark" value="Guardar">
+						<input type="submit" class="btn btn-dark" value="Crear">
 					</div>
 				</div>
 				

@@ -44,7 +44,7 @@
 		
 		<!-- Asesorias Normales En Curso -->
 		<div class="container mt-4">
-			<h5 class="text-center bg-dark text-white py-3 mb-0">Iniciadas</h5>
+			<h5 class="text-center bg-dark text-white py-3 mb-0">En Curso</h5>
 			<div class="table-responsive-md">
 				<table class="table table-warning">
 					<thead class="thead-dark">

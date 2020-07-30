@@ -1,15 +1,5 @@
+<%@ include file="/menuroot.jsp" %>
 
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<link rel="stylesheet" href="css/styles.css">
-<script src="js/script.js"></script>
-<title>Insert title here</title>
-</head>
-<body>
 <h1>Pendientes por realizar</h1>
 <ol>
 <li>Crear Informacion para Api Rest (Listo)</li>
@@ -22,6 +12,7 @@
 <li>Crear script con datos para entrega final (pendiente)</li>
 <li>Agregar Iconos al menu raiz (pendiente)</li>
 <li>Darle formato a todos los campos de fecha para unificar (pendiente)</li>
+<li>Agregar notificaciones de atraso en clientes</li>
 </ol>
 
 <br>
