@@ -7,9 +7,9 @@
 		
 			<form:form method="post" action="../../guardapagos"  modelAttribute="creapagos">
 				<div class="form-group row">
-					<label for="mesaniopago" class="col-md-2 col-form-label mr-1">Fecha de pagos:</label>
+					<label for="mesaniopago" class="col-md-2 col-form-label mr-1">Proxima fecha de pago:</label>
 					<div class="col-md-7"> 
-						<form:input class="form-control" id="mesaniopago" path="mesaniopago"/>
+						<form:input  class="form-control" id="mesaniopago" path="mesaniopago" placeholder="dd/mm/yyyy"/>
 					</div>
 				</div>
 				<div class="form-group row">

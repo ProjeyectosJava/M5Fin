@@ -93,13 +93,17 @@ public class ProfesionalControlador {
 		System.out.println("Estamos en lista de visitas existentes ");
 		
 		List<Empleados> listaempleados = es.listarempleados();
+		
 		List<VisitasGeneradas> listavisitas = new ArrayList<VisitasGeneradas>();
+		
 		listcli.stream().forEach((L) ->{
 				System.out.println("recorriendo lista"+ L);
 				listavisexis.stream().forEach((V)->{
 					System.out.println("recorriendo lista visita" + V);		
 					if (L.getIdcliente() == V.getIdclientevisita()) {
+					
 						VisitasGeneradas vistagenerada = new VisitasGeneradas();
+						
 						System.out.println("Encontre uno igual " + L.getNombrecliente());
 						vistagenerada.setNombrecliente(L.getNombrecliente());
 						vistagenerada.setCiudadvisita(V.getCiudadvisita());
@@ -147,7 +151,6 @@ public class ProfesionalControlador {
 	  
 	  return "formvisita"; 
 	  }
-	  
 	  
 	  //guardamos el formulario en tabla visita
 	  
