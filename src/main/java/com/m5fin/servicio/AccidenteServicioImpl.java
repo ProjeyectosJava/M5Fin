@@ -50,6 +50,12 @@ public class AccidenteServicioImpl implements AccidenteServicio{
 		
 		return query.getResultList();
 	}
+
+	@Override
+	public void eliminarAccidente(int id) {
+		ar.delete(id);
+		
+	}
 	
 	
 

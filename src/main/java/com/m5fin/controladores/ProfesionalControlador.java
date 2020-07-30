@@ -1,5 +1,6 @@
 package com.m5fin.controladores;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -326,11 +327,12 @@ public class ProfesionalControlador {
 		    }
 		    
 		    
-		    @RequestMapping(value = "/inciarasesorianormal/{idvi}/{idas}/{fechasesor}/{ncliente}") 
+		    @RequestMapping(value = "/inciarasesoria/{idvi}/{idas}/{fechasesor}/{ncliente}/{especial}") 
 			 public String inciarasesoria(@PathVariable int idvi, 
 					 					  @PathVariable int idas, 
 					 					  @PathVariable String fechasesor, 
-					 					  @PathVariable String ncliente, 
+					 					  @PathVariable String ncliente,
+					 					 @PathVariable String especial,
 					 					  Model m){
 		    	
 		    	Visitas regvisita = new Visitas();
@@ -339,8 +341,8 @@ public class ProfesionalControlador {
 		    	Asesorias regasesoria = new Asesorias();
 				regasesoria.setIdasesoria(idas);
 				regasesoria.setFechaasesoria(fechasesor);
-				regasesoria.setGestionasesoria("Iniciada");
-				regasesoria.setEspecialasesoria("No");
+				regasesoria.setGestionasesoria("En Curso");
+				regasesoria.setEspecialasesoria(especial);
 				regasesoria.setVisita(regvisita);
 			 
 				m.addAttribute("regase",regasesoria); 
@@ -355,12 +357,15 @@ public class ProfesionalControlador {
 			 public String guardarasesoriainiciada(@ModelAttribute("regase") Asesorias asesoria, Model m) {
 				 as.agregaAsesoria(asesoria);
 				 System.out.println("Asesoria Iniciada guardada: " + asesoria);
-				
-			return "redirect:/profesional/gestionasesorianormal";
+				 if(asesoria.getEspecialasesoria().contentEquals("No")) {
+					 return "redirect:/profesional/gestionasesorianormal";
+				 } else {
+					 return "redirect:/profesional/gestionasesoriaespecial";
+				 }
 			}
 		    
 		    
-		    @RequestMapping(value = "/actualizarasesorianormal/{idas}/{ncliente}") 
+		    @RequestMapping(value = "/actualizarasesoria/{idas}/{ncliente}") 
 			 public String actualizarasesorianormal(@PathVariable int idas, 
 					 								@PathVariable String ncliente, 
 					 								Model m){		    	
@@ -418,4 +423,59 @@ public class ProfesionalControlador {
 		 
     
 		    /*** FIN CREAR CHECKLIST ***/
+		    
+		    
+		    /*** INICIO RESPONDER CHECKLIST ***/
+		    @RequestMapping("/responderchecklist") 
+			 public String responderchecklist(Model m) {
+		    	List<Chequeos> listachequeos = filtrarListaVisitas(chk.ListarChequeos());
+		    	m.addAttribute("listachequeos", listachequeos);
+		    	System.out.println("chequeo a guardar: " + listachequeos);		
+		
+			return "listarchecklist";
+		    }
+		    
+		    @RequestMapping(value="/mostrarchecklist/{idvis}") 
+			 public String mostrarchecklist(@PathVariable int idvis, Model m) {
+		    	List<Chequeos> listachequeos = filtrarListaChequeos(chk.ListarChequeos(), idvis);
+		    	m.addAttribute("listachequeos", listachequeos);
+		    	int i=1;
+		    	for(Chequeos check:listachequeos) {
+		    		m.addAttribute("chequeo"+i,check);
+		    		i++;
+		      	}
+		    	System.out.println("m: " + m);
+		    	//System.out.println("chequeo a guardar: " + listachequeos);		
+		
+			return "listarchecklistaresponder";
+		    }
+		    
+		    
+		    /***retornamos una lista de Chequeos solo con registros de la visita con id entregado***/
+			public List<Chequeos> filtrarListaChequeos(List<Chequeos> lista, int id) {
+				List<Chequeos> listafiltrada = new ArrayList<Chequeos>();
+				for(Chequeos list:lista) {
+					if(list.getVisita().getIdvisita() == id)
+						listafiltrada.add(list);
+				}
+				return listafiltrada;
+			}
+			
+		
+			/***retornamos una lista solo con las visitas que tienen creado un cheklist***/
+			public List<Chequeos> filtrarListaVisitas(List<Chequeos> lista) {
+				int idvisita = 0;
+				List<Chequeos> listafiltrada = new ArrayList<Chequeos>();
+				for(Chequeos list:lista) {
+					if(list.getVisita().getIdvisita() != idvisita )
+						listafiltrada.add(list);
+						idvisita = list.getVisita().getIdvisita();
+				}
+				return listafiltrada;
+			}
+		    
+		    /*** FIN RESPONDER CHECKLIST ***/
+		    
+		    
+
 }

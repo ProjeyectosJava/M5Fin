@@ -60,6 +60,11 @@ public class VisitaServicioImpl implements VisitaServicio{
 		System.out.println("Listando query en accidentes " + query);
 		return query.getResultList();
 	}
+
+	@Override
+	public Visitas findVisitaById(int id) {
+		return 	vr.findOne(id);
+	}
 	
 	
 	

@@ -14,5 +14,7 @@ public interface AccidenteServicio {
 	
 	List<Accidentes> ListarPorId(Integer id);
 	
+	void eliminarAccidente(int id);
+	
 	
 }

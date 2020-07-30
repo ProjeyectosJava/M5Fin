@@ -8,6 +8,7 @@ public interface ChequeoServicio {
 	
 	List<Chequeos> ListarChequeos();
 	void agregarChequeo(Chequeos chequeo);
+	Chequeos findChequeoById(int id);
 	
 
 }

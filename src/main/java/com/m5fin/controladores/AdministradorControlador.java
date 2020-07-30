@@ -92,10 +92,74 @@ public class AdministradorControlador {
 
 	@RequestMapping("/eliminarcliente/{id}")
 	public String eliminar(@PathVariable int id, Model m) {
-		cs.eliminarCliente(id);
-		log.debug("Se eliminó el cliente id:" + id);
-		m.addAttribute("mensaje", "El cliente se eliminó exitosamente");
-		return "redirect:/administrador/listarclientes";
+		int elimino = cs.eliminarCliente(id);
+		if(elimino == 1) {
+			log.debug("Se eliminó el cliente id:" + id);
+			m.addAttribute("mensaje", "El cliente se eliminó exitosamente");
+			return "redirect:/administrador/listarclientes";			
+		} else {
+			/*aqui tenemos que crear una lista con todos los registros asociados a este cliente*/
+			List<Accidentes> listaaccidentes = filtrarListaAccidente(ac.listarAccidentes(), id);
+			List<Mejoras>    listamejoras    = filtrarListaMejoras(ms.listarMejoras(), id);
+			List<Pagos>      listapagos      = filtrarListaPagos(pse.listarPagos(), id);
+			List<Visitas>    listavisitas    = filtrarListaVisitas(vs.ListarVisitas(), id);
+			
+			m.addAttribute("idcliente", id);
+			m.addAttribute("listaaccidentes",listaaccidentes);
+			m.addAttribute("listamejoras",listamejoras);
+			m.addAttribute("listapagos",listapagos);
+			m.addAttribute("listavisitas", listavisitas);
+			
+			
+			return "listarregistrosaeliminar";
+		}
+	}
+	
+	/***retornamos una lista de Accidentes solo con registros del cliente con id entregado***/
+	public List<Accidentes> filtrarListaAccidente(List<Accidentes> lista, int id) {
+		List<Accidentes> listafiltrada = new ArrayList<Accidentes>();
+		for(Accidentes list:lista) {
+			if(list.getCliente().getIdcliente() == id)
+				listafiltrada.add(list);
+		}
+		return listafiltrada;
+	}
+	
+	
+	/***retornamos una lista de Mejoras solo con registros del cliente con id entregado***/
+	public List<Mejoras> filtrarListaMejoras(List<Mejoras> lista, int id) {
+		List<Mejoras> listafiltrada = new ArrayList<Mejoras>();
+		for(Mejoras list:lista) {
+			if(list.getCliente().getIdcliente() == id)
+				listafiltrada.add(list);
+		}
+		return listafiltrada;
+	}
+	
+	/***retornamos una lista de Pagos solo con registros del cliente con id entregado***/
+	public List<Pagos> filtrarListaPagos(List<Pagos> lista, int id) {
+		List<Pagos> listafiltrada = new ArrayList<Pagos>();
+		for(Pagos list:lista) {
+			if(list.getCliente().getIdcliente() == id)
+				listafiltrada.add(list);
+		}
+		return listafiltrada;
+	}
+	
+	/***retornamos una lista de Visitas solo con registros del cliente con id entregado***/
+	public List<Visitas> filtrarListaVisitas(List<Visitas> lista, int id) {
+		List<Visitas> listafiltrada = new ArrayList<Visitas>();
+		for(Visitas list:lista) {
+			if(list.getCliente().getIdcliente() == id)
+				listafiltrada.add(list);
+		}
+		return listafiltrada;
+	}
+	
+	@RequestMapping("/eliminaraccidente/{id}/{idcliente}")
+	public String eliminaraccidente(@PathVariable int id, @PathVariable int idcliente, Model m) {
+		ac.eliminarAccidente(id);
+		return "redirect:/administrador/eliminarcliente/{idcliente}";
 	}
 
 	@RequestMapping(value = "/editarcliente/{id}")
@@ -176,30 +240,34 @@ public class AdministradorControlador {
 
 	// --- *** INICIO CU VISUALIZAR ACTIVIDADES *** ----//
 
-	@RequestMapping("/visualizadoractividades")
-	public String visualizadoractividades(Model m) {
-		System.out.println("lo enviamos a un menu para elejir una actividad");
+	  
+	  @RequestMapping("/visualizadoractividades")
+		public String visualizadoractividades(Model m) {
+			System.out.println("lo enviamos a un menu para elejir una actividad");
+			return "menuvisact";
+		}
+	  
+	  @RequestMapping("/vcapacitaciones")
+		public String vcapacitaciones(Model m) {
+		  int opcion = 1;
+		  List<Capacitaciones> listacapacitaciones = cap.ListarCapacitacionesEspecial();
+		  m.addAttribute("listacapacitaciones", listacapacitaciones);
+		  m.addAttribute("opcion", opcion);
+		  /*
+		  listacapacitaciones.stream().forEach((C)->{
+			  System.out.println("Elemento: " + C);
+			  System.out.println("Fechacap " + C.getFechacapacitacion());
+			  System.out.println("Empleado name " + C.getVisita().getEmpleado().getNombreempleado());
+		  });
+		  */
+		  System.out.println("pasamos una lista de capacitaciones " + listacapacitaciones);
+		  System.out.println("pasamos opcion: " + opcion);
+		  System.out.println("pasamo el model m asi: " + m);
+
 		return "menuvisact";
 	}
 
-	@RequestMapping("/vcapacitaciones")
-	public String vcapacitaciones(Model m) {
-		int opcion = 1;
-		List<Capacitaciones> listacapacitaciones = cap.ListarCapacitacionesEspecial();
-		m.addAttribute("listacapacitaciones", listacapacitaciones);
-		m.addAttribute("opcion", opcion);
-
-		listacapacitaciones.stream().forEach((C) -> {
-			System.out.println("Elemento: " + C);
-			System.out.println("Fechacap " + C.getFechacapacitacion());
-			System.out.println("Empleado name " + C.getVisita().getEmpleado().getNombreempleado());
-		});
-		System.out.println("pasamos una lista de capacitaciones " + listacapacitaciones);
-		System.out.println("pasamos opcion: " + opcion);
-		System.out.println("pasamo el model m asi: " + m);
-		return "menuvisact";
-	}
-
+	
 	@RequestMapping("/vvisitas")
 	public String vvisitas(Model m) {
 		int opcion = 2;

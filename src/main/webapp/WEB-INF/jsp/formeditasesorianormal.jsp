@@ -1,6 +1,6 @@
 <%@ include file="menuasesorias.jsp"%>
 
-<h4 class="text-center bg-dark text-white py-3">Iniciando Asesooria a cliente ${ncliente}</h4>
+<h4 class="text-center bg-dark text-white py-3">Actualizando Asesooria del Cliente ${ncliente}</h4>
 <div class="container mt-4">
 	<div class="row justify-content-center align-items-center">
 		<div class="col-md-10">
@@ -40,15 +40,7 @@
 					</div>
 				</div>
 				
-				<!-- 
-				 <select NAME="choice" SIZE="5" width="20">
-	              <c:forEach var="item" items="${list}">
-	                <option>
-	                  <c:out value="${item}" />
-	                </option>
-	              </c:forEach>
-	            </select>
-				 -->
+				
 				<div class="form-group row">
 					<label for="especialasesoria" class="col-md-2 col-form-label mr-1">Asesoria Especial</label>
 					<div class="col-md-7">  

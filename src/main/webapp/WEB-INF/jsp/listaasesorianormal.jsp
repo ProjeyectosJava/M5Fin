@@ -27,12 +27,6 @@
 					<c:forEach items="${lasesorias}" var="lg">
 						<tr>
 							<c:if test="${lg.getEspecialasesoria() == 'No' && lg.getGestionasesoria() == 'No Iniciada' }">
-							
-							<c:set var = "gestion" value="No Inciada"/>
-						    <c:if test="${lg.getGestionasesoria() eq gestion}" var="xxx">
-						    </c:if>
-						    	<td>gola ${xxx}</td>
-							
 								<th scope="row">${lg.getIdasesoria()}</th>
 								<td>${lg.getVisita().getIdvisita()}</td>
 								<td>${lg.getVisita().getCliente().getNombrecliente()}</td>
@@ -40,7 +34,7 @@
 								<td>${lg.getGestionasesoria()}</td>
 								<td>${lg.getEspecialasesoria()}</td>
 								<td>${lg.getFechaasesoria()}</td>
-								<td><a href="inciarasesorianormal/${lg.getVisita().getIdvisita()}/${lg.getIdasesoria()}/${lg.getFechaasesoria()}/${lg.getVisita().getCliente().getNombrecliente()}">Iniciar Asesoria</a></td> 	 
+								<td><a href="inciarasesoria/${lg.getVisita().getIdvisita()}/${lg.getIdasesoria()}/${lg.getFechaasesoria()}/${lg.getVisita().getCliente().getNombrecliente()}/${lg.getEspecialasesoria()}">Iniciar Asesoria</a></td> 	 
 							</c:if>
 						</tr>
 					</c:forEach>
@@ -48,9 +42,9 @@
 			</div>
 		</div>
 		
-		<!-- Asesorias Iniciadas -->
+		<!-- Asesorias Normales En Curso -->
 		<div class="container mt-4">
-			<h5 class="text-center bg-dark text-white py-3 mb-0">Iniciadas</h5>
+			<h5 class="text-center bg-dark text-white py-3 mb-0">En Curso</h5>
 			<div class="table-responsive-md">
 				<table class="table table-warning">
 					<thead class="thead-dark">
@@ -79,7 +73,7 @@
 							 	<td>${lg.getDetalleasesoria()}</td>
 								<td>${lg.getPropuestaasesoria()}</td> 
 								<td>${lg.getFechaasesoria()}</td>
-								<td><a href="actualizarasesorianormal/${lg.getIdasesoria()}/${lg.getVisita().getCliente().getNombrecliente()}">
+								<td><a href="actualizarasesoria/${lg.getIdasesoria()}/${lg.getVisita().getCliente().getNombrecliente()}">
 										Actualizar
 									</a>
 								</td>
