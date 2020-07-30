@@ -24,4 +24,9 @@ public class ChequeoServicioImpl implements ChequeoServicio	 {
 		chk.save(chequeo);
 	}
 
+	@Override
+	public Chequeos findChequeoById(int id) {
+		return chk.findOne(id);
+	}
+
 }

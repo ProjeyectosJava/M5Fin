@@ -65,7 +65,7 @@
 						<a class="nav-link" href="${baseURL}/profesional/crearchecklist">Crear	Checklist</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link disabled" href="#">Responder Checklist</a>
+						<a class="nav-link" href="${baseURL}/profesional/responderchecklist">Responder Checklist</a>
 					</li>
 				</ul>
 			</div>

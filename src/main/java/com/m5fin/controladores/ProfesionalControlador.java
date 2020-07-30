@@ -1,5 +1,6 @@
 package com.m5fin.controladores;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -422,4 +423,59 @@ public class ProfesionalControlador {
 		 
     
 		    /*** FIN CREAR CHECKLIST ***/
+		    
+		    
+		    /*** INICIO RESPONDER CHECKLIST ***/
+		    @RequestMapping("/responderchecklist") 
+			 public String responderchecklist(Model m) {
+		    	List<Chequeos> listachequeos = filtrarListaVisitas(chk.ListarChequeos());
+		    	m.addAttribute("listachequeos", listachequeos);
+		    	System.out.println("chequeo a guardar: " + listachequeos);		
+		
+			return "listarchecklist";
+		    }
+		    
+		    @RequestMapping(value="/mostrarchecklist/{idvis}") 
+			 public String mostrarchecklist(@PathVariable int idvis, Model m) {
+		    	List<Chequeos> listachequeos = filtrarListaChequeos(chk.ListarChequeos(), idvis);
+		    	m.addAttribute("listachequeos", listachequeos);
+		    	int i=1;
+		    	for(Chequeos check:listachequeos) {
+		    		m.addAttribute("chequeo"+i,check);
+		    		i++;
+		      	}
+		    	System.out.println("m: " + m);
+		    	//System.out.println("chequeo a guardar: " + listachequeos);		
+		
+			return "listarchecklistaresponder";
+		    }
+		    
+		    
+		    /***retornamos una lista de Chequeos solo con registros de la visita con id entregado***/
+			public List<Chequeos> filtrarListaChequeos(List<Chequeos> lista, int id) {
+				List<Chequeos> listafiltrada = new ArrayList<Chequeos>();
+				for(Chequeos list:lista) {
+					if(list.getVisita().getIdvisita() == id)
+						listafiltrada.add(list);
+				}
+				return listafiltrada;
+			}
+			
+		
+			/***retornamos una lista solo con las visitas que tienen creado un cheklist***/
+			public List<Chequeos> filtrarListaVisitas(List<Chequeos> lista) {
+				int idvisita = 0;
+				List<Chequeos> listafiltrada = new ArrayList<Chequeos>();
+				for(Chequeos list:lista) {
+					if(list.getVisita().getIdvisita() != idvisita )
+						listafiltrada.add(list);
+						idvisita = list.getVisita().getIdvisita();
+				}
+				return listafiltrada;
+			}
+		    
+		    /*** FIN RESPONDER CHECKLIST ***/
+		    
+		    
+
 }
