@@ -8,6 +8,7 @@
 <li>Finalizar el Logger (Andrea)</li>
 <li>Notificar atrasos (Listo)</li>
 <li>Gestionar Asesorias especiales (Listo solo detalles por terminar)</li>
+<li>Gestionar Asesorias especiales (revisar detalles y propuestas que pasen al form si es especial)</li>
 <li>Eliminar registros asociados (en curso)</li>
 <li>Crear script con datos para entrega final (pendiente)</li>
 <li>Agregar Iconos al menu raiz (pendiente)</li>
