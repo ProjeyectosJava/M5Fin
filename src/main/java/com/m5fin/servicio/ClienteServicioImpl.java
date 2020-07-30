@@ -31,8 +31,16 @@ public class ClienteServicioImpl implements ClienteServicio{
 	}
 
 	@Override
-	public void eliminarCliente(int clienteid) {
-		cr.delete(clienteid);
+	public int eliminarCliente(int clienteid) {
+		try {
+			cr.delete(clienteid);
+		
+		} catch (Exception e) {
+			System.out.println("me cai con error: " + e);
+			return 0;
+		}
+		
+		return 1;
 	}
 
 	@Override

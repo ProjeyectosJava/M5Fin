@@ -1,4 +1,3 @@
-<%@ include file="/menuroot.jsp" %>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -6,19 +5,23 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link rel="stylesheet" href="css/styles.css">
+<script src="js/script.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
 <h1>Pendientes por realizar</h1>
 <ol>
 <li>Crear Informacion para Api Rest (Listo)</li>
-<li>Checklist (crear y responder) (no asignado)</li>
+<li>Crear Checklist (Listo)</li>
+<li>Responder Checklist (pendiente)</li>
 <li>Finalizar el Logger (Andrea)</li>
-<li>Notificar atrasos (Daniel)</li>
-<li>Gestionar Asesorias especiales (Esteban)</li>
-<li>Eliminar registros asociados (no asignado)</li>
-<li>Crear script con datos para entrega final (no asignado)</li>
-<li>Agregar Iconos al menu raiz (No Asignado)</li>
+<li>Notificar atrasos (Listo)</li>
+<li>Gestionar Asesorias especiales (Listo solo detalles por terminar)</li>
+<li>Eliminar registros asociados (en curso)</li>
+<li>Crear script con datos para entrega final (pendiente)</li>
+<li>Agregar Iconos al menu raiz (pendiente)</li>
+<li>Darle formato a todos los campos de fecha para unificar (pendiente)</li>
 </ol>
 
 <br>
