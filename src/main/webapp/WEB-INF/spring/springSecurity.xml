@@ -41,6 +41,7 @@ http://www.springframework.org/schema/security/spring-security.xsd">
 			<user name="admin" password="{noop}1234" authorities="ROLE_ADMIN" />
 			<user name="profe" password="{noop}1234" authorities="ROLE_PROF" />
 			<user name="clien" password="{noop}1234" authorities="ROLE_CLIENTE" />
+			<user name="1" password="{noop}1234" authorities="ROLE_CLIENTE" />
 			<user name="super" password="{noop}1234" authorities="ROLE_ADMIN, ROLE_PROF, ROLE_CLIENTE" />
 		</user-service>
 		</authentication-provider>

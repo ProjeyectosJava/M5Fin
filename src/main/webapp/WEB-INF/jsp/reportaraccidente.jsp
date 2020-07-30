@@ -5,9 +5,11 @@
 	<div class="row justify-content-center align-items-center">
 		<div class="col-md-10">
 			<form:form action="guardaraccidente" method="post" modelAttribute="accidente">
-				<div class="form-group row">					
-					<label for="idcliente" class="col-md-2 col-form-label mr-1">Id Cliente:</label>
+				<div class="form-group row">	
+							
+					<label for="idcliente" class="col-md-2 col-form-label mr-1">Id Cliente</label>
 					<div class="col-md-7">
+						<p>${auth}</p>
 						<form:input class="form-control" id="idcliente" path="cliente.idcliente"/>
 					</div>
 				</div>
@@ -43,6 +45,8 @@
 				<div class="form-group row">
 						<input type="submit" class="btn btn-dark" value="Guardar">
 				</div>
+				<p> aca va el codigo  del cleinte </p>
+				${auth}
 			</form:form>
 		</div>
 	</div>
