@@ -3,6 +3,8 @@ package com.m5fin.controladores;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,6 +31,9 @@ import com.m5fin.servicio.VisitaServicio;
 @Controller
 @RequestMapping("/profesional")
 public class ProfesionalControlador {
+	
+	static Logger log = LogManager.getLogger(ClienteControlador.class);
+
 	
 	@Autowired
 	ClienteServicio cs;
@@ -158,6 +163,7 @@ public class ProfesionalControlador {
 	  @RequestMapping(value = "/guardarvisita") 
 	  public String guardarvisita(@ModelAttribute("creavisita") Visitas visita, Model m) {
 		  System.out.println("Estamos guardando la visita"); vs.agregarVisita(visita);
+			log.info("Se registró una nueva visita " + "id:" + visita.getIdvisita());
 	  return "redirect:/profesional/planificarvisitas"; 
 	  }
 	 
@@ -200,7 +206,8 @@ public class ProfesionalControlador {
 		 public String guardarcapacitacion(@ModelAttribute("regcap") Capacitaciones capacitacion, Model m) {
 			 System.out.println("Estamos guardando la capacitacion: " + capacitacion);
 			 cap.agregarCapacitacion(capacitacion);
-	   
+			 log.info("Se registró una nueva capacitación " + "id:" + capacitacion.getIdcapacitacion());
+
 		return "redirect:/profesional/crearcapacitacion";
 		}
 	// CU ---*** FIN CREAR CAPACITACION *** --- //
@@ -234,7 +241,7 @@ public class ProfesionalControlador {
 		 public String guardarmejora(@ModelAttribute("regmejora") Mejoras mejora, Model m) {
 			 System.out.println("Estamos guardando la mejora: " + mejora);
 			 ms.agregarMejora(mejora);
-	   
+				log.info("Se registró una nueva mejora " + "id:" + mejora.getIdmejora());
 		return "redirect:/profesional/revisarmejoras";
 		}
 
@@ -282,7 +289,7 @@ public class ProfesionalControlador {
 			 public String guardarasesoria(@ModelAttribute("regase") Asesorias asesoria, Model m) {
 				 System.out.println("Estamos guardando la Asesoria " + asesoria);
 				 as.agregaAsesoria(asesoria);
-				
+				 log.info("Se registró una nueva asesoria " + "id:" + asesoria.getIdasesoria());
 			return "redirect:/profesional/crearasesoria";
 			}
 		 
@@ -416,7 +423,7 @@ public class ProfesionalControlador {
 			 public String guardarchecklist(@ModelAttribute("chequeo") Chequeos chequeo, Model m) {
 		    	System.out.println("chequeo a guardar: " + chequeo);
 				 chk.agregarChequeo(chequeo);
-				
+				 log.info("Se registró una nuevo checklist " + "id:" + chequeo.getIdchequeo());
 			return "redirect:/profesional/crearchecklist";
 			}
 		    
@@ -563,6 +570,7 @@ public class ProfesionalControlador {
 		    	m.addAttribute("idvis",idvis);
 		    	System.out.println("chequeo actualizado " + chequeo);
 				return "redirect:/profesional/mostrarchecklist/{idvis}";
+				
 		    }
 			
 		    /*** FIN RESPONDER CHECKLIST ***/

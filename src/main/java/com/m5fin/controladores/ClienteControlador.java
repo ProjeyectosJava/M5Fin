@@ -2,6 +2,8 @@ package com.m5fin.controladores;
 
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -26,6 +28,8 @@ import com.m5fin.servicio.VisitaServicio;
 @RequestMapping("/cliente")
 public class ClienteControlador {
 	
+	static Logger log = LogManager.getLogger(ClienteControlador.class);
+	
 	@Autowired
 	ClienteServicio cl;
 
@@ -46,33 +50,37 @@ public class ClienteControlador {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         System.out.println("Entramos a acceso usuario");
         
-        if (auth != null){    
-        	System.out.println("acceso usuario dentro del if :" + auth.getName());
-        	
-        }
-        
-        List<Clientes> listacliemail =  cl.ListarClienteporEmail(auth.getName());
-        System.out.println("Listamos el cliente por emial:" + listacliemail);
-        
-       
-      
-		Accidentes accidente = new Accidentes();
 		
+		  if (auth != null){ System.out.println("acceso usuario dentro del if: :" +
+		  auth.getName());
+		  
+		  }
+		 
+        // buscamos email (nombre de usuario) y buscamos el id del cliente
+        List<Clientes> listacliemail =  cl.ListarClienteporEmail(auth.getName());
+        System.out.println("Listamos el cliente por id que tenia un email:" + listacliemail);
+        
+		Accidentes accidente = new Accidentes();
 		Clientes clie = new Clientes();
 		
 		for (Clientes L:listacliemail) {
-			int capid = L.getIdcliente();
-			 System.out.println("Listamos el cliente capid");
-			 System.out.println("Listamos el cliente:" + L.getIdcliente());
-			 clie.setIdcliente(capid);
-		}
-		
-		accidente.setCliente(clie);
+			
+			 System.out.println("Listamos capid el cliente dentro del for:" + L.getIdcliente());
+			 clie.setIdcliente(L.getIdcliente());
 
 		
+		
+		accidente.setCliente(clie);
 		m.addAttribute("accidente", accidente);
 		System.out.println("pasamos objeto accidente: " + accidente);
 		
+		List<Accidentes> listaaccidentes = ac.ListarPorId(L.getIdcliente());
+		System.out.println("Listamos toda la tabla de asesorias" + listaaccidentes);
+		m.addAttribute("listaaccidentes", listaaccidentes);
+		
+		}
+		
+
 		return "reportaraccidente";
 	}
 	
