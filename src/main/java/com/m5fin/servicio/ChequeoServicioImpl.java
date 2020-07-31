@@ -29,4 +29,11 @@ public class ChequeoServicioImpl implements ChequeoServicio	 {
 		return chk.findOne(id);
 	}
 
+	@Override
+	public void editalChequeo(Chequeos chequeo) {
+		chk.save(chequeo);
+	}
+
+	
+	
 }

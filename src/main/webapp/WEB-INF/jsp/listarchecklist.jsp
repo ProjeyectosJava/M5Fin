@@ -28,5 +28,4 @@
 
 
 
-${listachequeos[0].getVisita().getIdvisita()}
 <%@ include file="footer.jsp" %>

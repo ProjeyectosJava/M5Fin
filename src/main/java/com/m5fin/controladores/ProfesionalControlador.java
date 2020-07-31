@@ -426,30 +426,110 @@ public class ProfesionalControlador {
 		    
 		    
 		    /*** INICIO RESPONDER CHECKLIST ***/
+		    /*obtenemos una lista solo de las visitas que tienen creadas un checklist*/
 		    @RequestMapping("/responderchecklist") 
 			 public String responderchecklist(Model m) {
 		    	List<Chequeos> listachequeos = filtrarListaVisitas(chk.ListarChequeos());
-		    	m.addAttribute("listachequeos", listachequeos);
-		    	System.out.println("chequeo a guardar: " + listachequeos);		
+		    	m.addAttribute("listachequeos", eliminarDuplicados(listachequeos));
+		    	System.out.println("lista visitas a mostrar: " + eliminarDuplicados(listachequeos));		
 		
 			return "listarchecklist";
 		    }
 		    
+		    
+		    /*Mostramos todos los chequeos asociados a una visita*/
 		    @RequestMapping(value="/mostrarchecklist/{idvis}") 
 			 public String mostrarchecklist(@PathVariable int idvis, Model m) {
+		    	/*obtenemos una lista filtrada solo con las visitas que tienen chequeos*/
 		    	List<Chequeos> listachequeos = filtrarListaChequeos(chk.ListarChequeos(), idvis);
 		    	m.addAttribute("listachequeos", listachequeos);
-		    	int i=1;
+   	
 		    	for(Chequeos check:listachequeos) {
-		    		m.addAttribute("chequeo"+i,check);
-		    		i++;
+		    		m.addAttribute("chequeo"+check.getIdchequeo(),check);
 		      	}
 		    	System.out.println("m: " + m);
 		    	//System.out.println("chequeo a guardar: " + listachequeos);		
-		
+		    	
 			return "listarchecklistaresponder";
 		    }
 		    
+		    
+		    /*
+		     * Eliminamos la duplicdad de visitas y entregamos 
+		     * una lista de visitas sin duplicidad para ser mostrada en la vista
+		     * */
+		    public List<Chequeos> eliminarDuplicados(List<Chequeos> lista) {
+		    	int[] arregloIdVisitas = new int[lista.size()];
+		    	int i = 0;
+		    	int cont = 0;
+		    	ArrayList<Integer> arraylistConIdUnico = new ArrayList();
+		    	List<Chequeos> listaConIdsUnicos = new ArrayList<Chequeos>();
+		   
+		    	/*
+		    	 * pasamos todos los Idvisita que vienen de lista 
+		    	 * a un arregloIdVisitas
+		    	 * */
+		    	for(Chequeos c:lista) {
+		    		arregloIdVisitas[i] = c.getVisita().getIdvisita();
+		    		i++;
+		    	}
+		    	
+		    	/*
+		    	 * recorremos el arregloIdVisitas 
+		    	 * y los id duplicados son reemplazados por un cero
+		    	 * */
+		    	i = 0;
+		    	for(int a:arregloIdVisitas) {
+		    		int temp = arregloIdVisitas[i];
+		    		for(int j = i+1; j < arregloIdVisitas.length; j++) {
+		    			if(arregloIdVisitas[i] == arregloIdVisitas[j]) {
+		    				arregloIdVisitas[j] = 0;
+		    			}
+		    		}
+		    		i++;
+		    	}
+		    	
+		    	/*
+		    	 * recorremos el arregloIdVisitas y pasamos todos los valores 
+		    	 * distintos de cero al arraylistConIdUnico
+		    	 * */
+		    	i = 0;
+		    	for(int a:arregloIdVisitas) {
+		    		if(arregloIdVisitas[i] != 0) {
+		    			cont++;
+		    			arraylistConIdUnico.add(arregloIdVisitas[i]);
+		    		}
+		    		i++;
+		    	}
+		    	
+		    	/*
+		    	 * Recorremos lista y comparamos su Idvisita con el idvisita del arraylistConIdUnico
+		    	 * si es igual el registro de lista se almacena en listaConIdsUnicos
+		    	 * como arraylistConIdUnico siempre sera de menor tamaño que lista
+		    	 * la comparacion se realiza hasta que se recorre por completo el arraylistConIdUnico
+		    	 * para ello el incrementador i antes de una accion consulta 
+		    	 * si es menor que el tamaño del arraylistConIdUnico
+		    	 * 
+		    	 * finalmente retornamos la listaConIdsUnicos que sera mostrada en la vista
+		    	 */
+		    	i = 0;
+		    	for(Chequeos chq:lista) {
+		    		
+		    		if(i < arraylistConIdUnico.size()) {
+		    			if(chq.getVisita().getIdvisita() == arraylistConIdUnico.get(i).intValue()) {
+		    				listaConIdsUnicos.add(chq);
+		    				i++;
+		    			}
+		    		}
+		    	}
+		    	
+		    	System.out.println("arregloIdVisitas.length: " + arregloIdVisitas.length);
+		    	System.out.println("contador: " + cont);
+		    	System.out.println("arregloConIdUnico: " + arraylistConIdUnico);
+		    	System.out.println("listaConIdsUnicos: " + listaConIdsUnicos);
+		    	System.out.println("listaConIdsUnicos.size(): " + listaConIdsUnicos.size());
+		    	return listaConIdsUnicos;
+		    }
 		    
 		    /***retornamos una lista de Chequeos solo con registros de la visita con id entregado***/
 			public List<Chequeos> filtrarListaChequeos(List<Chequeos> lista, int id) {
@@ -474,6 +554,17 @@ public class ProfesionalControlador {
 				return listafiltrada;
 			}
 		    
+		
+			
+			 @RequestMapping(value = "/actualizarchecklist") 
+			 public String actualizarchecklist(@ModelAttribute("chequeo") Chequeos chequeo, Model m){		    	
+		    	chk.editalChequeo(chequeo);
+		    	int idvis = chequeo.getVisita().getIdvisita();
+		    	m.addAttribute("idvis",idvis);
+		    	System.out.println("chequeo actualizado " + chequeo);
+				return "redirect:/profesional/mostrarchecklist/{idvis}";
+		    }
+			
 		    /*** FIN RESPONDER CHECKLIST ***/
 		    
 		    
