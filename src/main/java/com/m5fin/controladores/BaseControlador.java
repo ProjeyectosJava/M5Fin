@@ -46,13 +46,14 @@ public class BaseControlador {
 	@RequestMapping("/submenucliente")
 	public String menucliente(SecurityContextHolderAwareRequestWrapper request) {
 		 
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        System.out.println("Listamos auth:" + auth.getAuthorities());
-     
-       
-        if (request.isUserInRole("ROLE_CLIENTE")) {
-            System.out.println("ENTRANDO COMO CLIENTE");
-        }
+		/*
+		 * Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		 * System.out.println("Listamos auth:" + auth.getAuthorities());
+		 * 
+		 * 
+		 * if (request.isUserInRole("ROLE_CLIENTE")) {
+		 * System.out.println("ENTRANDO COMO CLIENTE"); }
+		 */
 
 		return "indexcli";
 	}
