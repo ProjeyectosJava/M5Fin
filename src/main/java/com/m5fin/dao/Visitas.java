@@ -3,9 +3,11 @@ package com.m5fin.dao;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -15,7 +17,7 @@ public class Visitas {
 	/*
 	@SequenceGenerator(name = "VisitaIdGenerator", sequenceName = "VISITAS_SEQ")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "VisitaIdGenerator")
-	 */
+	*/
 	
 	@Id
 	@GeneratedValue
