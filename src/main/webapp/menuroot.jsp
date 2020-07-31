@@ -46,10 +46,10 @@
 		        <a class="nav-link" href="${baseURL}/submenucliente">Cliente  <span class="fas fa-user-alt"></span></a>
 		      </li>
 		      <li class="nav-item">
-		        <a class="nav-link" href="${baseURL}/rest/infoapirest">Info Rest</a>
+		        <a class="nav-link" href="${baseURL}/rest/infoapirest">Info Rest &nbsp;<span class="fas fa-info-circle"></span></a>
 		      </li>
 		      <li class="nav-item">
-		        <a class="nav-link" href="${baseURL}/logout">Logout  <span class="fas fa-sign-in-alt"></span> </a>
+		        <a class="nav-link" href="${baseURL}/logout">Logout <span class="fas fa-sign-in-alt"> &nbsp; &nbsp; </span> </a>
 		      </li>
 		      <li class="nav-item">
 		        <a class="nav-link" href="${baseURL}/pendientes">Tareas por hacer</a>
