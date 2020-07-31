@@ -23,10 +23,7 @@
 		</div>
 	</div>
 
-	
-	
-	
-	
+
 	<div class="container mt-3">
 		<div class="table-responsive-md">
 			<table class="table">

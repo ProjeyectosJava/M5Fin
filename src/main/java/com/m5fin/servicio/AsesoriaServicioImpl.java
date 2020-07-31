@@ -62,6 +62,16 @@ public class AsesoriaServicioImpl implements AsesoriaServicio{
 		
 	}
 
+	@Override
+	public List<Asesorias> ListarPorId(Integer id) {
+		String jpql = "SELECT a FROM Asesorias a WHERE a.visita.cliente.idcliente=:codigo"; // esto es solo un string 
+		Query query = em.createQuery(jpql); // esto transforma el String en jpql
+		query.setParameter("codigo", id); //pasamos el id a la consulta jpql
+		
+		System.out.println("Listando query en accidentes " + query);
+		return query.getResultList();
+	}
+
 
 
 }

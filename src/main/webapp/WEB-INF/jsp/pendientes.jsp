@@ -27,9 +27,10 @@
 <li></li>
 </ul>
 
-${auth}
+Identificacion de usuario ${auth}
 
-${auth}
+
+
 
 </body>
 </html>
