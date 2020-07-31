@@ -50,6 +50,9 @@ public class VisitaServicioImpl implements VisitaServicio{
 		System.out.println("Listando query " + query);
 		return query.getResultList();
 	}
+	
+	
+	
 
 	@Override
 	public List<Visitas> ListarPorId(Integer id) {

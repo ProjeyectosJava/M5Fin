@@ -3,6 +3,8 @@ package com.m5fin.controladores;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -11,9 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.m5fin.dao.Accidentes;
 import com.m5fin.dao.Asesorias;
+import com.m5fin.dao.Clientes;
 import com.m5fin.dao.Visitas;
 import com.m5fin.servicio.AccidenteServicio;
 import com.m5fin.servicio.AsesoriaServicio;
+import com.m5fin.servicio.ClienteServicio;
 import com.m5fin.servicio.VisitaServicio;
 
 
@@ -22,6 +26,8 @@ import com.m5fin.servicio.VisitaServicio;
 @RequestMapping("/cliente")
 public class ClienteControlador {
 	
+	@Autowired
+	ClienteServicio cl;
 
 	@Autowired
 	AccidenteServicio ac;
@@ -36,9 +42,37 @@ public class ClienteControlador {
 	// --- *** CU INICIO AGREGAR ACCIDENTE *** ----//
 	@RequestMapping("/reportaraccidente")
 	public String reportaraccidente(Model m) {
+		
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        System.out.println("Entramos a acceso usuario");
+        
+        if (auth != null){    
+        	System.out.println("acceso usuario dentro del if :" + auth.getName());
+        	
+        }
+        
+        List<Clientes> listacliemail =  cl.ListarClienteporEmail(auth.getName());
+        System.out.println("Listamos el cliente por emial:" + listacliemail);
+        
+       
+      
 		Accidentes accidente = new Accidentes();
+		
+		Clientes clie = new Clientes();
+		
+		for (Clientes L:listacliemail) {
+			int capid = L.getIdcliente();
+			 System.out.println("Listamos el cliente capid");
+			 System.out.println("Listamos el cliente:" + L.getIdcliente());
+			 clie.setIdcliente(capid);
+		}
+		
+		accidente.setCliente(clie);
+
+		
 		m.addAttribute("accidente", accidente);
 		System.out.println("pasamos objeto accidente: " + accidente);
+		
 		return "reportaraccidente";
 	}
 	
@@ -61,14 +95,33 @@ public class ClienteControlador {
   @RequestMapping("/visitasasesoria") 
   public String viewcli(Model m) {
 	  		  
-	List<Visitas> listajpql = vs.ListarVisitasEspecial();
-	m.addAttribute("listavisitasase", listajpql);
-	System.out.println("lista de objeto jspl: " + listajpql);
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+              
+        List<Clientes> listacliemail =  cl.ListarClienteporEmail(auth.getName());
+        System.out.println("Listamos el cliente por emial:" + listacliemail);
+       
+		
+		Clientes clie = new Clientes();
+		
+		for (Clientes L:listacliemail) {
+			int capid = L.getIdcliente();
+			 System.out.println("Listamos el cliente capid");
+			 System.out.println("Listamos el cliente:" + L.getIdcliente());
+			 
+			List<Visitas> listajpql = vs.ListarPorId(L.getIdcliente());
+			//List<Visitas> listajpql = vs.ListarVisitasEspecial();
+			m.addAttribute("listavisitasase", listajpql);
+			System.out.println("lista de objeto jspl: " + listajpql);	 
+			
+			
+			List<Asesorias> listaasesorias = as.ListarPorId(L.getIdcliente());
+			System.out.println("Listamos toda la tabla de asesorias");
+			m.addAttribute("lasesorias", listaasesorias);
+			
+		}
+	  
 	
-
-	List<Asesorias> listaasesorias = as.listarAsesorias();
-	System.out.println("Listamos toda la tabla de asesorias");
-	m.addAttribute("lasesorias", listaasesorias);
+	
 	
 	return "listvisase";
 	
@@ -109,6 +162,7 @@ public class ClienteControlador {
 
 // --- *** CU FIN  AGREGAR CASO DE ASESORIAS  *** ----//
 	
+
 	
 	
 	

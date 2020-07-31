@@ -22,8 +22,7 @@
 					<td>${clip.getEmailcliente()}</td>
 					<td><a href="generapagosporcliente/${clip.getIdcliente()}/${clip.getNombrecliente()}">Gestionar Pago</a></td>
 				</tr> 
-	
-		
+
 			</c:forEach> 
 		</table>
 	</div>

@@ -7,6 +7,9 @@ http://www.springframework.org/schema/beans/spring-beans.xsd
 http://www.springframework.org/schema/security 
 http://www.springframework.org/schema/security/spring-security.xsd">
 
+
+
+
 	<http auto-config="true">
 		<!-- 
 		<intercept-url pattern="/" access="hasRole('SUPER')" />
@@ -33,17 +36,31 @@ http://www.springframework.org/schema/security/spring-security.xsd">
 		<csrf />
 		<logout logout-success-url="/login" />
 		-->
+	
+	<!--  
+	Usuario Cliente: daniel10@gmail.com contraseña:123456
+	Usuario Cliente: valeria@gmail.com" contraseña:1234
+
+	-->
+	
+		
+		
 	</http>
 	
 	<authentication-manager>
+
 		<authentication-provider>
 		<user-service>
+			<user name="super" password="{noop}1234" authorities="ROLE_ADMIN, ROLE_PROF, ROLE_CLIENTE" />
 			<user name="admin" password="{noop}1234" authorities="ROLE_ADMIN" />
 			<user name="profe" password="{noop}1234" authorities="ROLE_PROF" />
-			<user name="clien" password="{noop}1234" authorities="ROLE_CLIENTE" />
-			<user name="super" password="{noop}1234" authorities="ROLE_ADMIN, ROLE_PROF, ROLE_CLIENTE" />
+			<user name="clien" password="{noop}1234" authorities="ROLE_CLIENTE" />		
+			
+			<user name="valeria@hotmail.com"  password="{bcrypt}$2a$10$efnTNJyyoq4RFG2CDwT27Ofg35gww7UNhPTY.Q5ynXeX3fReLSNUG" authorities="ROLE_CLIENTE" />
+			<user name="daniel10@gmail.com" password="{bcrypt}$2a$10$s7hvVL8HeHQZ6bgRl0y0C.2TYZ1wsFd262P8/XqOJuac6LphLIusG" authorities="ROLE_CLIENTE" />
+			
 		</user-service>
 		</authentication-provider>
 	</authentication-manager>
-	 
+
 </bean:beans>

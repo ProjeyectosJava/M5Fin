@@ -41,7 +41,12 @@ public class Accidentes {
 	private int idclienteaccidente;
 	*/
 	
-	@ManyToOne (fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+	/*
+	 * @ManyToOne (fetch = FetchType.EAGER, cascade = {CascadeType.MERGE,
+	 * CascadeType.PERSIST})
+	 */
+	
+	@ManyToOne
 	@JoinColumn(name = "idclienteaccidente")
 	Clientes cliente;
 

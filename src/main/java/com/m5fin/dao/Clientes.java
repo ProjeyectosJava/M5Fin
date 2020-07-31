@@ -38,6 +38,14 @@ public class Clientes {
 	public Clientes() {
 		
 	}
+	
+
+	public Clientes(int idcliente) {
+		this.idcliente = idcliente;
+	}
+
+
+
 
 	public Clientes(int idcliente, String nombrecliente, String telefonocliente, String emailcliente,
 			String rubrocliente, String direccioncliente) {

@@ -9,6 +9,8 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -497,6 +499,8 @@ public class AdministradorControlador {
 	// Listamos todos los clientes con morosidad
 	@RequestMapping("/listaclientepagatr")
 	public String listaclientesmoroso(Model m) {
+		
+		
 
 		// creamos lista de todos los pagos
 		List<Pagos> listamorosos = pse.listarPagos();

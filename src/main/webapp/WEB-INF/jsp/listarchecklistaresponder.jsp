@@ -29,10 +29,7 @@
 		</div>
 	</div>
 
-	
-	
-	
-	
+
 	<div class="container mt-3">
 		<div class="row justify-content-center align-items-center  text-center">
 		<div class="col-md-12 px-0">

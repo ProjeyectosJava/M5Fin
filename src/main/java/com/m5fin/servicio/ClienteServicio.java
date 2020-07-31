@@ -12,4 +12,10 @@ public interface ClienteServicio {
 	void agregarCliente(Clientes c);
 	int eliminarCliente(int clienteid);
 	void editarCliente(Clientes c);
+	
+	List<Clientes> ListarClienteporEmail(String email); 
+	
+	
+
+	
 }

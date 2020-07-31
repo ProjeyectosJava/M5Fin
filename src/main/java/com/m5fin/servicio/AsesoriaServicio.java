@@ -2,6 +2,7 @@ package com.m5fin.servicio;
 
 import java.util.List;
 
+import com.m5fin.dao.Accidentes;
 import com.m5fin.dao.Asesorias;
 
 public interface AsesoriaServicio {
@@ -14,6 +15,8 @@ public interface AsesoriaServicio {
 	void eliminaAsesoria(int idasesoria);
 	
 	List<Asesorias> ListarAsesoriasEspecial(); 
+	
+	List<Asesorias> ListarPorId(Integer id);
 	
 	
 	
