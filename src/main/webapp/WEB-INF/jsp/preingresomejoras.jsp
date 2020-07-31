@@ -17,7 +17,7 @@
 						<th scope="row">${cli.getNombrecliente()}</th>
 						<td>${cli.getTelefonocliente()}</td>
 						<td>${cli.getEmailcliente()}</td>
-						<td><a href="gestionarmejora/${cli.getIdcliente()}/${cli.getNombrecliente()}">Crear</a>
+						<td><a class="btn btn-dark" href="gestionarmejora/${cli.getIdcliente()}/${cli.getNombrecliente()}">Crear</a>
 						</td>
 					</tr>
 				</c:forEach>

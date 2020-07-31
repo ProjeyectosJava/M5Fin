@@ -39,7 +39,7 @@
 				<div class="form-group row">
 					<label for="empleadovis" class="col-md-2 col-form-label mr-1">Empleado:</label> 
 					<div class="col-md-7">
-						<form:select id="empleadovis" path="empleado.idempleado">
+						<form:select class="form-control" id="empleadovis" path="empleado.idempleado">
 							<div class="input-group-prepend">
 								<form:options class="input-group-text" items="${listaemp}" itemLabel="nombreempleado"  itemValue="idempleado"/>
 							</div>

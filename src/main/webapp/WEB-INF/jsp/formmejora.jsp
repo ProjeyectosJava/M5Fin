@@ -27,7 +27,7 @@
 					<div class="form-group row">
 						<label for="estmejora" class="col-md-2 col-form-label mr-1">Estado:</label>  
 						<div class="col-md-7">
-							<form:select id="estmejora" path="estadomejora">
+							<form:select class="form-control" id="estmejora" path="estadomejora">
 								<div class="input-group-prepend">
 									<option>En Curso</option>
 									<option>Pendiente</option>

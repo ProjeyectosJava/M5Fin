@@ -1,11 +1,11 @@
 <%@ include file="menupro.jsp" %>
 
 <c:if test="${listavisita.size() == 0}">
-	<h4 class="text-center bg-dark text-white py-3">No existen actividades creadas</h4>
+	<h4 class="text-center bg-dark text-white py-3">No existen visitas creadas</h4>
 </c:if>
 		
 <c:if test="${listavisita.size() > 0}">
-	<h4 class="text-center bg-dark text-white py-3">Actividades Visitas</h4>
+	<h4 class="text-center bg-dark text-white py-3">Seleccione Visita</h4>
 	<div class="container mt-3">
 		<div class="table-responsive-md">
 			<table class="table">
@@ -34,7 +34,7 @@
 						<td>${lv.getObservacionvisita()}</td>
 						<td>${lv.getFechavisita()}</td>
 						<td>${lv.getEmpleado().getNombreempleado()}</td>
-						<td><a href="agregarchecklist/${lv.getIdvisita()}/${lv.getCliente().getNombrecliente()}">Agreagar</a></td>
+						<td><a class="btn btn-dark" href="agregarchecklist/${lv.getIdvisita()}/${lv.getCliente().getNombrecliente()}">Agregar</a></td>
 					</tr>
 				</c:forEach>
 			</table>

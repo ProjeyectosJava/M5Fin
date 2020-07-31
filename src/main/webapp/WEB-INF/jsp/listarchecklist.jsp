@@ -19,7 +19,7 @@
 						<th scope="row">${lc.getVisita().getIdvisita()}</th>
 						<td>${lc.getVisita().getCliente().getNombrecliente()}</td>
 						<td>${lc.getVisita().getEmpleado().getNombreempleado()}</td>
-						<td><a href="mostrarchecklist/${lc.getVisita().getIdvisita()}">Responder</a></td>
+						<td><a class="btn btn-dark" href="mostrarchecklist/${lc.getVisita().getIdvisita()}">Responder</a></td>
 					</tr>
 				</c:forEach>
 			</table>

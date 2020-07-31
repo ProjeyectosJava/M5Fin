@@ -34,7 +34,7 @@
 								<td>${lg.getGestionasesoria()}</td>
 								<td>${lg.getEspecialasesoria()}</td>
 								<td>${lg.getFechaasesoria()}</td>
-								<td><a href="inciarasesoria/${lg.getVisita().getIdvisita()}/${lg.getIdasesoria()}/${lg.getFechaasesoria()}/${lg.getVisita().getCliente().getNombrecliente()}/${lg.getEspecialasesoria()}">Iniciar Asesoria</a></td> 	 
+								<td><a class="btn btn-danger" href="inciarasesoria/${lg.getVisita().getIdvisita()}/${lg.getIdasesoria()}/${lg.getFechaasesoria()}/${lg.getVisita().getCliente().getNombrecliente()}/${lg.getEspecialasesoria()}">Iniciar Asesoria</a></td> 	 
 							</c:if>
 						</tr>
 					</c:forEach>
@@ -73,7 +73,7 @@
 							 	<td>${lg.getDetalleasesoria()}</td>
 								<td>${lg.getPropuestaasesoria()}</td> 
 								<td>${lg.getFechaasesoria()}</td>
-								<td><a href="actualizarasesoria/${lg.getIdasesoria()}/${lg.getVisita().getCliente().getNombrecliente()}">
+								<td><a class="btn btn-warning" href="actualizarasesoria/${lg.getIdasesoria()}/${lg.getVisita().getCliente().getNombrecliente()}">
 										Actualizar
 									</a>
 								</td>

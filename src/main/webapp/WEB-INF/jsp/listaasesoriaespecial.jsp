@@ -29,7 +29,7 @@
 								<td>${lg.getGestionasesoria()}</td>
 								<td>${lg.getEspecialasesoria()}</td>
 								<td>${lg.getFechaasesoria()}</td>
-								<td><a href="inciarasesoria/${lg.getVisita().getIdvisita()}/${lg.getIdasesoria()}/${lg.getFechaasesoria()}/${lg.getVisita().getCliente().getNombrecliente()}/${lg.getEspecialasesoria()}">Iniciar Asesoria</a></td> 	 
+								<td><a class="btn btn-danger" href="inciarasesoria/${lg.getVisita().getIdvisita()}/${lg.getIdasesoria()}/${lg.getFechaasesoria()}/${lg.getVisita().getCliente().getNombrecliente()}/${lg.getEspecialasesoria()}">Iniciar Asesoria</a></td> 	 
 							</tr>
 						</c:if>
 					</c:forEach>
@@ -41,7 +41,7 @@
 		<div class="container mt-4">
 			<h5 class="text-center bg-dark text-white py-2 mb-0">En Curso</h5>
 			<div class="table-responsive-md">
-				<table class="table table-success">
+				<table class="table table-warning">
 					<thead class="thead-dark">
 						<tr>
 							<th scope="col">Id Asesoria</th>
@@ -68,7 +68,7 @@
 								<td>${lg.getDetalleasesoria()}</td>
 								<td>${lg.getPropuestaasesoria()}</td>
 								<td>${lg.getFechaasesoria()}</td>
-								<td><a href="actualizarasesoria/${lg.getIdasesoria()}/${lg.getVisita().getCliente().getNombrecliente()}">Actualizar</a></td> 	 
+								<td><a class="btn btn-warning" href="actualizarasesoria/${lg.getIdasesoria()}/${lg.getVisita().getCliente().getNombrecliente()}">Actualizar</a></td> 	 
 							</tr>
 						</c:if>
 					</c:forEach>
@@ -81,7 +81,7 @@
 		<div class="container mt-4">
 			<h5 class="text-center bg-dark text-white py-2 mb-0">Finalizadas</h5>
 			<div class="table-responsive-md">
-				<table class="table table-warning">
+				<table class="table table-success">
 					<thead class="thead-dark">
 						<tr>
 							<th scope="col">Id Asesoria</th>
