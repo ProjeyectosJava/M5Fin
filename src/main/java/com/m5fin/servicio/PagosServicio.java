@@ -15,5 +15,6 @@ public interface PagosServicio {
 	
 	void agregarPago(Pagos p);
 	void editarCliente(Pagos p);
+	void eliminarPagos(int id);
 
 }

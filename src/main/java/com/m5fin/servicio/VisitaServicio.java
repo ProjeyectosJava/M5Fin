@@ -15,5 +15,7 @@ public interface VisitaServicio {
 	List<Visitas> ListarPorId(Integer id);
 	
 	Visitas findVisitaById(int id);
+	
+	void eliminarVisitas(int id);
 
 }

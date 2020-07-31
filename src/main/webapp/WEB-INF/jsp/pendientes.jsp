@@ -11,9 +11,11 @@
 <li class="text-warning">Gestionar Asesorias especiales (revisar detalles y propuestas que pasen al form si es especial)</li>
 <li class="text-danger">Eliminar registros asociados (en curso)</li>
 <li class="text-danger">Crear script con datos para entrega final (pendiente)</li>
-<li class="text-danger">Agregar Iconos al menu raiz (pendiente)</li>
+<li class="text-success">Agregar Iconos al menu raiz (pendiente)</li>
 <li class="text-danger">Darle formato a todos los campos de fecha para unificar (pendiente)</li>
 <li class="text-danger">Agregar notificaciones de atraso en clientes</li>
+<li class="text-danger">Agregar reporte de accidente al cliente y al global, en seccion de cliente</li>
+<li class="text-danger">agregar mensaje en notificar atrasos cuando no hay atrasos</li>
 </ol>
 
 <br>

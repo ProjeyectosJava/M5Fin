@@ -10,6 +10,7 @@ public interface ChequeoServicio {
 	void agregarChequeo(Chequeos chequeo);
 	Chequeos findChequeoById(int id);
 	void editalChequeo(Chequeos chequeo);
+	void eliminarChequeo(int id);
 	
 	
 	

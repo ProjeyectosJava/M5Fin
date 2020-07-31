@@ -12,5 +12,7 @@ public interface CapacitacionServicio {
 	List<Capacitaciones> ListarCapacitacionesEspecial(); 
 	
 	List<Capacitaciones> ListarPorId(Integer id);
+	
+	void eliminarCapacitaciones(int id);
 
 }

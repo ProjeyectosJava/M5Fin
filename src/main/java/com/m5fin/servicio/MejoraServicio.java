@@ -14,4 +14,6 @@ public interface MejoraServicio {
 	List<Mejoras> ListarMejorasEspecial();
 	
 	List<Mejoras> ListarPorId(Integer id);
+	
+	void eliminarMejoras(int id);
 }

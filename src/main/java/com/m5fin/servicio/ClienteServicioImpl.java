@@ -43,7 +43,7 @@ public class ClienteServicioImpl implements ClienteServicio{
 			cr.delete(clienteid);
 		
 		} catch (Exception e) {
-			System.out.println("me cai con error: " + e);
+			//System.out.println("me cai con error: " + e);
 			return 0;
 		}
 		

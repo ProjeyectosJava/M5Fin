@@ -34,6 +34,11 @@ public class ChequeoServicioImpl implements ChequeoServicio	 {
 		chk.save(chequeo);
 	}
 
+	@Override
+	public void eliminarChequeo(int id) {
+		chk.delete(id);
+	}
+
 	
 	
 }

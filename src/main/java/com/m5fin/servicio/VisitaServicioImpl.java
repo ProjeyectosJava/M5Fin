@@ -68,6 +68,16 @@ public class VisitaServicioImpl implements VisitaServicio{
 	public Visitas findVisitaById(int id) {
 		return 	vr.findOne(id);
 	}
+
+	@Override
+	public void eliminarVisitas(int id) {
+		try {
+			vr.delete(id);
+			System.out.println("Visita eliminada " + id);
+		} catch(Exception e) {
+			System.out.println("no se puede eliminar la visita porque tiene registros asociados");
+		}
+	}
 	
 	
 	
