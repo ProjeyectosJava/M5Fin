@@ -63,6 +63,11 @@ public class MejoraServicioImpl implements MejoraServicio {
 		return query.getResultList();
 	}
 
+	@Override
+	public void eliminarMejoras(int id) {
+		mr.delete(id);
+	}
+
 	/*
 	@Override
 	public List ListarPorId(Integer id); {

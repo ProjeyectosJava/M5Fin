@@ -9,8 +9,6 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -20,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.m5fin.dao.Accidentes;
 import com.m5fin.dao.Asesorias;
 import com.m5fin.dao.Capacitaciones;
+import com.m5fin.dao.Chequeos;
 import com.m5fin.dao.Clientes;
 import com.m5fin.dao.Empleados;
 import com.m5fin.dao.ListaPagoMorosos;
@@ -29,6 +28,7 @@ import com.m5fin.dao.Visitas;
 import com.m5fin.servicio.AccidenteServicio;
 import com.m5fin.servicio.AsesoriaServicio;
 import com.m5fin.servicio.CapacitacionServicio;
+import com.m5fin.servicio.ChequeoServicio;
 import com.m5fin.servicio.ClienteServicio;
 import com.m5fin.servicio.EmpleadoServicio;
 import com.m5fin.servicio.MejoraServicio;
@@ -64,10 +64,14 @@ public class AdministradorControlador {
 
 	@Autowired
 	PagosServicio pse;
+	
+	@Autowired
+	ChequeoServicio chk;
 
 	boolean noexiste;
 
 	// --- *** CU1 CRUD CLIENTES *** ----//
+	/*Lista todos los clientes que existen*/
 	@RequestMapping("/listarclientes")
 	public String verclientes(Model m) {
 		List<Clientes> listacliente = cs.listarClientes();
@@ -75,6 +79,7 @@ public class AdministradorControlador {
 		return "listarclientes";
 	}
 
+	/*despliega un formulario para ingresar datos de un nuevo cliente*/
 	@RequestMapping("/formcliente")
 	public String newcliente(Model m) {
 		m.addAttribute("cliente", new Clientes());
@@ -82,7 +87,7 @@ public class AdministradorControlador {
 	}
 
 	/*
-	 * */
+	 * Guarda los datos ingresados en el formulario de nuevo cliente*/
 	@RequestMapping(value = "/guardarcliente")
 	public String savecliente(@ModelAttribute("cliente") Clientes cliente, Model m) {
 		System.out.println("cliente: " + cliente);
@@ -92,30 +97,164 @@ public class AdministradorControlador {
 		return "redirect:/administrador/listarclientes";
 	}
 
-	@RequestMapping("/eliminarcliente/{id}")
-	public String eliminar(@PathVariable int id, Model m) {
+	/*Eliminamos el cliente seleccionado por el idcliente*/
+	@RequestMapping("/eliminarcliente/{id}/{ncliente}")
+	public String eliminar(@PathVariable int id, @PathVariable String ncliente, Model m) {
 		int elimino = cs.eliminarCliente(id);
-		if(elimino == 1) {
+
+        if(elimino == 1) {
 			log.debug("Se eliminó el cliente id:" + id);
 			m.addAttribute("mensaje", "El cliente se eliminó exitosamente");
 			return "redirect:/administrador/listarclientes";			
 		} else {
 			/*aqui tenemos que crear una lista con todos los registros asociados a este cliente*/
-			List<Accidentes> listaaccidentes = filtrarListaAccidente(ac.listarAccidentes(), id);
-			List<Mejoras>    listamejoras    = filtrarListaMejoras(ms.listarMejoras(), id);
-			List<Pagos>      listapagos      = filtrarListaPagos(pse.listarPagos(), id);
-			List<Visitas>    listavisitas    = filtrarListaVisitas(vs.ListarVisitas(), id);
-			
-			m.addAttribute("idcliente", id);
-			m.addAttribute("listaaccidentes",listaaccidentes);
-			m.addAttribute("listamejoras",listamejoras);
-			m.addAttribute("listapagos",listapagos);
-			m.addAttribute("listavisitas", listavisitas);
-			
-			
+			crearListaRegistrosAsociados(id, m) ;
+			m.addAttribute("ncliente", ncliente);
 			return "listarregistrosaeliminar";
 		}
 	}
+	
+	/*creamos una lista de registros asociados y la pasamos como atributo*/
+	void crearListaRegistrosAsociados(int id, Model m) {
+		List<Accidentes> 	 listaaccidentes 	 = filtrarListaAccidente(ac.listarAccidentes(), id);
+		List<Mejoras>    	 listamejoras   	 = filtrarListaMejoras(ms.listarMejoras(), id);
+		List<Pagos>      	 listapagos     	 = filtrarListaPagos(pse.listarPagos(), id);
+		List<Visitas>    	 listavisitas   	 = filtrarListaVisitas(vs.ListarVisitas(), id);
+		List<Asesorias>  	 listaasesorias  	 = filtrarListaAsesorias(as.listarAsesorias(), id);
+		List<Capacitaciones> listacapacitaciones = filtrarListaCapacitaciones(cap.listarCapacitaciones(), id);
+		List<Chequeos> 		 listachequeos		 = filtrarListaChequeos(chk.ListarChequeos(), id);
+		
+		m.addAttribute("idcliente", id);
+		m.addAttribute("listaaccidentes",listaaccidentes);
+		m.addAttribute("listamejoras",listamejoras);
+		m.addAttribute("listapagos",listapagos);
+		m.addAttribute("listavisitas", listavisitas);
+		m.addAttribute("listaasesorias", listaasesorias);
+		m.addAttribute("listacapacitaciones", listacapacitaciones);
+		m.addAttribute("listachequeos", listachequeos);
+		
+		m.addAttribute("idcliente", id);
+	}
+	
+	/*eliminamos todos los registros asociados al cliente y el cliente tambien*/
+	@RequestMapping("/eliminartodoelcliente/{id}")
+	public String eliminartodoelcliente(@PathVariable int id, Model m) {
+		List<Accidentes> 	 listaaccidentes 	 = filtrarListaAccidente(ac.listarAccidentes(), id);
+		List<Mejoras>    	 listamejoras   	 = filtrarListaMejoras(ms.listarMejoras(), id);
+		List<Pagos>      	 listapagos     	 = filtrarListaPagos(pse.listarPagos(), id);
+		List<Visitas>    	 listavisitas   	 = filtrarListaVisitas(vs.ListarVisitas(), id);
+		List<Asesorias>  	 listaasesorias  	 = filtrarListaAsesorias(as.listarAsesorias(), id);
+		List<Capacitaciones> listacapacitaciones = filtrarListaCapacitaciones(cap.listarCapacitaciones(), id);
+		List<Chequeos> 		 listachequeos		 = filtrarListaChequeos(chk.ListarChequeos(), id);
+		
+		/*eliminar registros accidente*/
+		if(listaaccidentes.size() > 0) {
+			for(Accidentes a:listaaccidentes) {
+				ac.eliminarAccidente(a.getIdaccidente());
+			}
+		}
+		System.out.println("Accidentes eliminados");
+		
+		/*eliminar registros mejoras*/
+		if(listamejoras.size() > 0) {
+			for(Mejoras mj:listamejoras) {
+				ms.eliminarMejoras(mj.getIdmejora());
+			}
+		}
+		System.out.println("Mejoras eliminadas");
+		
+		/*eliminar registros pagos*/
+		if(listapagos.size() > 0) {
+			for(Pagos p:listapagos) {
+				pse.eliminarPagos(p.getIdpago());
+			}
+		}
+		System.out.println("Pagos eliminados");
+		
+		/*eliminar registros asesorias*/
+		if(listaasesorias.size() > 0) {
+			for(Asesorias la:listaasesorias) {
+				as.eliminaAsesoria(la.getIdasesoria());
+			}
+		}
+		System.out.println("Asesorias eliminadas");
+		
+		/*eliminar registros capacitaciones*/
+		if(listacapacitaciones.size() > 0) {
+			for(Capacitaciones c:listacapacitaciones) {
+				cap.eliminarCapacitaciones(c.getIdcapacitacion());
+			}
+		}
+		System.out.println("Capacitaciones eliminadas");
+		
+		/*eliminar registros chequeos*/
+		if(listachequeos.size() > 0) {
+			for(Chequeos ch:listachequeos) {
+				chk.eliminarChequeo(ch.getIdchequeo());
+			}
+		}
+		System.out.println("Chequeos eliminados");
+
+		/*eliminar registros visitas*/
+		if(listavisitas.size() > 0) {
+			for(Visitas v:listavisitas) {
+				vs.eliminarVisitas(v.getIdvisita());
+			}
+		}
+		System.out.println("Visitas eliminadas");
+		
+		return "redirect:/administrador/listarclientes";
+	}
+	
+
+	
+	@RequestMapping("/eliminaraccidente/{id}/{idcli}/{ncliente}")
+	public String eliminaraccidente(@PathVariable int id, @PathVariable String ncliente, Model m) {
+		ac.eliminarAccidente(id);
+		System.out.println("Accidente eliminada " + id);
+		return "redirect:/administrador/eliminarcliente/{idcli}/{ncliente}";
+	}
+	
+	@RequestMapping("/eliminarmejora/{id}/{idcli}/{ncliente}")
+	public String eliminarmejora(@PathVariable int id, @PathVariable String ncliente, Model m) {
+		ms.eliminarMejoras(id);
+		System.out.println("Mejora eliminada " + id);
+		return "redirect:/administrador/eliminarcliente/{idcli}/{ncliente}";
+	}
+	
+	@RequestMapping("/eliminarpago/{id}/{idcli}/{ncliente}")
+	public String eliminarpago(@PathVariable int id, @PathVariable String ncliente, Model m) {
+		pse.eliminarPagos(id);
+		System.out.println("Pago eliminada " + id);
+		return "redirect:/administrador/eliminarcliente/{idcli}/{ncliente}";
+	}
+	
+	@RequestMapping("/eliminarsesoria/{id}/{idcli}/{ncliente}")
+	public String eliminasesoria(@PathVariable int id, @PathVariable String ncliente, Model m) {
+		as.eliminaAsesoria(id);
+		System.out.println("Asesoria eliminada " + id);
+		return "redirect:/administrador/eliminarcliente/{idcli}/{ncliente}";
+	}
+	@RequestMapping("/eliminarcapacitacion/{id}/{idcli}/{ncliente}")
+	public String eliminacapacitacion(@PathVariable int id, @PathVariable String ncliente, Model m) {
+		cap.eliminarCapacitaciones(id);
+		System.out.println("Capacitacion eliminada " + id);
+		return "redirect:/administrador/eliminarcliente/{idcli}/{ncliente}";
+	}
+	@RequestMapping("/eliminarchequeo/{id}/{idcli}/{ncliente}")
+	public String eliminachequeo(@PathVariable int id, @PathVariable String ncliente, Model m) {
+		chk.eliminarChequeo(id);
+		System.out.println("Visita eliminada " + id);
+		return "redirect:/administrador/eliminarcliente/{idcli}/{ncliente}";
+	}
+	
+	@RequestMapping("/eliminarvisita/{id}/{idcli}/{ncliente}")
+	public String eliminarvisita(@PathVariable int id, @PathVariable String ncliente, Model m) {
+		vs.eliminarVisitas(id);
+		//System.out.println("Visita eliminada " + id);
+		return "redirect:/administrador/eliminarcliente/{idcli}/{ncliente}";
+	}
+	
 	
 	/***retornamos una lista de Accidentes solo con registros del cliente con id entregado***/
 	public List<Accidentes> filtrarListaAccidente(List<Accidentes> lista, int id) {
@@ -158,11 +297,37 @@ public class AdministradorControlador {
 		return listafiltrada;
 	}
 	
-	@RequestMapping("/eliminaraccidente/{id}/{idcliente}")
-	public String eliminaraccidente(@PathVariable int id, @PathVariable int idcliente, Model m) {
-		ac.eliminarAccidente(id);
-		return "redirect:/administrador/eliminarcliente/{idcliente}";
+	
+	/***retornamos una lista de Asesorias solo con registros del cliente con id entregado***/
+	public List<Asesorias> filtrarListaAsesorias(List<Asesorias> lista, int id) {
+		List<Asesorias> listafiltrada = new ArrayList<Asesorias>();
+		for(Asesorias list:lista) {
+			if(list.getVisita().getCliente().getIdcliente() == id)
+				listafiltrada.add(list);
+		}
+		return listafiltrada;
 	}
+	
+	/***retornamos una lista de Capacitaciones solo con registros del cliente con id entregado***/
+	public List<Capacitaciones> filtrarListaCapacitaciones(List<Capacitaciones> lista, int id) {
+		List<Capacitaciones> listafiltrada = new ArrayList<Capacitaciones>();
+		for(Capacitaciones list:lista) {
+			if(list.getVisita().getCliente().getIdcliente() == id)
+				listafiltrada.add(list);
+		}
+		return listafiltrada;
+	}
+	
+	/***retornamos una lista de Chequeos solo con registros del cliente con id entregado***/
+	public List<Chequeos> filtrarListaChequeos(List<Chequeos> lista, int id) {
+		List<Chequeos> listafiltrada = new ArrayList<Chequeos>();
+		for(Chequeos list:lista) {
+			if(list.getVisita().getCliente().getIdcliente() == id)
+				listafiltrada.add(list);
+		}
+		return listafiltrada;
+	}
+	
 
 	@RequestMapping(value = "/editarcliente/{id}")
 	public String updatecliente(@PathVariable int id, Model m) {
@@ -322,6 +487,10 @@ public class AdministradorControlador {
 
 	// --- *** FIN CU VISUALIZAR ACTIVIDADES *** ----//
 
+	
+	
+	
+	
 	// --- *** INICIO REPORTE GLOBAL *** ----//
 	@RequestMapping("/reporteglobal")
 	public String reporteglobal(Model m) {
@@ -347,6 +516,10 @@ public class AdministradorControlador {
 
 	// --- *** FIN REPORTE GLOBAL *** ----//
 
+	
+	
+	
+	
 	// --- *** INICIO REPORTE POR CLIENTE *** ----//
 	@RequestMapping("/reportecliente")
 	public String reportecliente(Model m) {
@@ -386,6 +559,9 @@ public class AdministradorControlador {
 
 	// --- *** FIN REPORTE POR CLIENTE GLOBAL *** ----//
 
+	
+	
+	
 	// --- *** INICIO CALCULAR ACCIDENTABILIDAD *** ----//
 
 	// LISTAR TABLA DE ACCIDENTES COMPLETA
@@ -407,6 +583,8 @@ public class AdministradorControlador {
 
 	// --- *** FIN CALCULAR ACCIDENTABILIDAD *** ----//
 
+	
+	
 	// --- *** INICIO CONTROL DE PAGO DE CLIENTES *** ----//
 
 	// Listamos los clientes para gestion de pagos

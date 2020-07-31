@@ -80,6 +80,11 @@ public class PagosServicioImpl implements PagosServicio{
 		return query.getResultList();
 	}
 
+	@Override
+	public void eliminarPagos(int id) {
+		pr.delete(id);
+	}
+
 
 
 }

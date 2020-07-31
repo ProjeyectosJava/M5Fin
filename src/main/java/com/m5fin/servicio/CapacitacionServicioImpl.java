@@ -57,6 +57,12 @@ public class CapacitacionServicioImpl implements CapacitacionServicio{
 		System.out.println("Listando query en capacitaciones " + query);
 		return query.getResultList();
 	}
+
+
+	@Override
+	public void eliminarCapacitaciones(int id) {
+		cr.delete(id);
+	}
 	
 
 }

@@ -25,8 +25,8 @@
 					<td>${cli.getRubrocliente()}</td>
 					<td>${cli.getDireccioncliente()}</td>
 		
-					<td><a href="editarcliente/${cli.getIdcliente()}">Editar</a></td>
-					<td><a href="eliminarcliente/${cli.getIdcliente()}">Eliminar</a></td>
+					<td><a class="btn-sm btn-warning" href="editarcliente/${cli.getIdcliente()}">Editar</a></td>
+					<td><a class="btn-sm btn-danger" href="eliminarcliente/${cli.getIdcliente()}/${cli.getNombrecliente()}">Eliminar</a></td>
 		
 				</tr>
 			</c:forEach>
