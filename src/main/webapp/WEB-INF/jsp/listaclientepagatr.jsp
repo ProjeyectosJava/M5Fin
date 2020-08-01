@@ -1,9 +1,15 @@
 <%@ include file="menuadmin.jsp" %>
 
+
+<c:if test="${listapag.size() == null}">
+	<h5><div class="text-center alert alert-warning" role="alert">No existen Clientes Morosos</h5>
+</div>
+</c:if>
+
 <c:if test="${listapag.size() > 0}">
 	<h4 class="text-center bg-dark text-white py-3">Listado Clientes con morosidad </h4>
 	<h5>
-	 	<div class="text-center">Fecha de hoy  <script> var f = new Date();document.write(f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear());</script></div>
+	 <div class="text-center">Fecha de hoy  <script> var f = new Date();document.write(f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear());</script></div>
 	</h5>	
 	<div class="container">
 		<div class="table-responsive-md">
