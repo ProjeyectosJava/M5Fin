@@ -16,13 +16,13 @@
 				<tr>
 					<th scope="row">${emp.getNombreempleado()}</th>
 					<td>${emp.getEspecialidadempleado()}</td>
-					<td><a href="editarprofesional/${emp.getIdempleado()}">Editar</a></td>
-					<td><a href="eliminarprofesional/${emp.getIdempleado()}">Eliminar</a></td>
+					<td><a class="btn-sm btn-warning" href="editarprofesional/${emp.getIdempleado()}">Editar</a></td>
+					<td><a class="btn-sm btn-danger" href="eliminarprofesional/${emp.getIdempleado()}">Eliminar</a></td>
 			</c:forEach>
 		</table>
 	</div>
 	<br>
-	<a href="formprofesional" class="btn btn-dark">Agregar Profesional</a>
+	<a href="formprofesional" class="btn btn-success">Agregar Profesional</a>
 </div>
 
 <%@ include file="footer.jsp"%>

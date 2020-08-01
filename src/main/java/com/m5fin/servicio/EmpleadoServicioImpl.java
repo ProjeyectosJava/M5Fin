@@ -33,7 +33,11 @@ public class EmpleadoServicioImpl implements EmpleadoServicio{
 
 	@Override
 	public void eliminarempleado(int idempleado) {
-		pr.delete(idempleado);
+		try {
+			pr.delete(idempleado);			
+		} catch(Exception e) {
+			
+		}
 		
 	}
 

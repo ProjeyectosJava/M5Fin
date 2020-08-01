@@ -441,27 +441,51 @@ public class ProfesionalControlador {
 		    
 		    @RequestMapping(value = "/agregarchecklist/{idvis}/{ncliente}") 
 			 public String agregarchecklist(@PathVariable int idvis, @PathVariable String ncliente, Model m){		    	
-		    	
+				/*buscamos con el idvisita el registro para mostrar esos datos en la vista*/
+		    	Visitas lavisita = vs.findVisitaById(idvis);
+				m.addAttribute("lavisita", lavisita);
+				
+		    	System.out.println("lavisita" + lavisita);
+				
 		    	m.addAttribute("ncliente", ncliente);
+		    	
+		    	
 		    	Visitas visita = new Visitas();
 		    	visita.setIdvisita(idvis);
 	    		Chequeos chequeo = new Chequeos();
 		    	chequeo.setVisita(visita);
 		    	chequeo.setEstadochequeo("Iniciado");
-		    	
 		    	m.addAttribute("chequeo", chequeo);
-				System.out.println("chequeo: " + chequeo);
+		    	System.out.println("chequeo: " + chequeo);
+		    	
+		    	List<Chequeos> listachequeos = filtrarListaChequeos(chk.ListarChequeos(),idvis);
+		    	m.addAttribute("listachequeos", listachequeos);
 				return "formchecklist";
 		    }
+		    
 		    
 		    
 		    /*Guarda formulario formasesoriainiciada*/
 		    @RequestMapping(value = "/guardarchecklist") 
 			 public String guardarchecklist(@ModelAttribute("chequeo") Chequeos chequeo, Model m) {
-		    	System.out.println("chequeo a guardar: " + chequeo);
 				 chk.agregarChequeo(chequeo);
 				 log.info("Se registró una nuevo checklist " + "id:" + chequeo.getIdchequeo());
+				 
+				 /*con el idvisita creo una instancia de visita para pasar el nombre del cliente*/
+				 Visitas lavisita = vs.findVisitaById(chequeo.getVisita().getIdvisita());
+				 int idvis = chequeo.getVisita().getIdvisita();
+				 String ncliente = lavisita.getCliente().getNombrecliente();
+				 m.addAttribute("idvis", idvis);
+				 m.addAttribute("ncliente", ncliente);
+				 
+				 System.out.println("chequeo guardado: " + chequeo);
+				 System.out.println("idvisita: " + chequeo.getVisita().getIdvisita());
+				 System.out.println("Nombre cliente: " + lavisita.getCliente().getNombrecliente());
+				 
+				 return "redirect:/profesional/agregarchecklist/{idvis}/{ncliente}";
+			/*
 			return "redirect:/profesional/crearchecklist";
+			 */
 			}
 		    
 		 
@@ -484,7 +508,7 @@ public class ProfesionalControlador {
 		    /*Mostramos todos los chequeos asociados a una visita*/
 		    @RequestMapping(value="/mostrarchecklist/{idvis}") 
 			 public String mostrarchecklist(@PathVariable int idvis, Model m) {
-		    	/*obtenemos una lista filtrada solo con las visitas que tienen chequeos*/
+		    	/*obtenemos una lista filtrada solo con los chequeos asociados a un idvisitas*/
 		    	List<Chequeos> listachequeos = filtrarListaChequeos(chk.ListarChequeos(), idvis);
 		    	m.addAttribute("listachequeos", listachequeos);
    	
@@ -548,7 +572,7 @@ public class ProfesionalControlador {
 		    	
 		    	/*
 		    	 * Recorremos lista y comparamos su Idvisita con el idvisita del arraylistConIdUnico
-		    	 * si es igual el registro de lista se almacena en listaConIdsUnicos
+		    	 * si es igual al registro de lista se almacena en listaConIdsUnicos
 		    	 * como arraylistConIdUnico siempre sera de menor tamaño que lista
 		    	 * la comparacion se realiza hasta que se recorre por completo el arraylistConIdUnico
 		    	 * para ello el incrementador i antes de una accion consulta 
@@ -575,7 +599,7 @@ public class ProfesionalControlador {
 		    	return listaConIdsUnicos;
 		    }
 		    
-		    /***retornamos una lista de Chequeos solo con registros de la visita con id entregado***/
+		    /***retornamos una lista de Chequeos asociados a un idvisita***/
 			public List<Chequeos> filtrarListaChequeos(List<Chequeos> lista, int id) {
 				List<Chequeos> listafiltrada = new ArrayList<Chequeos>();
 				for(Chequeos list:lista) {

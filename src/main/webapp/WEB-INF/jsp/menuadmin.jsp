@@ -58,9 +58,6 @@
 					<li class="nav-item">
 						<a class="nav-link" href="${baseURL}/administrador/reporteglobal">Reporte global </a>
 					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="${baseURL}/cliente/testes">testes </a>
-					</li>
 				</ul>
 			</div>
 		</nav>

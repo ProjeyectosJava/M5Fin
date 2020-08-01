@@ -15,7 +15,7 @@
 				<tr>
 					<th scope="row">${cli.getIdcliente()}</th>
 					<td>${cli.getNombrecliente()}</td>
-					<td><a href="listarreporte/${cli.getIdcliente()}/${cli.getNombrecliente()}">Listar</a></td>
+					<td><a class="btn-sm btn-info" href="listarreporte/${cli.getIdcliente()}/${cli.getNombrecliente()}">Listar</a></td>
 		
 				</tr>
 			</c:forEach>

@@ -20,7 +20,7 @@
 					<td>${clip.getNombrecliente()}</td>
 					<td>${clip.getTelefonocliente()}</td>
 					<td>${clip.getEmailcliente()}</td>
-					<td><a href="generapagosporcliente/${clip.getIdcliente()}/${clip.getNombrecliente()}">Gestionar Pago</a></td>
+					<td><a class="btn-sm btn-warning" href="generapagosporcliente/${clip.getIdcliente()}/${clip.getNombrecliente()}">Gestionar Pago</a></td>
 				</tr> 
 
 			</c:forEach> 

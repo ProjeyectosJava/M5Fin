@@ -7,8 +7,8 @@
 <li class="text-success">Responder Checklist (Listo)</li>
 <li class="text-warning">Finalizar el Logger (En Curso)</li>
 <li class="text-success">Notificar atrasos (Listo)</li>
-<li class="text-warning">Gestionar Asesorias especiales (Listo solo detalles por terminar)</li>
-<li class="text-warning">Gestionar Asesorias especiales (revisar detalles y propuestas que pasen al form si es especial)</li>
+<li class="text-success">Gestionar Asesorias especiales (Listo)</li>
+<li class="text-success">Gestionar Asesorias especiales (Listo)</li>
 <li class="text-success">Agregar Iconos al menu raiz (Listo)</li>
 <li class="text-success">Eliminar registros asociados (Listo)</li>
 <li class="text-success">Agregar notificaciones de atraso en clientes (Listo)</li> 

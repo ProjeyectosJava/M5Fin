@@ -33,7 +33,7 @@
 		</table>
 	</div>
 	<br>
-	<a href="formcliente" class="btn btn-dark">Agregar Cliente</a>
+	<a href="formcliente" class="btn btn-success mb-5">Agregar Cliente</a>
 </div>
 
 	
