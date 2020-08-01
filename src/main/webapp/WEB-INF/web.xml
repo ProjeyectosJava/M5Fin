@@ -61,11 +61,7 @@
        
        
        
-             <error-page>
-           <error-code>505</error-code>
-           <location>/403.jsp</location>
-       </error-page>
-
+       
 
 
 
