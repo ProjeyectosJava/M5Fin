@@ -34,7 +34,7 @@
 						<td>${lv.getObservacionvisita()}</td>
 						<td>${lv.getFechavisita()}</td>
 						<td>${lv.getEmpleado().getNombreempleado()}</td>
-						<td><a class="btn btn-dark" href="agregarchecklist/${lv.getIdvisita()}/${lv.getCliente().getNombrecliente()}">Agregar</a></td>
+						<td><a class="btn-sm btn-success" href="agregarchecklist/${lv.getIdvisita()}/${lv.getCliente().getNombrecliente()}">Agregar</a></td>
 					</tr>
 				</c:forEach>
 			</table>

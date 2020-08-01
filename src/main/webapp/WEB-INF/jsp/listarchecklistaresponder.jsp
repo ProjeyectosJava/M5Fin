@@ -54,7 +54,7 @@
 						
 							<div class="col-md-3  align-items-center">
 								<c:if test="${lc.getEstadochequeo() != 'Finalizado'}">
-									<form:select class="form-control text-center" path="estadochequeo" >
+									<form:select class="form-control-sm text-center" path="estadochequeo" >
 										<option selected>${lc.getEstadochequeo()}</option>
 										
 										<c:if test="${lc.getEstadochequeo() != 'Iniciado'}">
@@ -75,7 +75,7 @@
 							
 							<div class="col-md-3 ">
 								<c:if test="${lc.getEstadochequeo() != 'Finalizado'}">
-									<input type="submit" class="btn btn-dark " value="Actualizar">
+									<input type="submit" class="btn-sm btn-success " value="Actualizar">
 								</c:if>  
 							</div>
 						</div>
