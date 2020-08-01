@@ -15,6 +15,8 @@
 							<th scope="col">Profesional Asignado</th>
 							<th scope="col">Gestion Asesoria</th>
 							<th scope="col">Asesoria Especial</th>
+							<th scope="col">Detalle</th>
+							<th scope="col">Propuesta</th>
 							<th scope="col">Fecha Asesoria</th>
 							<th scope="col">Gestionar Asesoria</th>
 						</tr>
@@ -28,8 +30,10 @@
 								<td>${lg.getVisita().getEmpleado().getNombreempleado()}</td> 	 	 
 								<td>${lg.getGestionasesoria()}</td>
 								<td>${lg.getEspecialasesoria()}</td>
+								<td>${lg.getDetalleasesoria()}</td>
+								<td>${lg.getPropuestaasesoria()}</td>
 								<td>${lg.getFechaasesoria()}</td>
-								<td><a class="btn btn-danger" href="inciarasesoria/${lg.getVisita().getIdvisita()}/${lg.getIdasesoria()}/${lg.getFechaasesoria()}/${lg.getVisita().getCliente().getNombrecliente()}/${lg.getEspecialasesoria()}">Iniciar Asesoria</a></td> 	 
+								<td><a class="btn-sm btn-danger" href="inciarasesoria/${lg.getVisita().getIdvisita()}/${lg.getIdasesoria()}/${lg.getFechaasesoria()}/${lg.getVisita().getCliente().getNombrecliente()}/${lg.getEspecialasesoria()}/${lg.getDetalleasesoria()}/${lg.getPropuestaasesoria()}">Gestioinar</a></td> 	 
 							</tr>
 						</c:if>
 					</c:forEach>
@@ -66,9 +70,8 @@
 								<td>${lg.getGestionasesoria()}</td>
 								<td>${lg.getEspecialasesoria()}</td>
 								<td>${lg.getDetalleasesoria()}</td>
-								<td>${lg.getPropuestaasesoria()}</td>
 								<td>${lg.getFechaasesoria()}</td>
-								<td><a class="btn btn-warning" href="actualizarasesoria/${lg.getIdasesoria()}/${lg.getVisita().getCliente().getNombrecliente()}">Actualizar</a></td> 	 
+								<td><a class="btn-sm btn-warning" href="actualizarasesoria/${lg.getIdasesoria()}/${lg.getVisita().getCliente().getNombrecliente()}">Actualizar</a></td> 	 
 							</tr>
 						</c:if>
 					</c:forEach>
@@ -91,7 +94,6 @@
 							<th scope="col">Gestion Asesoria</th>
 							<th scope="col">Asesoria Especial</th>
 							<th scope="col">Detalle Asesoria</th>
-							<th scope="col">Propuesta Asesoria</th>
 							<th scope="col">Fecha Asesoria</th>
 						</tr>
 					</thead>	
@@ -105,7 +107,6 @@
 								<td>${lg.getGestionasesoria()}</td>
 								<td>${lg.getEspecialasesoria()}</td>
 								<td>${lg.getDetalleasesoria()}</td>
-								<td>${lg.getPropuestaasesoria()}</td>
 								<td>${lg.getFechaasesoria()}</td>
 							</tr>
 						</c:if>

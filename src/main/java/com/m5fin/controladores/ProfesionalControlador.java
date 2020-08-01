@@ -262,6 +262,8 @@ public class ProfesionalControlador {
 		// CU ---*** FIN LISTAR ACTIVIDAD DE MEJORA *** --- //
 		 
 		 
+		 
+		 
 		// CU ---*** INICIO CREAR CASO DE ASESORIA *** --- //
 		 @RequestMapping("/crearasesoria")    
 		    public String crearasesoria(Model m){    
@@ -294,6 +296,7 @@ public class ProfesionalControlador {
 			}
 		 
 		// CU ---*** FIN CREAR CASO DE ASESORIA *** --- //
+		    
 		    
 		    
 		 // CU ---*** INICIO INGRESAR ASESORIA (GESTIONAR)*** --- //
@@ -334,12 +337,13 @@ public class ProfesionalControlador {
 		    }
 		    
 		    
-		    @RequestMapping(value = "/inciarasesoria/{idvi}/{idas}/{fechasesor}/{ncliente}/{especial}") 
-			 public String inciarasesoria(@PathVariable int idvi, 
+
+		    @RequestMapping(value = "/inciarasesorianormal/{idvi}/{idas}/{fechasesor}/{ncliente}/{especial}") 
+			 public String inciarasesorianormal(@PathVariable int idvi, 
 					 					  @PathVariable int idas, 
 					 					  @PathVariable String fechasesor, 
 					 					  @PathVariable String ncliente,
-					 					 @PathVariable String especial,
+					 					  @PathVariable String especial,
 					 					  Model m){
 		    	
 		    	Visitas regvisita = new Visitas();
@@ -359,6 +363,41 @@ public class ProfesionalControlador {
 				return "formasesoriainiciada";
 		    }
 		    
+		    
+		    
+		    @RequestMapping(value = "/inciarasesoria/{idvi}/{idas}/{fechasesor}/{ncliente}/{especial}/{detalle}/{propuesta}") 
+			 public String inciarasesoria(@PathVariable int idvi, 
+					 					  @PathVariable int idas, 
+					 					  @PathVariable String fechasesor, 
+					 					  @PathVariable String ncliente,
+					 					  @PathVariable String especial,
+					 					  @PathVariable String detalle,
+					 					  @PathVariable String propuesta,
+					 					  Model m){
+		    	
+		    	Visitas regvisita = new Visitas();
+		    	regvisita.setIdvisita(idvi);
+				
+		    	Asesorias regasesoria = new Asesorias();
+				regasesoria.setIdasesoria(idas);
+				regasesoria.setFechaasesoria(fechasesor);
+				regasesoria.setGestionasesoria("En Curso");
+				regasesoria.setEspecialasesoria(especial);
+				regasesoria.setVisita(regvisita);
+				regasesoria.setDetalleasesoria(detalle);
+				regasesoria.setPropuestaasesoria(propuesta);
+			 
+				m.addAttribute("regase",regasesoria); 
+				m.addAttribute("ncliente", ncliente);
+				
+				System.out.println("regcap que va al formulario: " + regasesoria);
+				return "formasesoriainiciada";
+		    }
+		    
+		    
+		    
+		    
+		    
 		    /*Guarda formulario formasesoriainiciada*/
 		    @RequestMapping(value = "/guardarasesoriainiciada") 
 			 public String guardarasesoriainiciada(@ModelAttribute("regase") Asesorias asesoria, Model m) {
@@ -371,11 +410,9 @@ public class ProfesionalControlador {
 				 }
 			}
 		    
-		    
+		    /*actualiza una asesoria en curso*/
 		    @RequestMapping(value = "/actualizarasesoria/{idas}/{ncliente}") 
-			 public String actualizarasesorianormal(@PathVariable int idas, 
-					 								@PathVariable String ncliente, 
-					 								Model m){		    	
+			 public String actualizarasesorianormal(@PathVariable int idas, @PathVariable String ncliente, Model m){		    	
 		    	
 		    	m.addAttribute("ncliente", ncliente);
 
