@@ -5,39 +5,6 @@
 	<div class="row justify-content-center align-items-center">
 		<div class="col-md-10">
 			<form:form method="post" action="../../guardarasesoria" modelAttribute="regase">
-				<div class="form-group row">
-					<label for="detalleasesoria" class="col-md-2 col-form-label mr-1">Detalle</label>
-				<div class="col-md-7"> 
-					<form:input class="form-control" id="detalleasesoria" path="detalleasesoria" readonly="true"/> 
-				</div>
-				</div>
-				<div class="form-group row">
-					<label for="gestionasesoria" class="col-md-2 col-form-label mr-1">Gestion</label>
-						<div class="col-md-7"> 
-							<form:input class="form-control" id="gestionasesoria" path="gestionasesoria" value="No Iniciada" readonly="true"/>
-						</div>
-				</div>
-				<div class="form-group row">
-					<label for="propuestaasesoria" class="col-md-2 col-form-label mr-1">Propuesta</label>
-						<div class="col-md-7">  
-							<form:input class="form-control" id="propuestaasesoria" path="propuestaasesoria" readonly="true"/>
-						</div>
-				</div>
-				
-				<div class="form-group row">
-					<label for="fechaasesoria" class="col-md-2 col-form-label mr-1">Fecha Asesoria</label>
-						<div class="col-md-7">  
-							<form:input class="form-control" id="fechaasesoria" path="fechaasesoria"/>
-						</div>
-				</div>
-				
-				<div class="form-group row">
-					<label for="especialasesoria" class="col-md-2 col-form-label mr-1">Asesoria Especial</label>
-						<div class="col-md-7">  
-							<form:input class="form-control" id="especialasesoria" path="especialasesoria" value="No" readonly="true"/>
-						</div>
-				</div>
-				
 			
 				<div class="form-group row">
 					<label for="idvivisita" class="col-md-2 col-form-label mr-1">IdVisitaAsesoria</label>
@@ -45,8 +12,46 @@
 							<form:input class="form-control" id="idvivisita" path="visita.idvisita" readonly="true"/>
 						</div>
 				</div>
+				
 				<div class="form-group row">
-						<input type="submit" class="btn btn-dark" value="Guardar">  
+					<label for="fechaasesoria" class="col-md-2 col-form-label mr-1">Fecha Asesoria</label>
+						<div class="col-md-7">  
+							<form:input class="form-control" type="date" id="fechaasesoria" path="fechaasesoria"/>
+							<form:hidden class="form-control" id="detalleasesoria" path="detalleasesoria" readonly="true"/> 
+							<form:hidden class="form-control" id="gestionasesoria" path="gestionasesoria" value="No Iniciada" readonly="true"/>
+							<form:hidden class="form-control" id="propuestaasesoria" path="propuestaasesoria" readonly="true"/>
+							<form:hidden class="form-control" id="especialasesoria" path="especialasesoria" value="No" readonly="true"/>
+						</div>
+				</div>
+				<!-- 
+				<div class="form-group row">
+					<label for="detalleasesoria" class="col-md-2 col-form-label mr-1">Detalle</label>
+				<div class="col-md-7"> 
+				</div>
+				</div>
+				<div class="form-group row">
+					<label for="gestionasesoria" class="col-md-2 col-form-label mr-1">Gestion</label>
+						<div class="col-md-7"> 
+						</div>
+				</div>
+				<div class="form-group row">
+					<label for="propuestaasesoria" class="col-md-2 col-form-label mr-1">Propuesta</label>
+						<div class="col-md-7">  
+						</div>
+				</div>
+				
+				
+				<div class="form-group row">
+					<label for="especialasesoria" class="col-md-2 col-form-label mr-1">Asesoria Especial</label>
+						<div class="col-md-7">  
+						</div>
+				</div>
+				
+				 -->
+			
+				
+				<div class="form-group row">
+						<input type="submit" class="btn btn-success" value="Guardar">  
 				</div>
 			</form:form>
 		</div>

@@ -20,7 +20,7 @@
 				<td>${cli.getNombrecliente()}</td>
 				<td>${cli.getTelefonocliente()}</td>
 				<td>${cli.getDireccioncliente()}</td>
-				 <td><a class="btn btn-dark" href="generarvisita/${cli.getIdcliente()}/${cli.getNombrecliente()}">Generar Visita</a></td>
+				 <td><a class="btn-sm btn-success" href="generarvisita/${cli.getIdcliente()}/${cli.getNombrecliente()}">Generar Visita</a></td>
 				<!-- 
 				 <c:url var="url_confirm" value="/admin/orderList"/>
 				<a href="${url_confirm}/${li.orderId}/${"confirmed"}" >Confirmed</a>

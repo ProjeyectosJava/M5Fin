@@ -29,22 +29,21 @@
 						<div class="col-md-7">
 							<form:select class="form-control" id="estmejora" path="estadomejora">
 								<div class="input-group-prepend">
-									<option>En Curso</option>
-									<option>Pendiente</option>
-									<option>Finalizada</option>
 									<option>No Iniciada</option>
+									<option>En Curso</option>
+									<option>Finalizada</option>
 								</div>
 							</form:select>
 						</div>
 					</div>
 					<div class="form-group row">
 						<div class="col-md-7">
-							<form:input class="form-control" id="idclimej" path="cliente.idcliente" readonly="true"/>
+							<form:hidden class="form-control" id="idclimej" path="cliente.idcliente" readonly="true"/>
 						</div>
 					</div>
 					<div class="form-group row">
 						<div class="col-md-7">
-							<input type="submit" value="Guardar" />
+							<input type="submit" class="btn btn-success" value="Guardar" />
 						</div>
 					</div>	
 			</form:form>

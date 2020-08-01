@@ -9,7 +9,7 @@
 		
 		<!-- Aseorias No Iniciadas -->
 		<div class="container mt-3">
-			<h5 class="text-center bg-dark text-white py-2 mb-0">No Iniciadas</h5>
+			<h5 class="text-center bg-dark text-danger py-2 mb-0">No Iniciadas</h5>
 			<div class="table-responsive-md">
 				<table class="table table-danger">
 					<thead class="thead-dark">
@@ -44,7 +44,7 @@
 		
 		<!-- Asesorias Normales En Curso -->
 		<div class="container mt-4">
-			<h5 class="text-center bg-dark text-white py-3 mb-0">En Curso</h5>
+			<h5 class="text-center bg-dark text-warning py-3 mb-0">En Curso</h5>
 			<div class="table-responsive-md">
 				<table class="table table-warning">
 					<thead class="thead-dark">
@@ -86,7 +86,7 @@
 		
 		<!-- Asesorias Finalizadas -->
 		<div class="container mt-4">
-			<h5 class="text-center bg-dark text-white py-3 mb-0">Finalizada</h5>
+			<h5 class="text-center bg-dark text-success py-3 mb-0">Finalizada</h5>
 			<div class="table-responsive-md">
 				<table class="table table-success">
 					<thead class="thead-dark">

@@ -55,13 +55,13 @@
 						<a class="nav-link " href="${baseURL}/profesional/crearasesoria">Crear caso de asesoría</a>
 					</li>
 					<li class="nav-item">
+						<a class="nav-link" href="${baseURL}/profesional/menuasesorias">Gestionar asesorias</a>
+					</li>
+					<li class="nav-item">
 						<a class="nav-link" href="${baseURL}/profesional/lpmclientes">Ingresar actividad de mejora </a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="${baseURL}/profesional/revisarmejoras">Revisar actividad de mejora </a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="${baseURL}/profesional/menuasesorias">Ingresar asesoria</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="${baseURL}/profesional/crearchecklist">Crear	Checklist</a>

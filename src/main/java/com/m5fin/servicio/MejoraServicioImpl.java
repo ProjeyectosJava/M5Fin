@@ -68,6 +68,11 @@ public class MejoraServicioImpl implements MejoraServicio {
 		mr.delete(id);
 	}
 
+	@Override
+	public void editarMejoras(Mejoras mejora) {
+		mr.save(mejora);
+	}
+
 	/*
 	@Override
 	public List ListarPorId(Integer id); {

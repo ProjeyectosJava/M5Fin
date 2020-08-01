@@ -1,7 +1,7 @@
 <%@ include file="menupro.jsp" %>
 
 
-<h4 class="text-center bg-dark text-white py-3">Actualizar Checklist</h4>
+<h4 class="text-center bg-dark text-white py-3">Actualizar Checklist ID Visita ${listachequeos[0].getVisita().getIdvisita()} del Cliente ${listachequeos[0].getVisita().getCliente().getNombrecliente()}</h4>
 <div class="container">
 	<div class="container mt-3 px-0">
 		<div class="table-responsive-md">

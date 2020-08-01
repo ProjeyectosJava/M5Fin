@@ -255,8 +255,20 @@ public class ProfesionalControlador {
 			public String revisarmejoras(Model m) {
 				List<Mejoras> listamejoras = ms.listarMejoras();
 				m.addAttribute("listamejoras", listamejoras);
+				
+				Mejoras mejora = new Mejoras();
+				m.addAttribute("mejora", mejora);
 				System.out.println("Listamejoras: " + listamejoras);
 				return "listarmejoras";
+			}
+		 
+		 
+		 @RequestMapping(value = "/actualizarrmejora")
+			public String actualizarrmejora(@ModelAttribute("mejora") Mejoras mejora, Model m) {
+				ms.editarMejoras(mejora);
+				System.out.println("Mejora ID: " + mejora.getIdmejora() + " actualizada a: " + mejora.getEstadomejora() );
+				System.out.println("Mejora: " + mejora);
+				return "redirect:/profesional/revisarmejoras";
 			}
     
 		// CU ---*** FIN LISTAR ACTIVIDAD DE MEJORA *** --- //
