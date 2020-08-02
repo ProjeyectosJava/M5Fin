@@ -53,9 +53,7 @@
 		      <li class="nav-item">
 		        <a class="nav-link" href="${baseURL}/logout">Logout <span class="fas fa-sign-in-alt"> &nbsp; &nbsp; </span> </a>
 		      </li>
-		      <li class="nav-item">
-		        <a class="nav-link" href="${baseURL}/pendientes">Tareas por hacer</a>
-		      </li>
+		      
 		      
 		    </ul>
 	  	</div>
