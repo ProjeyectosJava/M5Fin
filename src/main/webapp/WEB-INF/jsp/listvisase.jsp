@@ -32,7 +32,7 @@
 							<td>${lgv.cliente.nombrecliente}</td>
 							<td>${lgv.empleado.idempleado}</td>
 							<td>${lgv.empleado.nombreempleado}</td>
-							<td><a href="generarasesoria/${lgv.getIdvisita()}/${lgv.cliente.nombrecliente}">Generar Asesoria</a></td>
+							<td><a class="btn-sm btn-success" href="generarasesoria/${lgv.getIdvisita()}/${lgv.cliente.nombrecliente}">Generar</a></td>
 						</tr>
 					</c:forEach>
 				</table>

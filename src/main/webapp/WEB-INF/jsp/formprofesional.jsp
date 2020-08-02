@@ -20,7 +20,7 @@
 					</div>
 				</div>
 				<div class="form-group row">
-					<input type="submit" class="btn btn-dark" value="Guardar">
+					<input type="submit" class="btn btn-success" value="Guardar">
 				</div>
 			</form:form>
 		</div>

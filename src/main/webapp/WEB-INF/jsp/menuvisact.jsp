@@ -44,6 +44,7 @@
 		<table class="table">
 			<thead class="thead-dark">
 				<tr>
+					<th scope="col">Id Capacitacion</th>
 					<th scope="col">Id Cliente</th>
 					<th scope="col">Nombre Cliente</th>
 					<th scope="col">Fecha Capacitacion</th>
@@ -53,7 +54,8 @@
 			</thead>
 			<c:forEach items="${listacapacitaciones}" var="lvc">
 				<tr>
-					<th scope="row">${lvc.getVisita().getCliente().getIdcliente()}</th>
+					<th scope="row">${lvc.getIdcapacitacion()}</th>
+					<td>${lvc.getVisita().getCliente().getIdcliente()}</td>
 					<td>${lvc.getVisita().getCliente().getNombrecliente()}</td> 
 					<td>${lvc.getFechacapacitacion()}</td>
 					<td>${lvc.getHoracapacitacion()}</td>
@@ -78,6 +80,7 @@
 		<table class="table">
 			<thead class="thead-dark">
 				<tr>
+					<th scope="col">Id Visitas</th>
 					<th scope="col">Id Cliente</th>
 					<th scope="col">Nombre Cliente</th>
 					<th scope="col">Ciudad</th>
@@ -90,7 +93,8 @@
 			</thead>
 				<c:forEach items="${listavisitas}" var="lvv">
 					<tr>
-						<th scope="row">${lvv.getCliente().getIdcliente()}</th>
+						<th scope="row">${lvv.getIdvisita()}</th>
+						<td>${lvv.getCliente().getIdcliente()}</td>
 						<td>${lvv.getCliente().getNombrecliente()}</td>
 						<td>${lvv.getCiudadvisita()}</td>
 						<td>${lvv.getDireccionvisita()}</td>
@@ -119,6 +123,7 @@
 			<table class="table">
 				<thead class="thead-dark">
 					<tr>
+						<th scope="col">Id Mejoras</th>
 						<th scope="col">Id Cliente</th>
 						<th scope="col">Nombre Cliente</th>
 						<th scope="col">Rubro</th>
@@ -130,7 +135,8 @@
 				</thead>
 				<c:forEach items="${listamejoras}" var="lvm">
 					<tr>
-						<th scope="row">${lvm.getCliente().getIdcliente()}</th>
+						<th scope="row">${lvm.getIdmejora()}</th>
+						<td>${lvm.getCliente().getIdcliente()}</td>
 						<td>${lvm.getCliente().getNombrecliente()}</td>
 						<td>${lvm.getCliente().getRubrocliente()}</td>
 						<td>${lvm.getFechamejora()}</td>
@@ -158,6 +164,7 @@
 			<table class="table">
 				<thead class="thead-dark">
 					<tr>
+						<th scope="col">Id Asesoria</th>
 						<th scope="col">Id Cliente</th>
 						<th scope="col">Nombre Cliente</th>
 						<th scope="col">Detalle</th>
@@ -170,7 +177,8 @@
 				</thead>
 					<c:forEach items="${listaasesorias}" var="lva">
 						<tr>
-							<th scope="row">${lva.getVisita().getCliente().getIdcliente()}</th>
+							<th scope="row">${lva.getIdasesoria()}</th>
+							<td>${lva.getVisita().getCliente().getIdcliente()}</td>
 							<td>${lva.getVisita().getCliente().getNombrecliente()}</td>
 							<td>${lva.getDetalleasesoria()}</td>
 							<td>${lva.getGestionasesoria()}</td>

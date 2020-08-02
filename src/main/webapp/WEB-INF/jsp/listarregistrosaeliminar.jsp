@@ -134,6 +134,7 @@
 					<thead class="thead-dark">
 						<tr>
 							<th scope="col">Id Asesoria</th>
+							<th scope="col">Id Visita</th>
 							<th scope="col">Fecha</th>
 							<th scope="col">Detalle</th>
 							<th scope="col">Eliminar </th>
@@ -142,6 +143,7 @@
 						<c:forEach items="${listaasesorias}" var="a">
 							<tr>
 								<th scope="row">${a.getIdasesoria()}</th>
+								<td>${a.getVisita().getIdvisita()}</td>
 								<td>${a.getFechaasesoria()}</td>
 								<td>${a.getDetalleasesoria()}</td>
 								<td><a class="btn-sm btn-danger" href="../../eliminarsesoria/${a.getIdasesoria()}/${a.getVisita().getCliente().getIdcliente()}/${a.getVisita().getCliente().getNombrecliente()}">Eliminar</a></td>
@@ -166,6 +168,7 @@
 					<thead class="thead-dark">
 						<tr>
 							<th scope="col">Id Capacitacion</th>
+							<th scope="col">Id Visita</th>
 							<th scope="col">Fecha</th>
 							<th scope="col">Hora</th>
 							<th scope="col">Eliminar </th>
@@ -174,6 +177,7 @@
 						<c:forEach items="${listacapacitaciones}" var="c">
 							<tr>
 								<th scope="row">${c.getIdcapacitacion()}</th>
+								<td>${c.getVisita().getIdvisita()}</td>
 								<td>${c.getFechacapacitacion()}</td>
 								<td>${c.getHoracapacitacion()}</td>
 								<td><a class="btn-sm btn-danger" href="../../eliminarcapacitacion/${c.getIdcapacitacion()}/${c.getVisita().getCliente().getIdcliente()}/${c.getVisita().getCliente().getNombrecliente()}">Eliminar</a></td>
@@ -197,6 +201,7 @@
 					<thead class="thead-dark">
 						<tr>
 							<th scope="col">Id Chequeo</th>
+							<th scope="col">Id Visita</th>
 							<th scope="col">Detalle</th>
 							<th scope="col">Estado</th>
 							<th scope="col">Eliminar </th>
@@ -205,6 +210,7 @@
 						<c:forEach items="${listachequeos}" var="chk">
 							<tr>
 								<th scope="row">${chk.getIdchequeo()}</th>
+								<td>${chk.getVisita().getIdvisita()}</td>
 								<td>${chk.getDetallechequeo()}</td>
 								<td>${chk.getEstadochequeo()}</td>
 								<td><a class="btn-sm btn-danger" href="../../eliminarchequeo/${chk.getIdchequeo()}/${chk.getVisita().getCliente().getIdcliente()}/${chk.getVisita().getCliente().getNombrecliente()}">Eliminar</a></td>
@@ -230,6 +236,7 @@
 							<th scope="col">Id Visita</th>
 							<th scope="col">Fecha</th>
 							<th scope="col">Ciudad</th>
+							<th scope="col">Resumen</th>
 							<th scope="col">Eliminar </th>
 						</tr>
 					</thead>
@@ -238,6 +245,7 @@
 								<th scope="row">${v.getIdvisita()}</th>
 								<td>${v.getFechavisita()}</td>
 								<td>${v.getCiudadvisita()}</td>
+								<td>${v.getResumenvisita()}</td>
 								<td><a class="btn-sm btn-danger" href="../../eliminarvisita/${v.getIdvisita()}/${v.getCliente().getIdcliente()}/${v.getCliente().getNombrecliente()}">Eliminar</a></td>
 							</tr>
 						</c:forEach>

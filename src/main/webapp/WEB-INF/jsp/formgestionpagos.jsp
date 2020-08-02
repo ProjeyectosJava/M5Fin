@@ -9,7 +9,7 @@
 				<div class="form-group row">
 					<label for="mesaniopago" class="col-md-2 col-form-label mr-1">Proxima fecha de pago:</label>
 					<div class="col-md-7"> 
-						<form:input  class="form-control" id="mesaniopago" path="mesaniopago" placeholder="dd/mm/yyyy"/>
+						<form:input  class="form-control" type="date" id="mesaniopago" path="mesaniopago" placeholder="dd/mm/yyyy"/>
 					</div>
 				</div>
 				<div class="form-group row">
@@ -32,7 +32,7 @@
 					</div>
 				</div>
 				<div class="form-group row">
-					<input type="submit" class="btn btn-dark" value="Guardar" />
+					<input type="submit" class="btn btn-success" value="Guardar" />
 				</div>
 			</form:form>
 		</div>

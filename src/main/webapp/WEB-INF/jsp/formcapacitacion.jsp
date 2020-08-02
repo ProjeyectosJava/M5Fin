@@ -9,19 +9,19 @@
 				<div class="form-group row">
 					<label for="fechacap" class="col-md-2 col-form-label mr-1">Fecha:</label>
 					<div class="col-md-7">
-						<form:input class="form-control" id="fechacap" path="fechacapacitacion"/> 
+						<form:input class="form-control" type="date" id="fechacap" path="fechacapacitacion"/> 
 					</div>
 				</div>
 				<div class="form-group row">
 					<label for="fechacap" class="col-md-2 col-form-label mr-1">Hora:</label>
 					<div class="col-md-7">
-						<form:input class="form-control" id="fechacap" path="horacapacitacion"/>
+						<form:input class="form-control" type="time" id="fechacap" path="horacapacitacion"/>
 					</div>
 				</div>
 				<div class="form-group row">
 					<label for="numasiscap" class="col-md-2 col-form-label mr-1">Nro. Asistentes:</label>
 					<div class="col-md-7">
-						<form:input class="form-control" id="numasiscap" path="numasistcapacitacion"/>
+						<form:input class="form-control" type="number" id="numasiscap" path="numasistcapacitacion"/>
 					</div>
 				</div>
 				<div class="form-group row">

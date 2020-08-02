@@ -701,11 +701,11 @@ public class AdministradorControlador {
 			System.out.println("Fecha de Pago capturada en String :" + fechap);
 					
 			// Convertimos fecha String a Date
-			DateTimeFormatter formateador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+			DateTimeFormatter formateador = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 			LocalDate fechapagos = LocalDate.parse(fechap, formateador);
 			System.out.println(fechapagos);
 			
-			formateador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+			formateador = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 			//System.out.println(formateador.format(fechapagos));
 			 
 			System.out.println("Fecha de Pago:" + fechapagos);

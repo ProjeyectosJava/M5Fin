@@ -9,7 +9,7 @@
 					<div class="form-group row">
 						<label for="fechamej" class="col-md-2 col-form-label mr-1">Fecha:</label>
 						<div class="col-md-7">
-							<form:input class="form-control" id="fechamej" path="fechamejora"/>
+							<form:input class="form-control" type="date" id="fechamej" path="fechamejora"/>
 						</div>
 					</div>
 					<div class="form-group row">
@@ -27,11 +27,9 @@
 					<div class="form-group row">
 						<label for="estmejora" class="col-md-2 col-form-label mr-1">Estado:</label>  
 						<div class="col-md-7">
-							<form:select class="form-control" id="estmejora" path="estadomejora">
+							<form:select class="form-control" id="estmejora" path="estadomejora" readonly="false">
 								<div class="input-group-prepend">
-									<option>No Iniciada</option>
-									<option>En Curso</option>
-									<option>Finalizada</option>
+									<option selected>No Iniciada</option>
 								</div>
 							</form:select>
 						</div>

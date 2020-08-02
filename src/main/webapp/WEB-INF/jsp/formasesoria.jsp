@@ -1,6 +1,6 @@
 <%@ include file="menupro.jsp"%>
 
-<h4 class="text-center bg-dark text-white py-3">Creando Asesooria a cliente ${ncliente}</h4>
+<h4 class="text-center bg-dark text-white py-3">Creando Asesoria a cliente ${ncliente}</h4>
 <div class="container mt-4">
 	<div class="row justify-content-center align-items-center">
 		<div class="col-md-10">
@@ -16,7 +16,7 @@
 				<div class="form-group row">
 					<label for="fechaasesoria" class="col-md-2 col-form-label mr-1">Fecha Asesoria</label>
 						<div class="col-md-7">  
-							<form:input class="form-control" type="date" id="fechaasesoria" path="fechaasesoria"/>
+							<form:input class="form-control" type="date" data-date-format="dd/mm/yyyy" id="fechaasesoria" path="fechaasesoria"/>
 							<form:hidden class="form-control" id="detalleasesoria" path="detalleasesoria" readonly="true"/> 
 							<form:hidden class="form-control" id="gestionasesoria" path="gestionasesoria" value="No Iniciada" readonly="true"/>
 							<form:hidden class="form-control" id="propuestaasesoria" path="propuestaasesoria" readonly="true"/>

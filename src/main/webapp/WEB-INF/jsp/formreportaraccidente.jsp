@@ -15,14 +15,14 @@
 				<div class="form-group row">
 					<label for="fechaccid" class="col-md-2 col-form-label mr-1">Fecha Accidente:</label>
 					<div class="col-md-7">
-						<form:input class="form-control" id="fechaccid" path="fechaaccidente"/>
+						<form:input class="form-control" type="date" id="fechaccid" path="fechaaccidente"/>
 					</div>
 				</div>
 				
 				<div class="form-group row">
 					<label for="horaaccid" class="col-md-2 col-form-label mr-1">Hora Accidente:</label>
 					<div class="col-md-7">
-						<form:input class="form-control" id="horaaccid" path="horaaccidente"/>
+						<form:input class="form-control" type="time" id="horaaccid" path="horaaccidente"/>
 					</div>
 				</div>
 				
@@ -41,7 +41,7 @@
 				</div>
 				
 				<div class="form-group row">
-						<input type="submit" class="btn btn-dark" value="Guardar">
+						<input type="submit" class="btn btn-success" value="Guardar">
 				</div>
 	
 			</form:form>

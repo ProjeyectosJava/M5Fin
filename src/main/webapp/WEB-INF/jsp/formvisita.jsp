@@ -9,7 +9,7 @@
 				<div class="form-group row">
 					<label for="fechavis" class="col-md-2 col-form-label mr-1">Fecha de Visita:</label>
 					<div class="col-md-7"> 
-						<form:input class="form-control" id="fechavis" path="fechavisita"/>
+						<form:input class="form-control" type="date" id="fechavis" path="fechavisita"/>
 					</div>
 				</div>
 				<div class="form-group row">
@@ -44,16 +44,18 @@
 								<form:options class="input-group-text" items="${listaemp}" itemLabel="nombreempleado"  itemValue="idempleado"/>
 							</div>
 						</form:select>
+						<form:hidden class="form-control" id="idclivis" path="cliente.idcliente" readonly="true"/>
 					</div>
 				</div>
+				<!-- 
 				<div class="form-group row">
 					<label for="idclivis" class="col-md-2 col-form-label mr-1">IdClienteVisita:</label>
 					<div class="col-md-7"> 
-						<form:input class="form-control" id="idclivis" path="cliente.idcliente" readonly="true"/>
 					</div>
 				</div>
+				 -->
 				<div class="form-group row">
-					<input type="submit" class="btn btn-dark" value="Guardar" />
+					<input type="submit" class="btn btn-success" value="Guardar" />
 				</div>
 			</form:form>
 		</div>
