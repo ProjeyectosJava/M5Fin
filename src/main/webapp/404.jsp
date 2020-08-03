@@ -23,7 +23,7 @@
     <!--Mobile first-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>403</title>
+    <title>404</title>
     
     <meta name="description" content="Free Admin Template Based On Twitter Bootstrap 3.x">
     <meta name="author" content="">
@@ -49,7 +49,7 @@
     <div class="container">
         
         <div class="col-md-12">
-            	<img src="https://i.ibb.co/K2T547Z/c427bef7-e8f4-4e07-a81d-875e08b29408.jpg" class="img-fluid rounded mx-auto d-block">
+            	<img src="https://i.ibb.co/8Dtwrs7/Whats-App-Image-2020-08-02-at-8-08-59-PM.jpg" class="img-fluid rounded mx-auto d-block">
         
             <div class="clearfix"></div>
             <div class="col-lg-6 col-lg-offset-3">
