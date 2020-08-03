@@ -56,7 +56,7 @@
 
       <error-page>
            <error-code>404</error-code>
-           <location>/403.jsp</location>
+           <location>/404.jsp</location>
        </error-page>
        
        
