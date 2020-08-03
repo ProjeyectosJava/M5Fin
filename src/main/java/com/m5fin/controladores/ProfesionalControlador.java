@@ -372,7 +372,7 @@ public class ProfesionalControlador {
 				m.addAttribute("ncliente", ncliente);
 				
 				System.out.println("regcap que va al formulario: " + regasesoria);
-				return "formasesoriainiciada";
+				return "formasesoriainiciadanormal";
 		    }
 		    
 		    
