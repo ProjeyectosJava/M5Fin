@@ -91,6 +91,7 @@ public class ClienteControlador {
 		System.out.println("Accidente a guardar: " + accidente);
 		ac.agregarAccidente(accidente);
 		System.out.println("accidente guardado: " + accidente);
+		log.info("Se registró una nuevo accidente " + "id:" + accidente.getIdaccidente());
 		return "redirect:/submenucliente";
 	}
 	
@@ -154,7 +155,7 @@ public class ClienteControlador {
 	 public String guardarasesoria(@ModelAttribute("regase") Asesorias asesoria, Model m) {
 		 System.out.println("Estamos guardando la Asesoria " + asesoria);
 		 as.agregaAsesoria(asesoria);
-		
+		log.info("Se registró una nueva asesoria " + "id:" + asesoria.getIdasesoria());
 	return "redirect:/cliente/visitasasesoria";
 	}
   
@@ -165,6 +166,7 @@ public class ClienteControlador {
 		System.out.println("Elimnado Asesoria");
 		as.eliminaAsesoria(id);
 		m.addAttribute("mensaje", "La asesoria se eliminó exitosamente");
+		log.info("Se eliminó la asesoria con id:" + id );
 		return "redirect:/cliente/visitasasesoria";
 	}
 
